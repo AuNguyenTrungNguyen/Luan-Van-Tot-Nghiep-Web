@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Firebase</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+</head>
+
+<script>
+    let config = {
+        apiKey: "AIzaSyAX_MCy_DNcww2hF7S8mepc17Z0_TeLE10",
+        authDomain: "luanvantotnghiep-3d890.firebaseapp.com",
+        databaseURL: "https://luanvantotnghiep-3d890.firebaseio.com",
+        projectId: "luanvantotnghiep-3d890",
+        storageBucket: "luanvantotnghiep-3d890.appspot.com",
+        messagingSenderId: "470187573210"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<body>
+<center>
+    <h3>Add data type of question</h3>
+    <table>
+        <tr>
+            <td>mIdType</td>
+            <td><input type="text" id="mIdType" size="100"></td>
+        </tr>
+        <tr>
+            <td>mNameType</td>
+            <td><input type="text" id="mNameType" size="100"></td>
+        </tr>
+        <tr>
+            <td>mDescription</td>
+            <td><input type="text" id="mDescription" size="100"></td>
+        </tr>
+    </table>
+    <br>
+
+    <button onclick="pushDataTypeOfQuestion()">Push</button>
+
+</center>
+
+<script>
+    function pushDataTypeOfQuestion() {
+        let mIdType = document.getElementById("mIdType").value;
+        let mNameType = document.getElementById("mNameType").value;
+        let mDescription = document.getElementById("mDescription").value;
+
+        firebase.database().ref('TYPE_QUESTION/' + parseInt(mIdType)).set({
+            idType: parseInt(mIdType),
+            nameType: mNameType,
+            description: mDescription
+        });
+    }
+
+</script>
+</body>
+</html>

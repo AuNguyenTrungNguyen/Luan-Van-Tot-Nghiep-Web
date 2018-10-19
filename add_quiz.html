@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Firebase</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+</head>
+
+<script>
+    let config = {
+        apiKey: "AIzaSyAX_MCy_DNcww2hF7S8mepc17Z0_TeLE10",
+        authDomain: "luanvantotnghiep-3d890.firebaseapp.com",
+        databaseURL: "https://luanvantotnghiep-3d890.firebaseio.com",
+        projectId: "luanvantotnghiep-3d890",
+        storageBucket: "luanvantotnghiep-3d890.appspot.com",
+        messagingSenderId: "470187573210"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<body>
+
+<center>
+    <h3>Add data question</h3>
+    <table>
+        <tr>
+            <td>mContentQuestion</td>
+            <td><input type="text" id="mContentQuestion" size="100"></td>
+        </tr>
+
+        <tr>
+            <td>mIdLevel</td>
+            <td><input type="text" id="mIdLevel" size="100"></td>
+        </tr>
+
+        <tr>
+            <td>mIdBlock</td>
+            <td><input type="text" id="mIdBlock" size="100"></td>
+        </tr>
+
+        <tr>
+            <td>mIdTypeQuestionTable</td>
+            <td><input type="text" id="mIdTypeQuestion" size="100"></td>
+        </tr>
+
+        <tr>
+            <td>mExtent</td>
+            <td><input type="text" id="mExtent" size="100"></td>
+        </tr>
+    </table>
+    <br>
+
+    <h3>Add data answer quiz</h3>
+    <table>
+        <tr>
+            <td>Answer A</td>
+            <td><input type="text" id="mContentAnswerA" size="100"></td>
+            <td><input type="radio" name="correct" id="A"></td>
+        </tr>
+
+        <tr>
+            <td>Answer B</td>
+            <td><input type="text" id="mContentAnswerB" size="100"></td>
+            <td><input type="radio" name="correct" id="B"></td>
+        </tr>
+
+        <tr>
+            <td>Answer C</td>
+            <td><input type="text" id="mContentAnswerC" size="100"></td>
+            <td><input type="radio" name="correct" id="C"></td>
+        </tr>
+
+        <tr>
+            <td>Answer D</td>
+            <td><input type="text" id="mContentAnswerD" size="100"></td>
+            <td><input type="radio" name="correct" id="D"></td>
+        </tr>
+
+    </table>
+    <br>
+
+    <button onclick="pushDataGame()">Push Game</button>
+
+</center>
+
+<script>
+
+    function pushDataGame() {
+
+        let mContentQuestion = document.getElementById("mContentQuestion").value;
+        let mIdLevel = document.getElementById("mIdLevel").value;
+        let mIdBlock = document.getElementById("mIdBlock").value;
+        let mIdTypeQuestion = document.getElementById("mIdTypeQuestion").value;
+        let mExtent = document.getElementById("mExtent").value;
+        let mIdQuestion = firebase.database().ref('QUESTION').push().key;
+        firebase.database().ref('QUESTION/' + mIdQuestion).set({
+            idQuestion: mIdQuestion,
+            contentQuestion: mContentQuestion,
+            idLevel: mIdLevel,
+            idBlock: mIdBlock,
+            idTypeQuestion: mIdTypeQuestion,
+            extent: mExtent,
+        });
+
+        let mIdAnswerA = firebase.database().ref('ANSWER').push().key;
+        let mContentAnswerA = document.getElementById("mContentAnswerA").value;
+        firebase.database().ref('ANSWER/' + mIdAnswerA).set({
+            idAnswer: mIdAnswerA,
+            contentAnswer: mContentAnswerA,
+        });
+
+        let mIdAnswerB = firebase.database().ref('ANSWER').push().key;
+        let mContentAnswerB = document.getElementById("mContentAnswerB").value;
+        firebase.database().ref('ANSWER/' + mIdAnswerB).set({
+            idAnswer: mIdAnswerB,
+            contentAnswer: mContentAnswerB,
+        });
+
+        let mIdAnswerC = firebase.database().ref('ANSWER').push().key;
+        let mContentAnswerC = document.getElementById("mContentAnswerC").value;
+        firebase.database().ref('ANSWER/' + mIdAnswerC).set({
+            idAnswer: mIdAnswerC,
+            contentAnswer: mContentAnswerC,
+        });
+
+        let mIdAnswerD = firebase.database().ref('ANSWER').push().key;
+        let mContentAnswerD = document.getElementById("mContentAnswerD").value;
+        firebase.database().ref('ANSWER/' + mIdAnswerD).set({
+            idAnswer: mIdAnswerD,
+            contentAnswer: mContentAnswerD,
+        });
+
+        let mIdAnswerByQuestionA = firebase.database().ref('ANSWER_BY_QUESTION').push().key;
+        let correctA = document.getElementById("A").checked;
+        firebase.database().ref('ANSWER_BY_QUESTION/' + mIdAnswerByQuestionA).set({
+            idQuestion: mIdQuestion,
+            idAnswer: mIdAnswerA,
+            correct: setCorrect(correctA)
+        });
+
+        let mIdAnswerByQuestionB = firebase.database().ref('ANSWER_BY_QUESTION').push().key;
+        let correctB = document.getElementById("B").checked;
+        firebase.database().ref('ANSWER_BY_QUESTION/' + mIdAnswerByQuestionB).set({
+            idQuestion: mIdQuestion,
+            idAnswer: mIdAnswerB,
+            correct: setCorrect(correctB)
+        });
+
+        let mIdAnswerByQuestionC = firebase.database().ref('ANSWER_BY_QUESTION').push().key;
+        let correctC = document.getElementById("C").checked;
+        firebase.database().ref('ANSWER_BY_QUESTION/' + mIdAnswerByQuestionC).set({
+            idQuestion: mIdQuestion,
+            idAnswer: mIdAnswerC,
+            correct: setCorrect(correctC)
+        });
+
+        let mIdAnswerByQuestionD = firebase.database().ref('ANSWER_BY_QUESTION').push().key;
+        let correctD = document.getElementById("D").checked;
+        firebase.database().ref('ANSWER_BY_QUESTION/' + mIdAnswerByQuestionD).set({
+            idQuestion: mIdQuestion,
+            idAnswer: mIdAnswerD,
+            correct: setCorrect(correctD)
+        });
+    }
+
+    function setCorrect(check) {
+        return check === true ? 1 : 0;
+    }
+
+</script>
+</body>
+</html>
