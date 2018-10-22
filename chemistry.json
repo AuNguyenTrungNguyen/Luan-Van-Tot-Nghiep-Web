@@ -1,0 +1,1309 @@
+﻿{
+  "Chemistry": [
+    {
+      "mIdChemistry": "1",
+      "mIdType": "6",
+      "mSymbolChemistry": "H",
+      "mNameChemistry": "Hidro",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "1"
+    },
+    {
+      "mIdChemistry": "2",
+      "mIdType": "8",
+      "mSymbolChemistry": "He",
+      "mNameChemistry": "Heli",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "4"
+    },
+    {
+      "mIdChemistry": "3",
+      "mIdType": "1",
+      "mSymbolChemistry": "Li",
+      "mNameChemistry": "Liti",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Trắng bạc",
+      "mWeightChemistry": "7"
+    },
+    {
+      "mIdChemistry": "4",
+      "mIdType": "2",
+      "mSymbolChemistry": "Be",
+      "mNameChemistry": "Beri",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim trắng xám",
+      "mWeightChemistry": "9"
+    },
+    {
+      "mIdChemistry": "5",
+      "mIdType": "4",
+      "mSymbolChemistry": "B",
+      "mNameChemistry": "Bo",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Đen nâu",
+      "mWeightChemistry": "11"
+    },
+    {
+      "mIdChemistry": "6",
+      "mIdType": "6",
+      "mSymbolChemistry": "C",
+      "mNameChemistry": "Cacbon",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "trong suốt (kim cương) và đen (than chì)",
+      "mWeightChemistry": "12"
+    },
+    {
+      "mIdChemistry": "7",
+      "mIdType": "6",
+      "mSymbolChemistry": "N",
+      "mNameChemistry": "Nitơ",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "14"
+    },
+    {
+      "mIdChemistry": "8",
+      "mIdType": "6",
+      "mSymbolChemistry": "O",
+      "mNameChemistry": "Oxi",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "không màu, trong suốt",
+      "mWeightChemistry": "16"
+    },
+    {
+      "mIdChemistry": "9",
+      "mIdType": "7",
+      "mSymbolChemistry": "F",
+      "mNameChemistry": "Flo",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Màu vàng lục nhạt",
+      "mWeightChemistry": "19"
+    },
+    {
+      "mIdChemistry": "10",
+      "mIdType": "8",
+      "mSymbolChemistry": "Ne",
+      "mNameChemistry": "Neon",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "20"
+    },
+    {
+      "mIdChemistry": "11",
+      "mIdType": "1",
+      "mSymbolChemistry": "Na",
+      "mNameChemistry": "Natri",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim trắng bạc",
+      "mWeightChemistry": "23"
+    },
+    {
+      "mIdChemistry": "12",
+      "mIdType": "2",
+      "mSymbolChemistry": "Mg",
+      "mNameChemistry": "Magie",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám",
+      "mWeightChemistry": "24"
+    },
+    {
+      "mIdChemistry": "13",
+      "mIdType": "3",
+      "mSymbolChemistry": "Al",
+      "mNameChemistry": "Nhôm",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim trắng bạc",
+      "mWeightChemistry": "27"
+    },
+    {
+      "mIdChemistry": "14",
+      "mIdType": "4",
+      "mSymbolChemistry": "Si",
+      "mNameChemistry": "Silic",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám sẫm ánh xanh",
+      "mWeightChemistry": "28"
+    },
+    {
+      "mIdChemistry": "15",
+      "mIdType": "6",
+      "mSymbolChemistry": "P",
+      "mNameChemistry": "Photpho",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Không màu, trắng sáp, đỏ tươi hơi vàng, đỏ, tím, đen",
+      "mWeightChemistry": "31"
+    },
+    {
+      "mIdChemistry": "16",
+      "mIdType": "6",
+      "mSymbolChemistry": "S",
+      "mNameChemistry": "Lưu huỳnh",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Vàng chanh",
+      "mWeightChemistry": "32"
+    },
+    {
+      "mIdChemistry": "17",
+      "mIdType": "7",
+      "mSymbolChemistry": "Cl",
+      "mNameChemistry": "Clo",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Vàng lục nhạt",
+      "mWeightChemistry": "35.5"
+    },
+    {
+      "mIdChemistry": "18",
+      "mIdType": "8",
+      "mSymbolChemistry": "Ar",
+      "mNameChemistry": "Argon",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "40"
+    },
+    {
+      "mIdChemistry": "19",
+      "mIdType": "1",
+      "mSymbolChemistry": "K",
+      "mNameChemistry": "Kali",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim trắng bạc",
+      "mWeightChemistry": "39"
+    },
+    {
+      "mIdChemistry": "20",
+      "mIdType": "2",
+      "mSymbolChemistry": "Ca",
+      "mNameChemistry": "Caxi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám bạc",
+      "mWeightChemistry": "40"
+    },
+    {
+      "mIdChemistry": "21",
+      "mIdType": "5",
+      "mSymbolChemistry": "Sc",
+      "mNameChemistry": "Scandi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim trắng bạc",
+      "mWeightChemistry": "45"
+    },
+    {
+      "mIdChemistry": "22",
+      "mIdType": "5",
+      "mSymbolChemistry": "Ti",
+      "mNameChemistry": "TiTan",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc xám-trắng",
+      "mWeightChemistry": "48"
+    },
+    {
+      "mIdChemistry": "23",
+      "mIdType": "5",
+      "mSymbolChemistry": "V",
+      "mNameChemistry": "Vanadi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xanh bạc xám",
+      "mWeightChemistry": "51"
+    },
+    {
+      "mIdChemistry": "24",
+      "mIdType": "5",
+      "mSymbolChemistry": "Cr",
+      "mNameChemistry": "Crom",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh bạc",
+      "mWeightChemistry": "52"
+    },
+    {
+      "mIdChemistry": "25",
+      "mIdType": "5",
+      "mSymbolChemistry": "Mn",
+      "mNameChemistry": "Mangan",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc",
+      "mWeightChemistry": "55"
+    },
+    {
+      "mIdChemistry": "26",
+      "mIdType": "5",
+      "mSymbolChemistry": "Fe",
+      "mNameChemistry": "Sắt",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám nhẹ",
+      "mWeightChemistry": "56"
+    },
+    {
+      "mIdChemistry": "27",
+      "mIdType": "5",
+      "mSymbolChemistry": "Co",
+      "mNameChemistry": "Coban",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám nhẹ",
+      "mWeightChemistry": "59"
+    },
+    {
+      "mIdChemistry": "28",
+      "mIdType": "5",
+      "mSymbolChemistry": "Ni",
+      "mNameChemistry": "Niken",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc ánh vàng",
+      "mWeightChemistry": "59"
+    },
+    {
+      "mIdChemistry": "29",
+      "mIdType": "5",
+      "mSymbolChemistry": "Cu",
+      "mNameChemistry": "Đồng",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim đỏ cam",
+      "mWeightChemistry": "64"
+    },
+    {
+      "mIdChemistry": "30",
+      "mIdType": "5",
+      "mSymbolChemistry": "Zn",
+      "mNameChemistry": "Kẽm",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc xám",
+      "mWeightChemistry": "65"
+    },
+    {
+      "mIdChemistry": "31",
+      "mIdType": "3",
+      "mSymbolChemistry": "Ga",
+      "mNameChemistry": "Gali",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc trắng",
+      "mWeightChemistry": "70"
+    },
+    {
+      "mIdChemistry": "32",
+      "mIdType": "4",
+      "mSymbolChemistry": "Ge",
+      "mNameChemistry": "Gecmani",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám trắng",
+      "mWeightChemistry": "73"
+    },
+    {
+      "mIdChemistry": "33",
+      "mIdType": "4",
+      "mSymbolChemistry": "As",
+      "mNameChemistry": "Asen",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám",
+      "mWeightChemistry": "75"
+    },
+    {
+      "mIdChemistry": "34",
+      "mIdType": "6",
+      "mSymbolChemistry": "Se",
+      "mNameChemistry": "Selen",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Có ba màu đen, xám và đỏ",
+      "mWeightChemistry": "79"
+    },
+    {
+      "mIdChemistry": "35",
+      "mIdType": "7",
+      "mSymbolChemistry": "Br",
+      "mNameChemistry": "Brom",
+      "mStatusChemistry": "Lỏng",
+      "mColorChemistry": "Đỏ nâu",
+      "mWeightChemistry": "80"
+    },
+    {
+      "mIdChemistry": "36",
+      "mIdType": "8",
+      "mSymbolChemistry": "Kr",
+      "mNameChemistry": "Krypton",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "84"
+    },
+    {
+      "mIdChemistry": "37",
+      "mIdType": "1",
+      "mSymbolChemistry": "Rb",
+      "mNameChemistry": "Rubiđi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Xám trắng",
+      "mWeightChemistry": "85"
+    },
+    {
+      "mIdChemistry": "38",
+      "mIdType": "2",
+      "mSymbolChemistry": "Sr",
+      "mNameChemistry": "Stronti",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc trắng",
+      "mWeightChemistry": "88"
+    },
+    {
+      "mIdChemistry": "39",
+      "mIdType": "5",
+      "mSymbolChemistry": "Y",
+      "mNameChemistry": "Yttri",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "89"
+    },
+    {
+      "mIdChemistry": "40",
+      "mIdType": "5",
+      "mSymbolChemistry": "Zr",
+      "mNameChemistry": "Zirconi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "91"
+    },
+    {
+      "mIdChemistry": "41",
+      "mIdType": "5",
+      "mSymbolChemistry": "Nb",
+      "mNameChemistry": "Niobi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám",
+      "mWeightChemistry": "93"
+    },
+    {
+      "mIdChemistry": "42",
+      "mIdType": "5",
+      "mSymbolChemistry": "Mo",
+      "mNameChemistry": "Molypden",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám",
+      "mWeightChemistry": "96"
+    },
+    {
+      "mIdChemistry": "43",
+      "mIdType": "5",
+      "mSymbolChemistry": "Tc",
+      "mNameChemistry": "Tecneti",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám bóng",
+      "mWeightChemistry": "98"
+    },
+    {
+      "mIdChemistry": "44",
+      "mIdType": "5",
+      "mSymbolChemistry": "Ru",
+      "mNameChemistry": "Rutheni",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc trắng",
+      "mWeightChemistry": "101"
+    },
+    {
+      "mIdChemistry": "45",
+      "mIdType": "5",
+      "mSymbolChemistry": "Rh",
+      "mNameChemistry": "Rhodi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc trắng",
+      "mWeightChemistry": "103"
+    },
+    {
+      "mIdChemistry": "46",
+      "mIdType": "5",
+      "mSymbolChemistry": "Pd",
+      "mNameChemistry": "Paladi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc trắng",
+      "mWeightChemistry": "106"
+    },
+    {
+      "mIdChemistry": "47",
+      "mIdType": "5",
+      "mSymbolChemistry": "Ag",
+      "mNameChemistry": "Bạc",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim trắng bóng",
+      "mWeightChemistry": "108"
+    },
+    {
+      "mIdChemistry": "48",
+      "mIdType": "5",
+      "mSymbolChemistry": "Cd",
+      "mNameChemistry": "Cadimi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc hơi xanh xám",
+      "mWeightChemistry": "112"
+    },
+    {
+      "mIdChemistry": "49",
+      "mIdType": "3",
+      "mSymbolChemistry": "In",
+      "mNameChemistry": "Indi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc xám bóng",
+      "mWeightChemistry": "115"
+    },
+    {
+      "mIdChemistry": "50",
+      "mIdType": "3",
+      "mSymbolChemistry": "Sn",
+      "mNameChemistry": "Thiếc",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc hoặc xám",
+      "mWeightChemistry": "119"
+    },
+    {
+      "mIdChemistry": "51",
+      "mIdType": "4",
+      "mSymbolChemistry": "Sb",
+      "mNameChemistry": "Antimon",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc hoặc xám",
+      "mWeightChemistry": "122"
+    },
+    {
+      "mIdChemistry": "52",
+      "mIdType": "4",
+      "mSymbolChemistry": "Te",
+      "mNameChemistry": "Telua",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc xám bóng",
+      "mWeightChemistry": "128"
+    },
+    {
+      "mIdChemistry": "53",
+      "mIdType": "7",
+      "mSymbolChemistry": "I",
+      "mNameChemistry": "Iốt",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám bóng khi ở thể rắn, tím khi ở thể khí",
+      "mWeightChemistry": "127"
+    },
+    {
+      "mIdChemistry": "54",
+      "mIdType": "8",
+      "mSymbolChemistry": "Xe",
+      "mNameChemistry": "Xenon",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "131"
+    },
+    {
+      "mIdChemistry": "55",
+      "mIdType": "1",
+      "mSymbolChemistry": "Cs",
+      "mNameChemistry": "Xêsi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc ngà",
+      "mWeightChemistry": "133"
+    },
+    {
+      "mIdChemistry": "56",
+      "mIdType": "2",
+      "mSymbolChemistry": "Ba",
+      "mNameChemistry": "Bari",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc xám",
+      "mWeightChemistry": "137"
+    },
+    {
+      "mIdChemistry": "57",
+      "mIdType": "5",
+      "mSymbolChemistry": "La",
+      "mNameChemistry": "Lanta",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "139"
+    },
+    {
+      "mIdChemistry": "58",
+      "mIdType": "9",
+      "mSymbolChemistry": "Ce",
+      "mNameChemistry": "Xeri",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "140"
+    },
+    {
+      "mIdChemistry": "59",
+      "mIdType": "9",
+      "mSymbolChemistry": "Pr",
+      "mNameChemistry": "Praseodymi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Xám trắng",
+      "mWeightChemistry": "141"
+    },
+    {
+      "mIdChemistry": "60",
+      "mIdType": "9",
+      "mSymbolChemistry": "Nd",
+      "mNameChemistry": "Neodymi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "144"
+    },
+    {
+      "mIdChemistry": "61",
+      "mIdType": "9",
+      "mSymbolChemistry": "Nd",
+      "mNameChemistry": "Neodymi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim",
+      "mWeightChemistry": "145"
+    },
+    {
+      "mIdChemistry": "62",
+      "mIdType": "9",
+      "mSymbolChemistry": "Sm",
+      "mNameChemistry": "Neodymi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "150"
+    },
+    {
+      "mIdChemistry": "63",
+      "mIdType": "9",
+      "mSymbolChemistry": "Eu",
+      "mNameChemistry": "Europi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "152"
+    },
+    {
+      "mIdChemistry": "64",
+      "mIdType": "9",
+      "mSymbolChemistry": "Gd",
+      "mNameChemistry": "Gadolini",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "157"
+    },
+    {
+      "mIdChemistry": "65",
+      "mIdType": "9",
+      "mSymbolChemistry": "Tb",
+      "mNameChemistry": "Terbi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "159"
+    },
+    {
+      "mIdChemistry": "66",
+      "mIdType": "9",
+      "mSymbolChemistry": "Dy",
+      "mNameChemistry": "Dysprosi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "162"
+    },
+    {
+      "mIdChemistry": "67",
+      "mIdType": "9",
+      "mSymbolChemistry": "Ho",
+      "mNameChemistry": "Holmi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "165"
+    },
+    {
+      "mIdChemistry": "68",
+      "mIdType": "9",
+      "mSymbolChemistry": "Er",
+      "mNameChemistry": "Erbi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "167"
+    },
+    {
+      "mIdChemistry": "69",
+      "mIdType": "9",
+      "mSymbolChemistry": "Tm",
+      "mNameChemistry": "Thuli",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc xám",
+      "mWeightChemistry": "169"
+    },
+    {
+      "mIdChemistry": "70",
+      "mIdType": "9",
+      "mSymbolChemistry": "Yb",
+      "mNameChemistry": "Ytterbi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "173"
+    },
+    {
+      "mIdChemistry": "71",
+      "mIdType": "9",
+      "mSymbolChemistry": "Lu",
+      "mNameChemistry": "Luteti",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "175"
+    },
+    {
+      "mIdChemistry": "72",
+      "mIdType": "5",
+      "mSymbolChemistry": "Hf",
+      "mNameChemistry": "Hafni",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Thép xám",
+      "mWeightChemistry": "178"
+    },
+    {
+      "mIdChemistry": "73",
+      "mIdType": "5",
+      "mSymbolChemistry": "Ta",
+      "mNameChemistry": "TanTan",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Xám xanh",
+      "mWeightChemistry": "181"
+    },
+    {
+      "mIdChemistry": "74",
+      "mIdType": "5",
+      "mSymbolChemistry": "W",
+      "mNameChemistry": "Wolfram",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Xám trắng bóng",
+      "mWeightChemistry": "184"
+    },
+    {
+      "mIdChemistry": "75",
+      "mIdType": "5",
+      "mSymbolChemistry": "Re",
+      "mNameChemistry": "Rheni",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Xám trắng",
+      "mWeightChemistry": "186"
+    },
+    {
+      "mIdChemistry": "76",
+      "mIdType": "5",
+      "mSymbolChemistry": "Os",
+      "mNameChemistry": "Osmi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc ánh xanh",
+      "mWeightChemistry": "190"
+    },
+    {
+      "mIdChemistry": "77",
+      "mIdType": "5",
+      "mSymbolChemistry": "Ir",
+      "mNameChemistry": "Iridi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "192"
+    },
+    {
+      "mIdChemistry": "78",
+      "mIdType": "5",
+      "mSymbolChemistry": "Pt",
+      "mNameChemistry": "Platin",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "195"
+    },
+    {
+      "mIdChemistry": "79",
+      "mIdType": "5",
+      "mSymbolChemistry": "Au",
+      "mNameChemistry": "Vàng",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim vàng",
+      "mWeightChemistry": "197"
+    },
+    {
+      "mIdChemistry": "80",
+      "mIdType": "5",
+      "mSymbolChemistry": "Hg",
+      "mNameChemistry": "Thủy ngân",
+      "mStatusChemistry": "Lỏng",
+      "mColorChemistry": "Ánh bạc",
+      "mWeightChemistry": "201"
+    },
+    {
+      "mIdChemistry": "81",
+      "mIdType": "3",
+      "mSymbolChemistry": "Tl",
+      "mNameChemistry": "Tali",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc trắng",
+      "mWeightChemistry": "204"
+    },
+    {
+      "mIdChemistry": "82",
+      "mIdType": "3",
+      "mSymbolChemistry": "Pb",
+      "mNameChemistry": "Chì",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim xám",
+      "mWeightChemistry": "207"
+    },
+    {
+      "mIdChemistry": "83",
+      "mIdType": "3",
+      "mSymbolChemistry": "Bi",
+      "mNameChemistry": "Bismut",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc bóng",
+      "mWeightChemistry": "209"
+    },
+    {
+      "mIdChemistry": "84",
+      "mIdType": "4",
+      "mSymbolChemistry": "Po",
+      "mNameChemistry": "Poloni",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc",
+      "mWeightChemistry": "209"
+    },
+    {
+      "mIdChemistry": "85",
+      "mIdType": "7",
+      "mSymbolChemistry": "At",
+      "mNameChemistry": "Astatin",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Đen",
+      "mWeightChemistry": "210"
+    },
+    {
+      "mIdChemistry": "86",
+      "mIdType": "8",
+      "mSymbolChemistry": "Rn",
+      "mNameChemistry": "Radon",
+      "mStatusChemistry": "Khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "222"
+    },
+    {
+      "mIdChemistry": "87",
+      "mIdType": "1",
+      "mSymbolChemistry": "Fr",
+      "mNameChemistry": "Franxi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim",
+      "mWeightChemistry": "223"
+    },
+    {
+      "mIdChemistry": "88",
+      "mIdType": "2",
+      "mSymbolChemistry": "Ra",
+      "mNameChemistry": "Radi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc trắng",
+      "mWeightChemistry": "226"
+    },
+    {
+      "mIdChemistry": "89",
+      "mIdType": "5",
+      "mSymbolChemistry": "Ac",
+      "mNameChemistry": "Actini",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc",
+      "mWeightChemistry": "227"
+    },
+    {
+      "mIdChemistry": "90",
+      "mIdType": "10",
+      "mSymbolChemistry": "Th",
+      "mNameChemistry": "Thori",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc, thường có màu đen xỉn",
+      "mWeightChemistry": "232"
+    },
+    {
+      "mIdChemistry": "91",
+      "mIdType": "10",
+      "mSymbolChemistry": "Pa",
+      "mNameChemistry": "Protactini",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc, thường có màu đen xỉn",
+      "mWeightChemistry": "232"
+    },
+    {
+      "mIdChemistry": "92",
+      "mIdType": "10",
+      "mSymbolChemistry": "U",
+      "mNameChemistry": "Urani",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Xám bạc",
+      "mWeightChemistry": "238"
+    },
+    {
+      "mIdChemistry": "93",
+      "mIdType": "10",
+      "mSymbolChemistry": "Np",
+      "mNameChemistry": "Neptuni",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc trắng",
+      "mWeightChemistry": "237"
+    },
+    {
+      "mIdChemistry": "94",
+      "mIdType": "10",
+      "mSymbolChemistry": "Pu",
+      "mNameChemistry": "Plutoni",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Trắng bạc",
+      "mWeightChemistry": "244"
+    },
+    {
+      "mIdChemistry": "95",
+      "mIdType": "10",
+      "mSymbolChemistry": "Am",
+      "mNameChemistry": "Americi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim trắng bạc",
+      "mWeightChemistry": "243"
+    },
+    {
+      "mIdChemistry": "96",
+      "mIdType": "10",
+      "mSymbolChemistry": "Cm",
+      "mNameChemistry": "Curi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Bạc",
+      "mWeightChemistry": "247"
+    },
+    {
+      "mIdChemistry": "97",
+      "mIdType": "10",
+      "mSymbolChemistry": "Bk",
+      "mNameChemistry": "Berkeli",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc",
+      "mWeightChemistry": "247"
+    },
+    {
+      "mIdChemistry": "98",
+      "mIdType": "10",
+      "mSymbolChemistry": "Cf",
+      "mNameChemistry": "Californi",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh kim bạc",
+      "mWeightChemistry": "251"
+    },
+    {
+      "mIdChemistry": "99",
+      "mIdType": "10",
+      "mSymbolChemistry": "Es",
+      "mNameChemistry": "Einsteini",
+      "mStatusChemistry": "Rắn",
+      "mColorChemistry": "Ánh bạc, phát sáng trong bóng tối",
+      "mWeightChemistry": "252"
+    },
+    {
+      "mIdChemistry": "100",
+      "mIdType": "10",
+      "mSymbolChemistry": "Fm",
+      "mNameChemistry": "Fermi",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "257"
+    },
+    {
+      "mIdChemistry": "101",
+      "mIdType": "10",
+      "mSymbolChemistry": "Md",
+      "mNameChemistry": "Mendelevi",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "258"
+    },
+    {
+      "mIdChemistry": "102",
+      "mIdType": "10",
+      "mSymbolChemistry": "No",
+      "mNameChemistry": "Nobeli",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "259"
+    },
+    {
+      "mIdChemistry": "103",
+      "mIdType": "10",
+      "mSymbolChemistry": "Lr",
+      "mNameChemistry": "Lawrenci",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "262"
+    },
+    {
+      "mIdChemistry": "104",
+      "mIdType": "5",
+      "mSymbolChemistry": "Rf",
+      "mNameChemistry": "Rutherfordi",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "262"
+    },
+    {
+      "mIdChemistry": "105",
+      "mIdType": "5",
+      "mSymbolChemistry": "Db",
+      "mNameChemistry": "Dubni",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "268"
+    },
+    {
+      "mIdChemistry": "106",
+      "mIdType": "5",
+      "mSymbolChemistry": "Sg",
+      "mNameChemistry": "Seaborgi",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "269"
+    },
+    {
+      "mIdChemistry": "107",
+      "mIdType": "5",
+      "mSymbolChemistry": "Bh",
+      "mNameChemistry": "Bohri",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "270"
+    },
+    {
+      "mIdChemistry": "108",
+      "mIdType": "5",
+      "mSymbolChemistry": "Hs",
+      "mNameChemistry": "Hassi",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "269"
+    },
+    {
+      "mIdChemistry": "109",
+      "mIdType": "11",
+      "mSymbolChemistry": "Mt",
+      "mNameChemistry": "Meitneri",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "278"
+    },
+    {
+      "mIdChemistry": "110",
+      "mIdType": "11",
+      "mSymbolChemistry": "Ds",
+      "mNameChemistry": "Darmstadti",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "281"
+    },
+    {
+      "mIdChemistry": "111",
+      "mIdType": "11",
+      "mSymbolChemistry": "Rg",
+      "mNameChemistry": "Roentgeni",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "281"
+    },
+    {
+      "mIdChemistry": "112",
+      "mIdType": "5",
+      "mSymbolChemistry": "Cn",
+      "mNameChemistry": "Copernixi",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "285"
+    },
+    {
+      "mIdChemistry": "113",
+      "mIdType": "11",
+      "mSymbolChemistry": "Nh",
+      "mNameChemistry": "Nihoni",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "286"
+    },
+    {
+      "mIdChemistry": "114",
+      "mIdType": "11",
+      "mSymbolChemistry": "Fl",
+      "mNameChemistry": "Flerovi",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "289"
+    },
+    {
+      "mIdChemistry": "115",
+      "mIdType": "11",
+      "mSymbolChemistry": "Mc",
+      "mNameChemistry": "Moscovi",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "289"
+    },
+    {
+      "mIdChemistry": "116",
+      "mIdType": "11",
+      "mSymbolChemistry": "Lv",
+      "mNameChemistry": "Livermori",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "293"
+    },
+    {
+      "mIdChemistry": "117",
+      "mIdType": "11",
+      "mSymbolChemistry": "Ts",
+      "mNameChemistry": "Tennessine",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Á kim",
+      "mWeightChemistry": "293"
+    },
+    {
+      "mIdChemistry": "118",
+      "mIdType": "11",
+      "mSymbolChemistry": "Og",
+      "mNameChemistry": "Oganesson",
+      "mStatusChemistry": "Chưa xác định",
+      "mColorChemistry": "Chưa xác định",
+      "mWeightChemistry": "293"
+    },
+    {
+      "mIdChemistry": "119",
+      "mIdType": "19",
+      "mSymbolChemistry": "H2O",
+      "mNameChemistry": "Nước",
+      "mStatusChemistry": "Chất lỏng",
+      "mColorChemistry": "Trong suốt",
+      "mWeightChemistry": "18"
+    },
+    {
+      "mIdChemistry": "120",
+      "mIdType": "12",
+      "mSymbolChemistry": "H2SO4",
+      "mNameChemistry": "Axit sunfuric",
+      "mStatusChemistry": "Chất lỏng",
+      "mColorChemistry": "Trong suốt",
+      "mWeightChemistry": "98"
+    },
+    {
+      "mIdChemistry": "121",
+      "mIdType": "12",
+      "mSymbolChemistry": "HCl",
+      "mNameChemistry": "Axit clohidric",
+      "mStatusChemistry": "Chất lỏng",
+      "mColorChemistry": "Trong suốt",
+      "mWeightChemistry": "36.5"
+    },
+    {
+      "mIdChemistry": "122",
+      "mIdType": "12",
+      "mSymbolChemistry": "HNO3",
+      "mNameChemistry": "Axit nitric",
+      "mStatusChemistry": "Chất lỏng",
+      "mColorChemistry": "Trong suốt",
+      "mWeightChemistry": "63"
+    },
+    {
+      "mIdChemistry": "123",
+      "mIdType": "13",
+      "mSymbolChemistry": "NaOH",
+      "mNameChemistry": "Natri hidroxit",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "40"
+    },
+    {
+      "mIdChemistry": "124",
+      "mIdType": "13",
+      "mSymbolChemistry": "Ba(OH)2",
+      "mNameChemistry": "Bari hidroxit",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "171"
+    },
+    {
+      "mIdChemistry": "125",
+      "mIdType": "14",
+      "mSymbolChemistry": "SO2",
+      "mNameChemistry": "Lưu huỳnh dioxit",
+      "mStatusChemistry": "Chất khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "64"
+    },
+    {
+      "mIdChemistry": "126",
+      "mIdType": "14",
+      "mSymbolChemistry": "CO2",
+      "mNameChemistry": "Cacbon dioxit",
+      "mStatusChemistry": "Chất khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "44"
+    },
+    {
+      "mIdChemistry": "127",
+      "mIdType": "15",
+      "mSymbolChemistry": "Na2O",
+      "mNameChemistry": "Natri oxit",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "55"
+    },
+    {
+      "mIdChemistry": "128",
+      "mIdType": "15",
+      "mSymbolChemistry": "BaO",
+      "mNameChemistry": "Bari oxit",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "153"
+    },
+    {
+      "mIdChemistry": "129",
+      "mIdType": "16",
+      "mSymbolChemistry": "Al2O3",
+      "mNameChemistry": "Nhôm oxit",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "102"
+    },
+    {
+      "mIdChemistry": "130",
+      "mIdType": "16",
+      "mSymbolChemistry": "ZnO",
+      "mNameChemistry": "Kẽm oxit",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "81"
+    },
+    {
+      "mIdChemistry": "131",
+      "mIdType": "17",
+      "mSymbolChemistry": "CO",
+      "mNameChemistry": "Cacbon monoxit",
+      "mStatusChemistry": "Chất khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "28"
+    },
+    {
+      "mIdChemistry": "132",
+      "mIdType": "17",
+      "mSymbolChemistry": "NO",
+      "mNameChemistry": "Nitơ monoxit",
+      "mStatusChemistry": "Chất khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "30"
+    },
+    {
+      "mIdChemistry": "133",
+      "mIdType": "18",
+      "mSymbolChemistry": "Na2SO4",
+      "mNameChemistry": "Natri sunfat",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "142"
+    },
+    {
+      "mIdChemistry": "134",
+      "mIdType": "18",
+      "mSymbolChemistry": "NaCl",
+      "mNameChemistry": "Natri clorua",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng hoặc không màu",
+      "mWeightChemistry": "58.5"
+    },
+    {
+      "mIdChemistry": "135",
+      "mIdType": "18",
+      "mSymbolChemistry": "NaNO3",
+      "mNameChemistry": "Natri nitrat",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "85"
+    },
+    {
+      "mIdChemistry": "136",
+      "mIdType": "18",
+      "mSymbolChemistry": "BaSO4",
+      "mNameChemistry": "Bari sunfat",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "233"
+    },
+    {
+      "mIdChemistry": "137",
+      "mIdType": "18",
+      "mSymbolChemistry": "BaCl2",
+      "mNameChemistry": "Bari clorua",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng hoặc không màu",
+      "mWeightChemistry": "208"
+    },
+    {
+      "mIdChemistry": "138",
+      "mIdType": "18",
+      "mSymbolChemistry": "Ba(NO3)2",
+      "mNameChemistry": "Bari nitrat",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "261"
+    },
+    {
+      "mIdChemistry": "139",
+      "mIdType": "14",
+      "mSymbolChemistry": "SO3",
+      "mNameChemistry": "Lưu huỳnh trioxit",
+      "mStatusChemistry": "Chất lỏng",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "80"
+    },
+    {
+      "mIdChemistry": "140",
+      "mIdType": "13",
+      "mSymbolChemistry": "NH3",
+      "mNameChemistry": "Amoniac",
+      "mStatusChemistry": "Chất khí",
+      "mColorChemistry": "Không màu mùi khai",
+      "mWeightChemistry": "17"
+    },
+    {
+      "mIdChemistry": "141",
+      "mIdType": "18",
+      "mSymbolChemistry": "CaCO3",
+      "mNameChemistry": "Canxi cacbonat",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Trắng",
+      "mWeightChemistry": "100"
+    },
+    {
+      "mIdChemistry": "142",
+      "mIdType": "20",
+      "mSymbolChemistry": "C6H12O6",
+      "mNameChemistry": "Glucozo",
+      "mStatusChemistry": "Chất rắn",
+      "mColorChemistry": "Tinh thể không màu",
+      "mWeightChemistry": "180"
+    },
+    {
+      "mIdChemistry": "143",
+      "mIdType": "14",
+      "mSymbolChemistry": "CO2",
+      "mNameChemistry": "Cacbon dioxit",
+      "mStatusChemistry": "Chất khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "44"
+    },
+    {
+      "mIdChemistry": "144",
+      "mIdType": "21",
+      "mSymbolChemistry": "CH4",
+      "mNameChemistry": "Metan",
+      "mStatusChemistry": "Chất khí",
+      "mColorChemistry": "Không màu",
+      "mWeightChemistry": "14"
+    },
+    {
+      "mIdChemistry": "145",
+      "mIdType": "18",
+      "mSymbolChemistry": "KMnO4",
+      "mNameChemistry": "Kali pemanganat",
+      "mStatusChemistry": "Chât rắn",
+      "mColorChemistry": "Màu đen",
+      "mWeightChemistry": "158"
+    }
+  ]
+}
