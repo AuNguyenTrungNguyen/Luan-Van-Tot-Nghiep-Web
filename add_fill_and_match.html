@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Firebase</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+</head>
+
+<script>
+    var config = {
+        apiKey: "AIzaSyCA_Uxwd740_t_T9OQxjGe9vkeTE_Zpy5o",
+        authDomain: "luanvantotnghiep-a1764.firebaseapp.com",
+        databaseURL: "https://luanvantotnghiep-a1764.firebaseio.com",
+        projectId: "luanvantotnghiep-a1764",
+        storageBucket: "luanvantotnghiep-a1764.appspot.com",
+        messagingSenderId: "773402400130"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<body>
+<center>
+    <h3>Thêm câu hỏi</h3>
+    <table>
+        <tr>
+            <td>Chọn khối:</td>
+            <td><select id="mIdBlock">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td>Chọn loại trò chơi</td>
+            <td><select id="mIdType">
+                <option value="2">Điền vào chỗ trống</option>
+                <option value="3">Nối cột</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td>Nội dung câu hỏi:</td>
+            <td><input type="text" id="mContentQuestion" size="100"></td>
+        </tr>
+
+        <tr>
+            <td>Chọn cấp độ:</td>
+            <td><input type="number" id="mIdLevel" value="1" size="100"></td>
+        </tr>
+
+        <tr>
+            <td>Chọn mức độ:</td>
+            <td><select id="mExtent">
+                <option value="1">Dễ</option>
+                <option value="2">Trung bình</option>
+                <option value="3">Khó</option>
+            </select></td>
+        </tr>
+
+    </table>
+    <br>
+
+    <h3>Đáp án cho câu hỏi</h3>
+    <table>
+        <tr>
+            <td>mContentAnswer</td>
+            <td><input type="text" id="mContentAnswer" size="100"></td>
+        </tr>
+
+    </table>
+    <br>
+
+    <button onclick="checkDataInput()">Thêm</button>
+</center>
+
+<script>
+
+    function checkDataInput() {
+        let mIdBlock = document.getElementById("mIdBlock").value;
+        let mIdTypeQuestion = document.getElementById("mIdType").value;
+        let mContentQuestion = document.getElementById("mContentQuestion").value;
+        let mIdLevel = document.getElementById("mIdLevel").value;
+        let mExtent = document.getElementById("mExtent").value;
+
+        if (mContentQuestion.trim() === "") {
+            alert("Chưa nhập nội dung câu hỏi!");
+        } else if (!/^[1-9]\d*$/.test((mIdLevel))) {
+            alert("Nhập cấp độ chưa đúng!");
+        } else {
+
+            let mContentAnswer = document.getElementById("mContentAnswer").value;
+
+            if (mContentAnswer.trim() === "") {
+                alert("Phải nhập đáp án!");
+            } else {
+                let viewType = document.getElementById('mIdType');
+                let typeOfGme = viewType.options[viewType.selectedIndex].innerHTML;
+                let message = "Bạn muốn thêm : " + mContentQuestion.trim() + "\n";
+                message += "Với đáp án: " + mContentAnswer.trim() + "\n";
+                message += "Vào game: " + typeOfGme + "\n";
+
+                if (confirm(message)) {
+                    pushDataGame(mIdBlock, mIdTypeQuestion, mContentQuestion, mIdLevel, mExtent, mContentAnswer);
+                }
+            }
+        }
+    }
+
+    function pushDataGame(mIdBlock, mIdTypeQuestion, mContentQuestion, mIdLevel, mExtent, mContentAnswer) {
+
+        let myRefQuestion = firebase.database().ref('TEST_QUESTION');
+        let myRefAnswer = firebase.database().ref('TEST_ANSWER');
+        let myRefAnswerByQuestion = firebase.database().ref('TEST_ANSWER_BY_QUESTION');
+
+        let mIdQuestion = myRefQuestion.push().key;
+        let mIdAnswer = myRefAnswer.push().key;
+        let mIdAnswerByQuestion = myRefAnswerByQuestion.push().key;
+
+        /*Add data Question*/
+        myRefQuestion.child(mIdQuestion).set({
+            idQuestion: mIdQuestion,
+            contentQuestion: mContentQuestion.trim(),
+            idLevel: parseInt(mIdLevel),
+            idBlock: parseInt(mIdBlock),
+            idType: parseInt(mIdTypeQuestion),
+            extent: parseInt(mExtent),
+            confirm: 1
+        }, function (error) {
+            if (error) {
+                alert(error);
+            } else {
+
+                /*Add data Answer*/
+                myRefAnswer.child(mIdAnswer).set({
+                    idAnswer: mIdAnswer,
+                    contentAnswer: mContentAnswer.trim(),
+                });
+
+                /*Add data Answer By Question*/
+                myRefAnswerByQuestion.child(mIdAnswerByQuestion).set({
+                    idQuestion: mIdQuestion,
+                    idAnswer: mIdAnswer,
+                });
+                alert("Thêm câu hỏi thành công!");
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

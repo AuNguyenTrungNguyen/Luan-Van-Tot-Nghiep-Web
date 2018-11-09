@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Firebase</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+        }
+    </style>
+</head>
+<body>
+
+<p id="status">Đang tải dữ liệu...</p>
+<div id="container" hidden>
+    <table>
+        <tr>
+            <td>Chọn khối:</td>
+            <td><select id="mIdBlock">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td>Chọn loại trò chơi</td>
+            <td><select id="mIdType">
+                <option value="2">Điền vào chỗ trống</option>
+                <option value="3">Nối cột</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td>Chọn cấp độ</td>
+            <td><input type="number" id="mIdLevel" value="1" size="100"></td>
+        </tr>
+
+        <tr>
+            <td>Chọn mức độ</td>
+            <td><select id="mExtent">
+                <option value="1">Dễ</option>
+                <option value="2">Trung bình</option>
+                <option value="3">Khó</option>
+            </select></td>
+        </tr>
+
+    </table>
+
+    <center><br>
+        <button onclick="filter()" style="width: 30%" id="btnFilter">FILTER</button>
+        <br><br></center>
+
+    <table id="ex-table">
+    </table>
+</div>
+
+<script>
+    let config = {
+        apiKey: "AIzaSyCA_Uxwd740_t_T9OQxjGe9vkeTE_Zpy5o",
+        authDomain: "luanvantotnghiep-a1764.firebaseapp.com",
+        databaseURL: "https://luanvantotnghiep-a1764.firebaseio.com",
+        projectId: "luanvantotnghiep-a1764",
+        storageBucket: "luanvantotnghiep-a1764.appspot.com",
+        messagingSenderId: "773402400130"
+    };
+    firebase.initializeApp(config);
+
+    let myRefQuestion = firebase.database().ref('TEST_QUESTION');
+    let myRefAnswer = firebase.database().ref('TEST_ANSWER');
+    let myRefAnswerByQuestion = firebase.database().ref('TEST_ANSWER_BY_QUESTION');
+
+    let questionList = [];
+    let answerList = [];
+    let answerByQuestionList = [];
+
+    reloadDataChange();
+
+    /*Load data Question*/
+    function loadQuestion() {
+        questionList = [];
+        answerList = [];
+        answerByQuestionList = [];
+        myRefQuestion.once('value', function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                let question = childSnapshot.val();
+                questionList.push(question);
+            });
+            loadAnswerByQuestion();
+        });
+    }
+
+    /*Load data Answer By Question*/
+    function loadAnswerByQuestion() {
+        myRefAnswerByQuestion.once('value', function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                let answerByQuestion = childSnapshot.val();
+                answerByQuestionList.push(answerByQuestion);
+            });
+            loadAnswer()
+        });
+    }
+
+    /*Load data Answer*/
+    function loadAnswer() {
+        myRefAnswer.once('value', function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                let answerByQuestion = childSnapshot.val();
+                answerList.push(answerByQuestion);
+            });
+            document.getElementById("status").style.display = "none";
+            document.getElementById("container").style.display = "block";
+        });
+    }
+
+    function reloadDataChange() {
+        myRefQuestion.on('value', function() {
+            loadQuestion();
+        });
+    }
+
+    function filter() {
+
+        let mIdBlock = document.getElementById("mIdBlock").value;
+        let mIdType = document.getElementById("mIdType").value;
+        let mIdLevel = document.getElementById("mIdLevel").value;
+        let mExtent = document.getElementById("mExtent").value;
+
+        if (!/^[1-9]\d*$/.test((mIdLevel))) {
+            confirm("Nhập cấp độ chưa đúng");
+        }else{
+            let listTemp = [];
+            for (let i = 0; i < questionList.length; i++) {
+                let question = questionList[i];
+                if (question.idBlock === parseInt(mIdBlock)
+                    && question.idType === parseInt(mIdType)
+                    && question.idLevel === parseInt(mIdLevel)
+                    && question.extent === parseInt(mExtent)) {
+                    listTemp.push(question);
+                }
+            }
+
+            $('#ex-table').empty();
+            if (listTemp.length === 0){
+                alert("Chưa có dữ liệu cho lựa chọn này");
+            }else{
+                let table = '';
+                table += '<tr>';
+                table += '<th>' + 'STT' + '</th>';
+                table += '<th style="width: 50%;">' + 'Nội dung câu hỏi' + '</th>';
+                table += '<th style="width: 50%;">' + 'Nội dung đáp án' + '</th>';
+                $('#ex-table').append(table);
+
+                for (let posi = 0; posi < listTemp.length; posi++) {
+                    let number = posi + 1;
+                    let idQues = listTemp[posi].idQuestion;
+                    for (let i = 0; i < answerByQuestionList.length; i++) {
+                        if (idQues === answerByQuestionList[i].idQuestion) {
+                            let idAnswer = answerByQuestionList[i].idAnswer;
+                            for (let j = 0; j < answerList.length; j++) {
+                                if (idAnswer === answerList[j].idAnswer) {
+                                    let content = '';
+                                    content += '<tr>';
+                                    content += '<td style="text-align: center">' + number + '</td>';
+                                    content += '<td>' + listTemp[posi].contentQuestion + '</td>';
+                                    content += '<td>' + answerList[j].contentAnswer + '</td>';
+                                    content += '</tr>';
+                                    $('#ex-table').append(content);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

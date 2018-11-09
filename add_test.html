@@ -1,0 +1,216 @@
+<html lang="en">
+<head>
+    <title>Dynamic View</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+<center>
+    <input type="text" id="idChapter" size="100">
+    <input type="button" value="Nội dụng" onclick="addContent('idDivContainer', 'idContent')">
+    <input type="button" value="Ví dụ" onclick="addExample()">
+    <input type="button" value="Câu hỏi" onclick="addQuestion()">
+    <input type="button" value="Tiêu đề" onclick="addHeading()">
+    <!--<input type="button" value="Get all" onclick="getAllDescriptionOfChapter()">-->
+    <div id="idDivContainer" style="height: 100%"></div>
+
+</center>
+
+<script>
+    let position = 0;
+    let positionContent = 0;
+    let positionExample = 0;
+    let positionQuestion = 0;
+
+    function addContent(idDivContainer, id) {
+        let divContent = document.createElement("div");
+        let idDivContent = id + positionContent;
+        divContent.setAttribute("id", idDivContent);
+        divContent.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById(idDivContainer).appendChild(divContent);
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputContent" + positionContent;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.setAttribute("value", "Content: " + positionContent);
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveContent" + positionContent;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idDivContent)
+        };
+
+        document.getElementById(idDivContent).appendChild(input);
+        document.getElementById(idDivContent).appendChild(buttonRemove);
+        document.getElementById(idDivContainer).appendChild(divContent);
+        positionContent++;
+    }
+
+    function addExample() {
+        let divExample = document.createElement("div");
+        let idDivExample = "idExample" + positionExample;
+        divExample.setAttribute("id", idDivExample);
+        divExample.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById("idDivContainer").appendChild(divExample);
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputExample" + positionExample;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.setAttribute("value", "Example: " + positionExample);
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemove" + positionExample;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idDivExample)
+        };
+
+        document.getElementById(idDivExample).appendChild(input);
+        document.getElementById(idDivExample).appendChild(buttonRemove);
+        document.getElementById("idDivContainer").appendChild(divExample);
+        positionExample++;
+    }
+
+    function addQuestion() {
+        let divQuestion = document.createElement("div");
+        let idDivQuestion = "idQuestion" + positionQuestion;
+        divQuestion.setAttribute("id", idDivQuestion);
+        divQuestion.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById("idDivContainer").appendChild(divQuestion);
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputQuestion" + positionQuestion;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.setAttribute("value", "Question: " + positionQuestion);
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemove" + positionQuestion;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idDivQuestion)
+        };
+
+        document.getElementById(idDivQuestion).appendChild(input);
+        document.getElementById(idDivQuestion).appendChild(buttonRemove);
+        document.getElementById("idDivContainer").appendChild(divQuestion);
+        positionQuestion++;
+    }
+
+    function removeDescription(id) {
+        document.getElementById("idDivContainer").removeChild(document.getElementById(id));
+    }
+
+    function addHeading() {
+        let containerHeading = document.createElement("div");
+        let idContainer = "idHead" + position;
+        containerHeading.setAttribute("id", idContainer);
+        containerHeading.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById("idDivContainer").appendChild(containerHeading);
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputHead" + position;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.setAttribute("value", position);
+
+        //Create button content with id by position
+        let buttonAddContent = document.createElement("BUTTON");
+        let idContent = "idContent" + position;
+        let textContent = document.createTextNode("Nội dung");
+        buttonAddContent.setAttribute("id", idContent);
+        buttonAddContent.appendChild(textContent);
+        buttonAddContent.onclick = function () {
+            addContent(idContainer, "idContentTitle")
+        };
+
+        //Create button example with id by position
+        let buttonAddExample = document.createElement("BUTTON");
+        let idExample = "idExample" + position;
+        let textExample = document.createTextNode("Ví dụ");
+        buttonAddExample.setAttribute("id", idExample);
+        buttonAddExample.appendChild(textExample);
+        //buttonTitle.onclick = function() {removeDescription(idContainer)};
+
+        //Create button question with id by position
+        let buttonAddQuestion = document.createElement("BUTTON");
+        let idQuestion = "idQuestion" + position;
+        let textQuestion = document.createTextNode("Câu hỏi");
+        buttonAddQuestion.setAttribute("id", idQuestion);
+        buttonAddQuestion.appendChild(textQuestion);
+        //buttonTitle.onclick = function() {removeDescription(idContainer)};
+
+        //Create button title with id by position
+        let buttonTitle = document.createElement("BUTTON");
+        let idTitle = "idTitle" + position;
+        let textTitle = document.createTextNode("Mục nhỏ");
+        buttonTitle.setAttribute("id", idTitle);
+        buttonTitle.appendChild(textTitle);
+        //buttonTitle.onclick = function() {removeDescription(idContainer)};
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemove" + position;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idContainer)
+        };
+
+        document.getElementById(idContainer).appendChild(input);
+        document.getElementById(idContainer).appendChild(buttonAddContent);
+        document.getElementById(idContainer).appendChild(buttonAddExample);
+        document.getElementById(idContainer).appendChild(buttonAddQuestion);
+        document.getElementById(idContainer).appendChild(buttonTitle);
+        document.getElementById(idContainer).appendChild(buttonRemove);
+        document.getElementById("idDivContainer").appendChild(containerHeading);
+        position++;
+    }
+
+    function getAllDescriptionOfChapter() {
+
+        for (let i = 0; i < positionContent; i++) {
+            let view = document.getElementById("idInputContent" + i);
+            if (view !== null) {
+                console.log(view.value);
+            }
+        }
+
+        for (let i = 0; i < positionExample; i++) {
+            let view = document.getElementById("idInputExample" + i);
+            if (view !== null) {
+                console.log(view.value);
+            }
+        }
+
+        for (let i = 0; i < positionQuestion; i++) {
+            let view = document.getElementById("idInputQuestion" + i);
+            if (view !== null) {
+                console.log(view.value);
+            }
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
