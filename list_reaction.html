@@ -45,13 +45,13 @@
         $('#table_reaction').append(table);
 
         for (let i = 0; i < arrayReaction.length; i++) {
-            let reaction = arrayReaction[i].mProducts;
+            let reaction = arrayReaction[i].mReactants;
             if (arrayReaction[i].mTwoWay === 1){
                 reaction += ' ' + twoWay + ' ';
             }else{
                 reaction += ' ' + oneWay + ' ';
             }
-            reaction += arrayReaction[i].mReactants;
+            reaction += arrayReaction[i].mProducts;
 
             let content = '';
             content += '<tr>';
