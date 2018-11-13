@@ -1,0 +1,125 @@
+<html lang="en">
+
+<head>
+    <title>REACTION</title>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 60%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+    </style>
+</head>
+<body>
+
+<center>
+
+    <table id="table_reaction">
+    </table>
+
+</center>
+
+<script>
+
+    let arrayReaction = [];
+    let oneWay = '&rArr;';
+    let twoWay = "&hArr;";
+    $.getJSON('chemistry.json', function (json) {
+        arrayReaction = json["ChemicalReaction"];
+
+        let table = '';
+        table += '<tr>';
+        table += '<th>' + 'ID' + '</th>';
+        table += '<th>' + 'Reactant' + '</th>';
+        $('#table_reaction').append(table);
+
+        for (let i = 0; i < arrayReaction.length; i++) {
+            let reaction = arrayReaction[i].mProducts;
+            if (arrayReaction[i].mTwoWay === 1){
+                reaction += ' ' + twoWay + ' ';
+            }else{
+                reaction += ' ' + oneWay + ' ';
+            }
+            reaction += arrayReaction[i].mReactants;
+
+            let content = '';
+            content += '<tr>';
+            content += '<td>' + arrayReaction[i].mIdChemicalReaction + '</td>';
+            content += '<td>' + reaction + '</td>';
+            $('#table_reaction').append(content);
+        }
+    });
+
+
+
+    function saveProductBy() {
+
+        //Save data to list
+        let mIdProduct = document.getElementById("mProductID").value;
+        let mReactant1ID = document.getElementById("mReactant1ID").value;
+        let mReactant2ID = document.getElementById("mReactant2ID").value;
+        let mReactant3ID = document.getElementById("mReactant3ID").value;
+        let mReactant4ID = document.getElementById("mReactant4ID").value;
+
+        if (mIdProduct !== "" && mIdProduct !== "FAIL"){
+            if (mReactant1ID !== "" && mReactant1ID !== "FAIL"){
+                let data = [];
+                data.push(mIdProduct);
+                data.push(mReactant1ID);
+                listProductBy.push(data);
+            }
+
+            if (mReactant2ID !== "" && mReactant2ID !== "FAIL"){
+                let data = [];
+                data.push(mIdProduct);
+                data.push(mReactant2ID);
+                listProductBy.push(data);
+            }
+
+            if (mReactant3ID !== "" && mReactant3ID !== "FAIL"){
+                let data = [];
+                data.push(mIdProduct);
+                data.push(mReactant3ID);
+                listProductBy.push(data);
+            }
+
+            if (mReactant4ID !== "" && mReactant4ID !== "FAIL"){
+                let data = [];
+                data.push(mIdProduct);
+                data.push(mReactant4ID);
+                listProductBy.push(data);
+            }
+        }
+
+        //Show list data
+        $('#table_reaaction').empty();
+        let table = '';
+        table += '<tr>';
+        table += '<th>' + 'idProduct' + '</th>';
+        table += '<th>' + 'idReactant' + '</th>';
+        $('#table_reaaction').append(table);
+
+        for (let i = 0; i < listProductBy.length; i++) {
+
+            let content = '';
+            content += '<tr>';
+            content += '<td>' + listProductBy[i][0] + '</td>';
+            content += '<td>' + listProductBy[i][1] + '</td>';
+            $('#table_reaaction').append(content);
+        }
+    }
+
+</script>
+</body>
+</html>
