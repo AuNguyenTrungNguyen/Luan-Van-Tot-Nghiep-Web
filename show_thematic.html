@@ -1,99 +1,121 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Firebase</title>
+    <title>Chuyên đề</title>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
+    <script>
+        let config = {
+            apiKey: "AIzaSyCA_Uxwd740_t_T9OQxjGe9vkeTE_Zpy5o",
+            authDomain: "luanvantotnghiep-a1764.firebaseapp.com",
+            databaseURL: "https://luanvantotnghiep-a1764.firebaseio.com",
+            projectId: "luanvantotnghiep-a1764",
+            storageBucket: "luanvantotnghiep-a1764.appspot.com",
+            messagingSenderId: "773402400130"
+        };
+        firebase.initializeApp(config);
+    </script>
+
     <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-
-        button {
-            background-color: #4CAF50;
-            border: none;
+        .buttonChapter {
+            background-color: #777;
             color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
         }
+
+        .buttonHeading {
+            background-color: #a2a2a2;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border: none;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .buttonTitle {
+            width: 100%;
+            background-color: #c3c3c3;
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 12px;
+        }
+
+        .showName {
+            width: 80%;
+            margin-left: 10px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .showDescription {
+            margin-left: 30px;
+            text-align: left;
+            font-size: 15px;
+            text-indent: 50px;
+        }
+
     </style>
+
 </head>
+
 <body>
 
-<table>
-    <tr>
-        <td>mIdBlock</td>
-        <td><input type="text" id="mIdBlock" size="100"></td>
-    </tr>
+<p id="status">Đang tải dữ liệu...</p>
+<div id="container" hidden>
+    <center>
 
-</table>
+        <table>
+            <tr>
+                <td>Chọn khối:</td>
+                <td><select id="mIdBlock">
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select></td>
+                <td>
+                    <button onclick="filter()">Xem</button>
+                </td>
+            </tr>
+        </table>
 
-<center><br>
-    <button onclick="filter()" style="width: 50%">FILTER</button>
-    <br><br></center>
+        <div style="width: 100%;">
 
-<table style="width:100%" id="table_thematic">
-</table>
+            <div style="width: 45%; vertical-align:top; display: inline-block" id="idDivListChapter"></div>
+            <div style="width: 45%; vertical-align:top; display: inline-block" id="idDivListInfo"></div>
 
-<br>
-<div id="div_detail_chapter">
+        </div>
 
-    <table id="table_des_chapter">
-        <th>idDES</th>
-        <th>nameDes</th>
-        <th>typeDes</th>
-    </table>
+        <br>
+        <div style="width: 100%; height: 100%" id="idDivDescription"></div>
 
-
-    <table id="table_heading"></table>
-
-    <table id="table_des_heading">
-        <th>idDES</th>
-        <th>nameDes</th>
-        <th>typeDes</th>
-    </table>
-
-
-    <table id="table_title"></table>
-    <table id="table_des_title"></table>
-
+    </center>
 </div>
 
 <script>
-    let config = {
-        apiKey: "AIzaSyAX_MCy_DNcww2hF7S8mepc17Z0_TeLE10",
-        authDomain: "luanvantotnghiep-3d890.firebaseapp.com",
-        databaseURL: "https://luanvantotnghiep-3d890.firebaseio.com",
-        projectId: "luanvantotnghiep-3d890",
-        storageBucket: "luanvantotnghiep-3d890.appspot.com",
-        messagingSenderId: "470187573210"
-    };
-    firebase.initializeApp(config);
-
-    let myRefCHAPTER = firebase.database().ref().child('CHAPTER');
-    let myRefDESCRIPTION = firebase.database().ref().child('DESCRIPTION');
-    let myRefHEADING = firebase.database().ref().child('HEADING');
-    let myRefTITLE = firebase.database().ref().child('TITLE');
-    let myRefDES_CHAPTER = firebase.database().ref().child('DES_CHAPTER');
-    let myRefDES_HEADING = firebase.database().ref().child('DES_HEADING');
-    let myRefDES_TITLE = firebase.database().ref().child('DES_TITLE');
+    let myRefCHAPTER = firebase.database().ref('TEST_CHAPTER');
+    let myRefDESCRIPTION = firebase.database().ref('TEST_DESCRIPTION');
+    let myRefHEADING = firebase.database().ref('TEST_HEADING');
+    let myRefTITLE = firebase.database().ref('TEST_TITLE');
+    let myRefDES_CHAPTER = firebase.database().ref('TEST_DES_CHAPTER');
+    let myRefDES_HEADING = firebase.database().ref('TEST_DES_HEADING');
+    let myRefDES_TITLE = firebase.database().ref('TEST_DES_TITLE');
 
     let chapterList = [];
     let descriptionList = [];
@@ -167,11 +189,15 @@
                 let desTitle = childSnapshot.val();
                 desOfTitleList.push(desTitle);
             });
-            confirm("OKE rồi nhé");
+            document.getElementById("status").style.display = "none";
+            document.getElementById("container").style.display = "block";
         });
     }
 
     function filter() {
+        $('#idDivListChapter').empty();
+        $('#idDivListInfo').empty();
+        $('#idDivDescription').empty();
 
         let mIdBlock = document.getElementById("mIdBlock").value;
 
@@ -184,126 +210,87 @@
             }
         }
 
-        $('#table_thematic').empty();
-        let table = '';
-        table += '<tr>';
-        table += '<th>' + 'idChapter' + '</th>';
-        table += '<th>' + 'name' + '</th>';
-        $('#table_thematic').append(table);
+        for (let i = 0; i < listTemp.length; i++) {
+            let nameChapter = listTemp[i].nameChapter;
+            let idChapter = listTemp[i].idChapter;
 
-
-        for (let posi = 0; posi < listTemp.length; posi++) {
-            let content = '';
-            content += '<tr>';
-            content += '<td>' + listTemp[posi].idChapter + '</td>';
-            content += '<td>' + listTemp[posi].nameChapter + '</td>';
-            content += '<td>' + '<input value="CHOOSE" type="button" onClick="showDataChapter(\'' + listTemp[posi].idChapter + '\')" />' + '</td>';
-            $('#table_thematic').append(content);
+            //Show button chapter
+            let showChapter = '<button class="buttonChapter" onclick="showInfoChapter(\'' + idChapter + '\',\'' + nameChapter +'\')">' + nameChapter + '</button></br></br>';
+            $('#idDivListChapter').append(showChapter);
         }
     }
 
-    function showDataChapter(chapter) {
-        $('#table_des_chapter').empty();
+    function showInfoChapter(id, name) {
+        $('#idDivListInfo').empty();
+        //Show headings of chapter
+        for (let i = 0; i < headingList.length; i++) {
+            if (id === headingList[i].idChapter) {
+                let nameHeading = headingList[i].nameHeading;
+                let idHeading = headingList[i].idHeading;
+                let showHeading = '<button class="buttonHeading" onclick="showDescriptionHeading(\'' + idHeading + '\',\'' + nameHeading + '\')">' + nameHeading + '</button></br></br>';
+                $('#idDivListInfo').append(showHeading);
+
+                //Show titles of heading
+                for (let i = 0; i < titleList.length; i++) {
+                    if (idHeading === titleList[i].idHeading) {
+                        let nameTitle = titleList[i].nameTitle;
+                        let idTitle = titleList[i].idTitle;
+                        let showTitle = '<button class="buttonTitle" onclick="showDescriptionTitle(\'' + idTitle + '\',\'' + nameTitle + '\')">' + nameTitle + '</button></br></br>';
+                        $('#idDivListInfo').append(showTitle);
+                    }
+                }
+            }
+        }
+
+        $('#idDivDescription').empty();
+        $('#idDivDescription').append('<h3 class="showName">' + name + '</h3>');
+        $('#idDivDescription').append('<hr style="width: 80%">');
         for (let i = 0; i < desOfChapterList.length; i++) {
-            if (chapter === desOfChapterList[i].idChapter) {
+            if (id === desOfChapterList[i].idChapter) {
                 for (let j = 0; j < descriptionList.length; j++) {
                     if (desOfChapterList[i].idDescription === descriptionList[j].idDescription) {
-                        let content = '';
-                        content += '<tr>';
-                        content += '<td>' + descriptionList[j].idDescription + '</td>';
-                        content += '<td>' + descriptionList[j].nameDescription + '</td>';
-                        content += '<td>' + descriptionList[j].idTypeOfDescription + '</td>';
-
-                        $('#table_des_chapter').append(content);
+                        let content = '<p class="showDescription">' + descriptionList[j].nameDescription + '</p>';
+                        $('#idDivDescription').append(content);
                     }
                 }
             }
         }
-
-        $('#table_heading').empty();
-        let table = '';
-        table += '<tr>';
-        table += '<th>' + 'idHead' + '</th>';
-        table += '<th>' + 'nameHead' + '</th>';
-        $('#table_heading').append(table);
-
-        for (let i = 0; i < headingList.length; i++) {
-            if (chapter === headingList[i].idChapter) {
-                let content = '';
-                content += '<tr>';
-                content += '<td>' + headingList[i].idHeading + '</td>';
-                content += '<td>' + headingList[i].nameHeading + '</td>';
-                content += '<td>' + '<input value="CHOOSE" type="button" onClick="showDataHeading(\'' + headingList[i].idHeading + '\')" />' + '</td>';
-                $('#table_heading').append(content);
-            }
-        }
-
     }
 
-    function showDataHeading(heading) {
-        $('#table_des_heading').empty();
+    function showDescriptionHeading(idHeading, nameHeading) {
+        $('#idDivDescription').empty();
+        $('#idDivDescription').append('<h3 class="showName">' + nameHeading + '</h3>');
+        $('#idDivDescription').append('<hr style="width: 95%">');
         for (let i = 0; i < desOfHeadingList.length; i++) {
-            if (heading === desOfHeadingList[i].idHeading) {
+
+            if (idHeading === desOfHeadingList[i].idHeading) {
                 for (let j = 0; j < descriptionList.length; j++) {
                     if (desOfHeadingList[i].idDescription === descriptionList[j].idDescription) {
-                        let content = '';
-                        content += '<tr>';
-                        content += '<td>' + descriptionList[j].idDescription + '</td>';
-                        content += '<td>' + descriptionList[j].nameDescription + '</td>';
-                        content += '<td>' + descriptionList[j].idTypeOfDescription + '</td>';
-
-                        $('#table_des_heading').append(content);
+                        let content = '<p class="showDescription">' + descriptionList[j].nameDescription + '</p>';
+                        $('#idDivDescription').append(content);
                     }
                 }
-            }
-        }
-
-        $('#table_title').empty();
-        let table = '';
-        table += '<tr>';
-        table += '<th>' + 'idHead' + '</th>';
-        table += '<th>' + 'nameHead' + '</th>';
-        $('#table_title').append(table);
-
-        for (let i = 0; i < titleList.length; i++) {
-            if (heading === titleList[i].idHeading) {
-                let content = '';
-                content += '<tr>';
-                content += '<td>' + titleList[i].idTitle + '</td>';
-                content += '<td>' + titleList[i].nameTitle + '</td>';
-                content += '<td>' + '<input value="CHOOSE" type="button" onClick="showDataTitle(\'' + titleList[i].idTitle + '\')" />' + '</td>';
-                $('#table_title').append(content);
             }
         }
     }
 
-    function showDataTitle(title) {
-        $('#table_des_title').empty();
-        let table = '';
-        table += '<tr>';
-        table += '<th>' + 'idDES' + '</th>';
-        table += '<th>' + 'nameDes' + '</th>';
-        table += '<th>' + 'typeDes' + '</th>';
-
-        $('#table_des_title').append(table);
+    function showDescriptionTitle(idTitle, nameTitle) {
+        $('#idDivDescription').empty();
+        $('#idDivDescription').append('<h3 class="showName">' + nameTitle + '</h3>');
+        $('#idDivDescription').append('<hr style="width: 95%">');
         for (let i = 0; i < desOfTitleList.length; i++) {
-            if (title === desOfTitleList[i].idTitle) {
+            if (idTitle === desOfTitleList[i].idTitle) {
                 for (let j = 0; j < descriptionList.length; j++) {
                     if (desOfTitleList[i].idDescription === descriptionList[j].idDescription) {
-                        let content = '';
-                        content += '<tr>';
-                        content += '<td>' + descriptionList[j].idDescription + '</td>';
-                        content += '<td>' + descriptionList[j].nameDescription + '</td>';
-                        content += '<td>' + descriptionList[j].idTypeOfDescription + '</td>';
-
-                        $('#table_des_title').append(content);
+                        let content = '<p class="showDescription">' + descriptionList[j].nameDescription + '</p>';
+                        $('#idDivDescription').append(content);
                     }
                 }
             }
         }
-
     }
 
 </script>
+
 </body>
 </html>
