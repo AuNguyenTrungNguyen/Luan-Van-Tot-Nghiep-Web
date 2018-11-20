@@ -1,466 +1,833 @@
-<!DOCTYPE html>
-<!--suppress ALL -->
 <html lang="en">
 <head>
-    <title>Firebase</title>
+    <title>Thêm chuyên đề</title>
     <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
+    <script>
+        let config = {
+            apiKey: "AIzaSyCA_Uxwd740_t_T9OQxjGe9vkeTE_Zpy5o",
+            authDomain: "luanvantotnghiep-a1764.firebaseapp.com",
+            databaseURL: "https://luanvantotnghiep-a1764.firebaseio.com",
+            projectId: "luanvantotnghiep-a1764",
+            storageBucket: "luanvantotnghiep-a1764.appspot.com",
+            messagingSenderId: "773402400130"
+        };
+        firebase.initializeApp(config);
+    </script>
 </head>
-
-
-<script>
-    // Initialize Firebase
-    let config = {
-        apiKey: "AIzaSyAX_MCy_DNcww2hF7S8mepc17Z0_TeLE10",
-        authDomain: "luanvantotnghiep-3d890.firebaseapp.com",
-        databaseURL: "https://luanvantotnghiep-3d890.firebaseio.com",
-        projectId: "luanvantotnghiep-3d890",
-        storageBucket: "luanvantotnghiep-3d890.appspot.com",
-        messagingSenderId: "470187573210"
-    };
-    firebase.initializeApp(config);
-</script>
-
-
 <body>
+
 <center>
-    <h3>Add data Thematic</h3>
+    <table>
+        <tr>
+            <td>Chọn khối:</td>
+            <td><select id="idBlock">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select></td>
+        </tr>
+    </table>
+    <input type="text" id="nameChapter" size="100">
+    <input type="button" value="Nội dụng" onclick="addContentChapter()">
+    <input type="button" value="Ví dụ" onclick="addExampleChapter()">
+    <input type="button" value="Câu hỏi" onclick="addQuestionChapter()">
+    <input type="button" value="Tiêu đề" onclick="addHeading()">
+    <div id="idDivContainer">
+        <div id="idDivContainerDesChap"></div>
+        <div id="idDivContainerHead"></div>
+    </div>
 
-    mNameChapter <input type="text" id="mNameChapter" size="100">lớp<input type="text" id="mIdBlock"><br><br>
-    mNameDes 1 <input type="text" id="Chapter_Des1" size="100">Type<input type="text" id="Type_Chapter_Des1">sort<input
-        type="text" id="Chapter_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Chapter_Des2" size="100">Type<input type="text" id="Type_Chapter_Des2">sort<input
-        type="text" id="Chapter_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Chapter_Des3" size="100">Type<input type="text" id="Type_Chapter_Des3">sort<input
-        type="text" id="Chapter_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Chapter_Des4" size="100">Type<input type="text" id="Type_Chapter_Des4">sort<input
-        type="text" id="Chapter_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Chapter_Des5" size="100">Type<input type="text" id="Type_Chapter_Des5">sort<input
-        type="text" id="Chapter_Des5_sortOrder5"><br><br>
-
-    <h4>Add data Head 1</h4>
-    mNameHead 1 <input type="text" id="mNameHead1" size="100">sort<input type="text" id="Head1_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head1_Des1" size="100">Type<input type="text" id="Type_Head1_Des1">sort<input
-        type="text" id="Head1_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head1_Des2" size="100">Type<input type="text" id="Type_Head1_Des2">sort<input
-        type="text" id="Head1_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head1_Des3" size="100">Type<input type="text" id="Type_Head1_Des3">sort<input
-        type="text" id="Head1_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head1_Des4" size="100">Type<input type="text" id="Type_Head1_Des4">sort<input
-        type="text" id="Head1_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head1_Des5" size="100">Type<input type="text" id="Type_Head1_Des5">sort<input
-        type="text" id="Head1_Des5_sortOrder5"><br><br>
-    mNameTitle 1 <input type="text" id="Head1_mNameTile1" size="100">sort<input type="text" id="Head1_mNameTile1_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head1_Title1_Des1" size="100">Type<input type="text" id="Type_Head1_Title1_Des1">sort<input
-        type="text" id="Head1_Title1_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head1_Title1_Des2" size="100">Type<input type="text" id="Type_Head1_Title1_Des2">sort<input
-        type="text" id="Head1_Title1_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head1_Title1_Des3" size="100">Type<input type="text" id="Type_Head1_Title1_Des3">sort<input
-        type="text" id="Head1_Title1_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head1_Title1_Des4" size="100">Type<input type="text" id="Type_Head1_Title1_Des4">sort<input
-        type="text" id="Head1_Title1_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head1_Title1_Des5" size="100">Type<input type="text" id="Type_Head1_Title1_Des5">sort<input
-        type="text" id="Head1_Title1_Des5_sortOrder5"><br><br>
-
-    mNameTitle 2 <input type="text" id="Head1_mNameTile2" size="100">sort<input type="text" id="Head1_mNameTile2_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head1_Title2_Des1" size="100">Type<input type="text" id="Type_Head1_Title2_Des1">sort<input
-        type="text" id="Head1_Title2_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head1_Title2_Des2" size="100">Type<input type="text" id="Type_Head1_Title2_Des2">sort<input
-        type="text" id="Head1_Title2_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head1_Title2_Des3" size="100">Type<input type="text" id="Type_Head1_Title2_Des3">sort<input
-        type="text" id="Head1_Title2_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head1_Title2_Des4" size="100">Type<input type="text" id="Type_Head1_Title2_Des4">sort<input
-        type="text" id="Head1_Title2_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head1_Title2_Des5" size="100">Type<input type="text" id="Type_Head1_Title2_Des5">sort<input
-        type="text" id="Head1_Title2_Des5_sortOrder5"><br><br>
-
-    mNameTitle 3 <input type="text" id="Head1_mNameTile3" size="100">sort<input type="text" id="Head1_mNameTile3_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head1_Title3_Des1" size="100">Type<input type="text" id="Type_Head1_Title3_Des1">sort<input
-        type="text" id="Head1_Title3_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head1_Title3_Des2" size="100">Type<input type="text" id="Type_Head1_Title3_Des2">sort<input
-        type="text" id="Head1_Title3_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head1_Title3_Des3" size="100">Type<input type="text" id="Type_Head1_Title3_Des3">sort<input
-        type="text" id="Head1_Title3_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head1_Title3_Des4" size="100">Type<input type="text" id="Type_Head1_Title3_Des4">sort<input
-        type="text" id="Head1_Title3_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head1_Title3_Des5" size="100">Type<input type="text" id="Type_Head1_Title3_Des5">sort<input
-        type="text" id="Head1_Title3_Des5_sortOrder5"><br><br>
-
-    <h4>Add data Head 2</h4>
-    mNameHead 2 <input type="text" id="mNameHead2" size="100">sort<input type="text" id="Head2_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head2_Des1" size="100">Type<input type="text" id="Type_Head2_Des1">sort<input
-        type="text" id="Head2_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head2_Des2" size="100">Type<input type="text" id="Type_Head2_Des2">sort<input
-        type="text" id="Head2_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head2_Des3" size="100">Type<input type="text" id="Type_Head2_Des3">sort<input
-        type="text" id="Head2_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head2_Des4" size="100">Type<input type="text" id="Type_Head2_Des4">sort<input
-        type="text" id="Head2_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head2_Des5" size="100">Type<input type="text" id="Type_Head2_Des5">sort<input
-        type="text" id="Head2_Des5_sortOrder5"><br><br>
-
-    mNameTitle 1 <input type="text" id="Head2_mNameTile1" size="100">sort<input type="text" id="Head2_mNameTile1_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head2_Title1_Des1" size="100">Type<input type="text" id="Type_Head2_Title1_Des1">sort<input
-        type="text" id="Head2_Title1_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head2_Title1_Des2" size="100">Type<input type="text" id="Type_Head2_Title1_Des2">sort<input
-        type="text" id="Head2_Title1_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head2_Title1_Des3" size="100">Type<input type="text" id="Type_Head2_Title1_Des3">sort<input
-        type="text" id="Head2_Title1_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head2_Title1_Des4" size="100">Type<input type="text" id="Type_Head2_Title1_Des4">sort<input
-        type="text" id="Head2_Title1_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head2_Title1_mDe5" size="100">Type<input type="text" id="Type_Head2_Title1_Des5">sort<input
-        type="text" id="Head2_Title1_Des5_sortOrder5"><br><br>
-    Type
-    mNameTitle 2 <input type="text" id="Head2_mNameTile2" size="100">sort<input type="text" id="Head2_mNameTile2_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head2_Title2_Des1" size="100">Type<input type="text" id="Type_Head2_Title2_Des1">sort<input
-        type="text" id="Head2_Title2_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head2_Title2_Des2" size="100">Type<input type="text" id="Type_Head2_Title2_Des2">sort<input
-        type="text" id="Head2_Title2_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head2_Title2_Des3" size="100">Type<input type="text" id="Type_Head2_Title2_Des3">sort<input
-        type="text" id="Head2_Title2_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head2_Title2_Des4" size="100">Type<input type="text" id="Type_Head2_Title2_Des4">sort<input
-        type="text" id="Head2_Title2_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head2_Title2_Des5" size="100">Type<input type="text" id="Type_Head2_Title2_Des5">sort<input
-        type="text" id="Head2_Title2_Des5_sortOrder5"><br><br>
-
-    mNameTitle 3 <input type="text" id="Head2_mNameTile3" size="100">sort<input type="text" id="Head2_mNameTile3_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head2_Title3_Des1" size="100">Type<input type="text" id="Type_Head2_Title3_Des1">sort<input
-        type="text" id="Head2_Title3_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head2_Title3_Des2" size="100">Type<input type="text" id="Type_Head2_Title3_Des2">sort<input
-        type="text" id="Head2_Title3_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head2_Title3_Des3" size="100">Type<input type="text" id="Type_Head2_Title3_Des3">sort<input
-        type="text" id="Head2_Title3_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head2_Title3_Des4" size="100">Type<input type="text" id="Type_Head2_Title3_Des4">sort<input
-        type="text" id="Head2_Title3_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head2_Title3_Des5" size="100">Type<input type="text" id="Type_Head2_Title3_Des5">sort<input
-        type="text" id="Head2_Title3_Des5_sortOrder5"><br><br>
-
-    <h4>Add data Head 3</h4>
-    mNameHead 3 <input type="text" id="mNameHead3" size="100">sort<input type="text" id="Head3_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head3_Des1" size="100">Type<input type="text" id="Type_Head3_Des1">sort<input
-        type="text" id="Head3_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head3_Des2" size="100">Type<input type="text" id="Type_Head3_Des2">sort<input
-        type="text" id="Head3_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head3_Des3" size="100">Type<input type="text" id="Type_Head3_Des3">sort<input
-        type="text" id="Head3_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head3_Des4" size="100">Type<input type="text" id="Type_Head3_Des4">sort<input
-        type="text" id="Head3_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head3_Des5" size="100">Type<input type="text" id="Type_Head3_Des5">sort<input
-        type="text" id="Head3_Des5_sortOrder5"><br><br>
-
-    mNameTitle 1 <input type="text" id="Head3_mNameTile1" size="100">sort<input type="text" id="Head3_mNameTile1_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head3_Title1_Des1" size="100">Type<input type="text" id="Type_Head3_Title1_Des1">sort<input
-        type="text" id="Head3_Title1_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head3_Title1_Des2" size="100">Type<input type="text" id="Type_Head3_Title1_Des2">sort<input
-        type="text" id="Head3_Title1_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head3_Title1_Des3" size="100">Type<input type="text" id="Type_Head3_Title1_Des3">sort<input
-        type="text" id="Head3_Title1_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head3_Title1_Des4" size="100">Type<input type="text" id="Type_Head3_Title1_Des4">sort<input
-        type="text" id="Head3_Title1_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head3_Title1_Des5" size="100">Type<input type="text" id="Type_Head3_Title1_Des5">sort<input
-        type="text" id="Head3_Title1_Des5_sortOrder5"><br><br>
-
-    mNameTitle 2 <input type="text" id="Head3_mNameTile2" size="100">sort<input type="text" id="Head3_mNameTile2_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head3_Title2_Des1" size="100">Type<input type="text" id="Type_Head3_Title2_Des1">sort<input
-        type="text" id="Head3_Title2_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head3_Title2_Des2" size="100">Type<input type="text" id="Type_Head3_Title2_Des2">sort<input
-        type="text" id="Head3_Title2_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head3_Title2_Des3" size="100">Type<input type="text" id="Type_Head3_Title2_Des3">sort<input
-        type="text" id="Head3_Title2_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head3_Title2_Des4" size="100">Type<input type="text" id="Type_Head3_Title2_Des4">sort<input
-        type="text" id="Head3_Title2_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head3_Title2_Des5" size="100">Type<input type="text" id="Type_Head3_Title2_Des5">sort<input
-        type="text" id="Head3_Title2_Des5_sortOrder5"><br><br>
-
-    mNameTitle 3 <input type="text" id="Head3_mNameTile3" size="100">sort<input type="text" id="Head3_mNameTile3_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head3_Title3_Des1" size="100">Type<input type="text" id="Type_Head3_Title3_Des1">sort<input
-        type="text" id="Head3_Title3_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head3_Title3_Des2" size="100">Type<input type="text" id="Type_Head3_Title3_Des2">sort<input
-        type="text" id="Head3_Title3_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head3_Title3_Des3" size="100">Type<input type="text" id="Type_Head3_Title3_Des3">sort<input
-        type="text" id="Head3_Title3_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head3_Title3_Des4" size="100">Type<input type="text" id="Type_Head3_Title3_Des4">sort<input
-        type="text" id="Head3_Title3_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head3_Title3_Des5" size="100">Type<input type="text" id="Type_Head3_Title3_Des5">sort<input
-        type="text" id="Head3_Title3_Des5_sortOrder5"><br><br>
-
-    <h4>Add data Head 4</h4>
-    mNameHead 3 <input type="text" id="mNameHead4" size="100">sort<input type="text" id="Head4_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head4_Des1" size="100">Type<input type="text" id="Type_Head4_Des1">sort<input
-        type="text" id="Head4_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head4_Des2" size="100">Type<input type="text" id="Type_Head4_Des2">sort<input
-        type="text" id="Head4_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head4_Des3" size="100">Type<input type="text" id="Type_Head4_Des3">sort<input
-        type="text" id="Head4_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head4_Des4" size="100">Type<input type="text" id="Type_Head4_Des4">sort<input
-        type="text" id="Head4_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head4_Des5" size="100">Type<input type="text" id="Type_Head4_Des5">sort<input
-        type="text" id="Head4_Des5_sortOrder5"><br><br>
-
-    mNameTitle 1 <input type="text" id="Head4_mNameTile1" size="100">sort<input type="text" id="Head4_mNameTile1_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head4_Title1_Des1" size="100">Type<input type="text" id="Type_Head4_Title1_Des1">sort<input
-        type="text" id="Head4_Title1_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head4_Title1_Des2" size="100">Type<input type="text" id="Type_Head4_Title1_Des2">sort<input
-        type="text" id="Head4_Title1_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head4_Title1_Des3" size="100">Type<input type="text" id="Type_Head4_Title1_Des3">sort<input
-        type="text" id="Head4_Title1_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head4_Title1_Des4" size="100">Type<input type="text" id="Type_Head4_Title1_Des4">sort<input
-        type="text" id="Head4_Title1_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head4_Title1_Des5" size="100">Type<input type="text" id="Type_Head4_Title1_Des5">sort<input
-        type="text" id="Head4_Title1_Des5_sortOrder5"><br><br>
-
-    mNameTitle 2 <input type="text" id="Head4_mNameTile2" size="100">sort<input type="text" id="Head4_mNameTile2_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head4_Title2_Des1" size="100">Type<input type="text" id="Type_Head4_Title2_Des1">sort<input
-        type="text" id="Head4_Title2_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head4_Title2_Des2" size="100">Type<input type="text" id="Type_Head4_Title2_Des2">sort<input
-        type="text" id="Head4_Title2_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head4_Title2_Des3" size="100">Type<input type="text" id="Type_Head4_Title2_Des3">sort<input
-        type="text" id="Head4_Title2_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head4_Title2_Des4" size="100">Type<input type="text" id="Type_Head4_Title2_Des4">sort<input
-        type="text" id="Head4_Title2_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head4_Title2_Des5" size="100">Type<input type="text" id="Type_Head4_Title2_Des5">sort<input
-        type="text" id="Head4_Title2_Des5_sortOrder5"><br><br>
-
-    mNameTitle 3 <input type="text" id="Head4_mNameTile3" size="100">sort<input type="text" id="Head4_mNameTile3_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head4_Title3_Des1" size="100">Type<input type="text" id="Type_Head4_Title3_Des1">sort<input
-        type="text" id="Head4_Title3_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head4_Title3_Des2" size="100">Type<input type="text" id="Type_Head4_Title3_Des2">sort<input
-        type="text" id="Head4_Title3_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head4_Title3_Des3" size="100">Type<input type="text" id="Type_Head4_Title3_Des3">sort<input
-        type="text" id="Head4_Title3_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head4_Title3_Des4" size="100">Type<input type="text" id="Type_Head4_Title3_Des4">sort<input
-        type="text" id="Head4_Title3_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head4_Title3_Des5" size="100">Type<input type="text" id="Type_Head4_Title3_Des5">sort<input
-        type="text" id="Head4_Title3_Des5_sortOrder5"><br><br>
-
-    <h4>Add data Head 5</h4>
-    mNameHead 3 <input type="text" id="mNameHead5" size="100">sort<input type="text" id="Head5_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head5_Des1" size="100">Type<input type="text" id="Type_Head5_Des1">sort<input
-        type="text" id="Head5_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head5_Des2" size="100">Type<input type="text" id="Type_Head5_Des2">sort<input
-        type="text" id="Head5_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head5_Des3" size="100">Type<input type="text" id="Type_Head5_Des3">sort<input
-        type="text" id="Head5_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head5_Des4" size="100">Type<input type="text" id="Type_Head5_Des4">sort<input
-        type="text" id="Head5_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head5_Des5" size="100">Type<input type="text" id="Type_Head5_Des5">sort<input
-        type="text" id="Head5_Des5_sortOrder5"><br><br>
-
-    mNameTitle 1 <input type="text" id="Head5_mNameTile1" size="100">sort<input type="text" id="Head5_mNameTile1_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head5_Title1_Des1" size="100">Type<input type="text" id="Type_Head5_Title1_Des1">sort<input
-        type="text" id="Head5_Title1_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head5_Title1_Des2" size="100">Type<input type="text" id="Type_Head5_Title1_Des2">sort<input
-        type="text" id="Head5_Title1_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head5_Title1_Des3" size="100">Type<input type="text" id="Type_Head5_Title1_Des3">sort<input
-        type="text" id="Head5_Title1_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head5_Title1_Des4" size="100">Type<input type="text" id="Type_Head5_Title1_Des4">sort<input
-        type="text" id="Head5_Title1_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head5_Title1_Des5" size="100">Type<input type="text" id="Type_Head5_Title1_Des5">sort<input
-        type="text" id="Head5_Title1_Des5_sortOrder5"><br><br>
-
-    mNameTitle 2 <input type="text" id="Head5_mNameTile2" size="100">sort<input type="text" id="Head5_mNameTile2_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head5_Title2_Des1" size="100">Type<input type="text" id="Type_Head5_Title2_Des1">sort<input
-        type="text" id="Head5_Title2_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head5_Title2_Des2" size="100">Type<input type="text" id="Type_Head5_Title2_Des2">sort<input
-        type="text" id="Head5_Title2_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head5_Title2_Des3" size="100">Type<input type="text" id="Type_Head5_Title2_Des3">sort<input
-        type="text" id="Head5_Title2_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head5_Title2_Des4" size="100">Type<input type="text" id="Type_Head5_Title2_Des4">sort<input
-        type="text" id="Head5_Title2_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head5_Title2_Des5" size="100">Type<input type="text" id="Type_Head5_Title2_Des5">sort<input
-        type="text" id="Head5_Title2_Des5_sortOrder5"><br><br>
-
-    mNameTitle 3 <input type="text" id="Head5_mNameTile3" size="100">sort<input type="text" id="Head5_mNameTile3_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head5_Title3_Des1" size="100">Type<input type="text" id="Type_Head5_Title3_Des1">sort<input
-        type="text" id="Head5_Title3_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head5_Title3_Des2" size="100">Type<input type="text" id="Type_Head5_Title3_Des2">sort<input
-        type="text" id="Head5_Title3_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head5_Title3_Des3" size="100">Type<input type="text" id="Type_Head5_Title3_Des3">sort<input
-        type="text" id="Head5_Title3_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head5_Title3_Des4" size="100">Type<input type="text" id="Type_Head5_Title3_Des4">sort<input
-        type="text" id="Head5_Title3_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head5_Title3_Des5" size="100">Type<input type="text" id="Type_Head5_Title3_Des5">sort<input
-        type="text" id="Head5_Title3_Des5_sortOrder5"><br><br>
-
-    <h4>Add data Head 6</h4>
-    mNameHead 3 <input type="text" id="mNameHead6" size="100">sort<input type="text" id="Head6_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head6_Des1" size="100">Type<input type="text" id="Type_Head6_Des1">sort<input
-        type="text" id="Head6_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head6_Des2" size="100">Type<input type="text" id="Type_Head6_Des2">sort<input
-        type="text" id="Head6_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head6_Des3" size="100">Type<input type="text" id="Type_Head6_Des3">sort<input
-        type="text" id="Head6_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head6_Des4" size="100">Type<input type="text" id="Type_Head6_Des4">sort<input
-        type="text" id="Head6_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head6_Des5" size="100">Type<input type="text" id="Type_Head6_Des5">sort<input
-        type="text" id="Head6_Des5_sortOrder5"><br><br>
-
-    mNameTitle 1 <input type="text" id="Head6_mNameTile1" size="100">sort<input type="text" id="Head6_mNameTile1_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head6_Title1_Des1" size="100">Type<input type="text" id="Type_Head6_Title1_Des1">sort<input
-        type="text" id="Head6_Title1_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head6_Title1_Des2" size="100">Type<input type="text" id="Type_Head6_Title1_Des2">sort<input
-        type="text" id="Head6_Title1_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head6_Title1_Des3" size="100">Type<input type="text" id="Type_Head6_Title1_Des3">sort<input
-        type="text" id="Head6_Title1_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head6_Title1_Des4" size="100">Type<input type="text" id="Type_Head6_Title1_Des4">sort<input
-        type="text" id="Head6_Title1_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head6_Title1_Des5" size="100">Type<input type="text" id="Type_Head6_Title1_Des5">sort<input
-        type="text" id="Head6_Title1_Des5_sortOrder5"><br><br>
-
-    mNameTitle 2 <input type="text" id="Head6_mNameTile2" size="100">sort<input type="text" id="Head6_mNameTile2_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head6_Title2_Des1" size="100">Type<input type="text" id="Type_Head6_Title2_Des1">sort<input
-        type="text" id="Head6_Title2_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head6_Title2_Des2" size="100">Type<input type="text" id="Type_Head6_Title2_Des2">sort<input
-        type="text" id="Head6_Title2_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head6_Title2_Des3" size="100">Type<input type="text" id="Type_Head6_Title2_Des3">sort<input
-        type="text" id="Head6_Title2_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head6_Title2_Des4" size="100">Type<input type="text" id="Type_Head6_Title2_Des4">sort<input
-        type="text" id="Head6_Title2_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head6_Title2_Des5" size="100">Type<input type="text" id="Type_Head6_Title2_Des5">sort<input
-        type="text" id="Head6_Title2_Des5_sortOrder5"><br><br>
-
-    mNameTitle 3 <input type="text" id="Head6_mNameTile3" size="100">sort<input type="text" id="Head6_mNameTile3_sortOrder"><br>
-    mNameDes 1 <input type="text" id="Head6_Title3_Des1" size="100">Type<input type="text" id="Type_Head6_Title3_Des1">sort<input
-        type="text" id="Head6_Title3_Des1_sortOrder1"><br>
-    mNameDes 2 <input type="text" id="Head6_Title3_Des2" size="100">Type<input type="text" id="Type_Head6_Title3_Des2">sort<input
-        type="text" id="Head6_Title3_Des2_sortOrder2"><br>
-    mNameDes 3 <input type="text" id="Head6_Title3_Des3" size="100">Type<input type="text" id="Type_Head6_Title3_Des3">sort<input
-        type="text" id="Head6_Title3_Des3_sortOrder3"><br>
-    mNameDes 4 <input type="text" id="Head6_Title3_Des4" size="100">Type<input type="text" id="Type_Head6_Title3_Des4">sort<input
-        type="text" id="Head6_Title3_Des4_sortOrder4"><br>
-    mNameDes 5 <input type="text" id="Head6_Title3_Des5" size="100">Type<input type="text" id="Type_Head6_Title3_Des5">sort<input
-        type="text" id="Head6_Title3_Des5_sortOrder5"><br><br>
-
-
-    <button onclick="pushDataThematic()">Push Thematic</button>
+    <input type="button" value="Thêm" onclick="getAllDescriptionOfChapter()">
 
 </center>
 
 <script>
 
-    function pushDataThematic() {
+    let myRefCHAPTER = firebase.database().ref('TEST_CHAPTER');
+    let myRefDESCRIPTION = firebase.database().ref('TEST_DESCRIPTION');
+    let myRefDES_CHAPTER = firebase.database().ref('TEST_DES_CHAPTER');
 
-        /*
-        Chapter OK
-         */
-        let mIdChapter = firebase.database().ref('CHAPTER').push().key;
-        let mNameChapter = document.getElementById("mNameChapter").value;
-        let mIdBlock = document.getElementById("mIdBlock").value;
-        firebase.database().ref('CHAPTER/' + mIdChapter).set({
-            idChapter: mIdChapter,
-            nameChapter: mNameChapter,
-            confirm: 1,
-            idBlock: parseInt(mIdBlock)
-        });
+    let myRefHEADING = firebase.database().ref('TEST_HEADING');
+    let myRefDES_HEADING = firebase.database().ref('TEST_DES_HEADING');
 
-        /*
-        mIdChapter_Des:           mã tự sinh của DESCRIPTION == mIdDescription
-        Chapter_Des:              nội dung chapter
-        Type_Chapter_Des          type của des
-        mIdDescriptionOfChapter1  mã tự sinh của DES_CHAPTER
-         */
-        //descriptionOfChapter OKE
-        for (let i = 1; i < 6; i++) {
-            let Chapter_Des = document.getElementById("Chapter_Des" + i).value;
-            if (Chapter_Des !== "") {
-                let mIdDescription = firebase.database().ref('DESCRIPTION').push().key;
-                let Type_Chapter_Des = document.getElementById("Type_Chapter_Des" + i).value;
-                let sortOrder = document.getElementById("Chapter_Des" + i + "_sortOrder" + i).value;
-                firebase.database().ref('DESCRIPTION/' + mIdDescription).set({
-                    idDescription: mIdDescription,
-                    idTypeOfDescription: Type_Chapter_Des,
-                    nameDescription: Chapter_Des,
-                    sortOrder: sortOrder
-                });
+    let myRefTITLE = firebase.database().ref('TEST_TITLE');
+    let myRefDES_TITLE = firebase.database().ref('TEST_DES_TITLE');
 
-                let mIdDescriptionOfChapter = firebase.database().ref('DES_CHAPTER').push().key;
-                firebase.database().ref('DES_CHAPTER/' + mIdDescriptionOfChapter).set({
-                    idChapter: mIdChapter,
-                    idDescription: mIdDescription
-                });
-            }
-        }
+    let sortOrder = 0;
 
+    let positionContentChapter = 0;
+    let positionExampleChapter = 0;
+    let positionQuestionChapter = 0;
 
-        /*
-        thêm name head, des của head OKE
-         */
-        for (let i = 1; i < 7; i++) {
-            let mNameHead = document.getElementById("mNameHead" + i).value;
-            let Head_sortOrder = document.getElementById("Head" + i + "_sortOrder").value;
-            if (mNameHead !== "") {
-                //Add heading OKE
-                let mIdHeading = firebase.database().ref('HEADING').push().key;
-                firebase.database().ref('HEADING/' + mIdHeading).set({
-                    idHeading: mIdHeading,
-                    nameHeading: mNameHead,
-                    idChapter: mIdChapter,
-                    sortOrder: Head_sortOrder
-                });
+    let positionHeading = 0;
+    let positionContentHeading = 0;
+    let positionExampleHeading = 0;
+    let positionQuestionHeading = 0;
 
-                //add des head and des OKE
-                for (let j = 1; j < 6; j++) {
-                    let head_Des = document.getElementById("Head" + i + "_Des" + j).value;
-                    if (head_Des !== "") {
-                        let mIdDescription = firebase.database().ref('DESCRIPTION').push().key;
-                        let Type_Head_Des = document.getElementById("Type_Head" + i + "_Des" + j).value;
-                        let head_Des_sortOrder = document.getElementById("Head" + i + "_Des" + j + "_sortOrder" + j).value;
-                        firebase.database().ref('DESCRIPTION/' + mIdDescription).set({
-                            idDescription: mIdDescription,
-                            idTypeOfDescription: Type_Head_Des,
-                            nameDescription: head_Des,
-                            sortOrder: head_Des_sortOrder
-                        });
+    let positionTitle = 0;
+    let positionContentTitle = 0;
+    let positionExampleTitle = 0;
+    let positionQuestionTitle = 0;
 
-                        let mIdDescriptionOfHead = firebase.database().ref('DES_HEADING').push().key;
-                        firebase.database().ref('DES_HEADING/' + mIdDescriptionOfHead).set({
-                            idHeading: mIdHeading,
-                            idDescription: mIdDescription
-                        });
-                    }
-                }
+    /*Push node TITLE, DESCRIPTION and DES_TITLE*/
+    function getAllDescriptionOfTitle(i, idHeading) {
+        for (let j = 0; j < positionTitle; j++) {
+            let idNameTitle = "idInputTitle" + i + "_" + j;
+            let view = document.getElementById(idNameTitle);
+            if (view != null){
+                let idTitle = myRefTITLE.push().key;
+                myRefTITLE.child(idTitle).set({
+                    idHeading: idHeading,
+                    idTitle: idTitle,
+                    nameTitle: view.value.trim(),
+                    sortOrder: positionTitle.toString()
+                }, function (error) {
+                    if (error) {
+                        alert(error);
+                    } else {
 
-                //add title OKE
-                for (let j = 1; j < 4; j++) {
-                    let Head_mNameTile = document.getElementById("Head" + i + "_mNameTile" + j).value;Head6_mNameTile3_sortOrder
-                    let Head_mNameTile_sortOrder = document.getElementById("Head" + i + "_mNameTile" + j + "_sortOrder").value;
-                    if (Head_mNameTile !== "") {
-                        //Add Title OKE
-                        let mIdTitle = firebase.database().ref('TITLE').push().key;
-                        firebase.database().ref('TITLE/' + mIdTitle).set({
-                            idTitle: mIdTitle,
-                            nameTitle: Head_mNameTile,
-                            idHeading: mIdHeading,
-                            sortOrder: Head_mNameTile_sortOrder
-                        });
-
-                        //add des of title add des OKE
-                        for (let k = 1; k < 6; k++) {
-                            let head_Title_Des = document.getElementById("Head" + i + "_Title" + j + "_Des" + k).value;
-                            if (head_Title_Des !== "") {
-                                let mIdDescription = firebase.database().ref('DESCRIPTION').push().key;
-                                let Type_Head_Title_Des = document.getElementById("Type_Head" + i + "_Title" + j + "_Des" + k).value;
-                                let Head_Title_Des_sortOrder = document.getElementById("Head" + i + "_Title" + j + "_Des" + k + "_sortOrder" + k).value;
-                                firebase.database().ref('DESCRIPTION/' + mIdDescription).set({
-                                    idDescription: mIdDescription,
-                                    idTypeOfDescription: Type_Head_Title_Des,
-                                    nameDescription: head_Title_Des,
-                                    sortOrder: Head_Title_Des_sortOrder
-                                });
-
-                                let mIdDescriptionOfHead = firebase.database().ref('DES_TITLE').push().key;
-                                firebase.database().ref('DES_TITLE/' + mIdDescriptionOfHead).set({
-                                    idTitle: mIdTitle,
-                                    idDescription: mIdDescription
-                                });
+                        //Handel data DesTitle
+                        let descriptionTitle = [];
+                        for (let posContent = 0; posContent < positionContentTitle; posContent++) {
+                            let idContentTitle = "idInputContentTitle" + j + "_" + posContent;
+                            let viewContent = document.getElementById(idContentTitle);
+                            if (viewContent != null){
+                                let desOfTitle = {name: viewContent.value, sort: viewContent.sort, typeDes: viewContent.typeDes};
+                                descriptionTitle.push(desOfTitle);
                             }
                         }
+
+                        for (let posExample = 0; posExample < positionExampleTitle; posExample++) {
+                            let idExampleTitle = "idInputExampleTitle" + j + "_" + posExample;
+                            let viewExample = document.getElementById(idExampleTitle);
+                            if (viewExample != null){
+                                let desOfTitle = {name: viewExample.value, sort: viewExample.sort, typeDes: viewExample.typeDes};
+                                descriptionTitle.push(desOfTitle);
+                            }
+                        }
+
+                        for (let posQuestion = 0; posQuestion < positionQuestionTitle; posQuestion++) {
+                            let idQuestionTitle = "idInputQuestionTitle" + j + "_" + posQuestion;
+                            let viewQuestion = document.getElementById(idQuestionTitle);
+                            if (viewQuestion != null){
+                                let desOfTitle = {name: viewQuestion.value, sort: viewQuestion.sort, typeDes: viewQuestion.typeDes};
+                                descriptionTitle.push(desOfTitle);
+                            }
+                        }
+
+                        function compare(a, b) {
+                            if (a.sort < b.sort)
+                                return -1;
+                            if (a.sort > b.sort)
+                                return 1;
+                            return 0;
+                        }
+
+                        descriptionTitle.sort(compare);
+
+                        //handle sortOrder continuity
+                        for (let i = 0; i < descriptionTitle.length; i++) {
+                            let description = descriptionTitle[i];
+                            description.sort = i;
+
+                            let idDescription = myRefDESCRIPTION.push().key;
+                            myRefDESCRIPTION.child(idDescription).set({
+                                idDescription: idDescription,
+                                idTypeOfDescription: description.typeDes,
+                                nameDescription: description.name.trim(),
+                                sortOrder: description.sort.toString()
+                            }, function (error) {
+                                if (error) {
+                                    alert(error);
+                                } else {
+                                    let idDesHead = myRefDES_TITLE.push().key;
+                                    myRefDES_TITLE.child(idDesHead).set({
+                                        idTitle: idTitle,
+                                        idDescription: idDescription,
+                                    });
+                                }
+                            });
+                        }
                     }
-                }
+                });
             }
         }
     }
+
+    /*Push node HEADING, DESCRIPTION and DES_HEADING*/
+    function getAllDescriptionOfHeading(idChapter) {
+        for (let i = 0; i < positionHeading; i++) {
+            let idNameHead = "idInputHeading" + i;
+            let view = document.getElementById(idNameHead);
+            if (view != null){
+                let nameHeading = view.value;
+                //Push HEADING
+                let idHeading = myRefHEADING.push().key;
+                myRefHEADING.child(idHeading).set({
+                    idChapter: idChapter,
+                    idHeading: idHeading,
+                    nameHeading: nameHeading.trim(),
+                    sortOrder: positionHeading.toString()
+                }, function (error) {
+                    if (error) {
+                        alert(error);
+                    } else {
+
+                        //Handel data DesHeading
+                        let descriptionHeading = [];
+                        for (let j = 0; j < positionContentHeading; j++) {
+                            let id = "idInputContentHeading" + i + "_" + j;
+                            let view = document.getElementById(id);
+                            if (view != null) {
+                                let desOfHead = {name: view.value, sort: view.sort, typeDes: view.typeDes};
+                                descriptionHeading.push(desOfHead);
+                            }
+                        }
+
+                        for (let j = 0; j < positionExampleHeading; j++) {
+                            let id = "idInputExampleHeading" + i + "_" + j;
+                            let view = document.getElementById(id);
+                            if (view != null) {
+                                let desOfHead = {name: view.value, sort: view.sort, typeDes: view.typeDes};
+                                descriptionHeading.push(desOfHead);
+                            }
+                        }
+
+                        for (let j = 0; j < positionQuestionHeading; j++) {
+                            let id = "idInputQuestionHeading" + i + "_" + j;
+                            let view = document.getElementById(id);
+                            if (view != null) {
+                                let desOfHead = {name: view.value, sort: view.sort, typeDes: view.typeDes};
+                                descriptionHeading.push(desOfHead);
+                            }
+                        }
+
+                        function compare(a, b) {
+                            if (a.sort < b.sort)
+                                return -1;
+                            if (a.sort > b.sort)
+                                return 1;
+                            return 0;
+                        }
+
+                        descriptionHeading.sort(compare);
+
+                        //handle sortOrder continuity
+                        for (let i = 0; i < descriptionHeading.length; i++) {
+                            let description = descriptionHeading[i];
+                            description.sort = i;
+
+                            let idDescription = myRefDESCRIPTION.push().key;
+                            myRefDESCRIPTION.child(idDescription).set({
+                                idDescription: idDescription,
+                                idTypeOfDescription: description.typeDes,
+                                nameDescription: description.name.trim(),
+                                sortOrder: description.sort.toString()
+                            }, function (error) {
+                                if (error) {
+                                    alert(error);
+                                } else {
+                                    let idDesHead = myRefDES_HEADING.push().key;
+                                    myRefDES_HEADING.child(idDesHead).set({
+                                        idHeading: idHeading,
+                                        idDescription: idDescription,
+                                    });
+                                }
+                            });
+                        }
+                        getAllDescriptionOfTitle(i, idHeading);
+                    }
+                });
+            }
+        }
+    }
+
+    /*Push node CHAPTER, DESCRIPTION and DES_CHAPTER*/
+    function getAllDescriptionOfChapter() {
+
+        // Get all description of chapter with sortOrder
+        let descriptionChapter = [];
+        for (let i = 0; i < positionContentChapter; i++) {
+            let view = document.getElementById("idInputContentChapter" + i);
+            if (view !== null) {
+                let desOfChap = {name: view.value, sort: view.sort, typeDes: view.typeDes};
+                descriptionChapter.push(desOfChap);
+            }
+        }
+
+        for (let i = 0; i < positionExampleChapter; i++) {
+            let view = document.getElementById("idInputExampleChapter" + i);
+            if (view !== null) {
+                let desOfChap = {name: view.value, sort: view.sort, typeDes: view.typeDes};
+                descriptionChapter.push(desOfChap);
+            }
+        }
+
+        for (let i = 0; i < positionQuestionChapter; i++) {
+            let view = document.getElementById("idInputQuestionChapter" + i);
+            if (view !== null) {
+                let desOfChap = {name: view.value, sort: view.sort, typeDes: view.typeDes};
+                descriptionChapter.push(desOfChap);
+            }
+        }
+
+        //sort by sortOrder
+        function compare(a, b) {
+            if (a.sort < b.sort)
+                return -1;
+            if (a.sort > b.sort)
+                return 1;
+            return 0;
+        }
+
+        descriptionChapter.sort(compare);
+
+        //handle sortOrder continuity
+        for (let i = 0; i < descriptionChapter.length; i++) {
+            let description = descriptionChapter[i];
+            description.sort = i;
+        }
+
+        let idBlock = document.getElementById("idBlock").value;
+        let nameChapter = document.getElementById("nameChapter").value;
+        if (nameChapter === "") {
+            alert("Chưa nhập tên chương!");
+        } else {
+            let idChapter = myRefCHAPTER.push().key;
+            myRefCHAPTER.child(idChapter).set({
+                idChapter: idChapter,
+                idBlock: parseInt(idBlock),
+                nameChapter: nameChapter.trim(),
+                confirm: 1
+            }, function (error) {
+                if (error) {
+                    alert(error);
+                } else {
+                    for (let i = 0; i < descriptionChapter.length; i++) {
+                        let idDescription = myRefDESCRIPTION.push().key;
+                        let description = descriptionChapter[i];
+                        myRefDESCRIPTION.child(idDescription).set({
+                            idDescription: idDescription,
+                            idTypeOfDescription: description.typeDes,
+                            nameDescription: description.name.trim(),
+                            sortOrder: description.sort.toString()
+                        }, function (error) {
+                            if (error) {
+                                alert(error);
+                            } else {
+                                let idDesChap = myRefDES_CHAPTER.push().key;
+                                myRefDES_CHAPTER.child(idDesChap).set({
+                                    idChapter: idChapter,
+                                    idDescription: idDescription,
+                                });
+                            }
+                        });
+                    }
+                    getAllDescriptionOfHeading(idChapter);
+                }
+            });
+        }
+    }
+
+    function removeDescription(idContainer, id) {
+        document.getElementById(idContainer).removeChild(document.getElementById(id));
+    }
+
+    function addContentChapter() {
+        let divContent = document.createElement("div");
+        let idDivContent = "idDivContentChapter" + positionContentChapter;
+        divContent.setAttribute("id", idDivContent);
+        divContent.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById("idDivContainerDesChap").appendChild(divContent);
+
+        //Create text with id by position
+        let text = document.createTextNode("Nội dung: ");
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputContentChapter" + positionContentChapter;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.sort = sortOrder++;
+        input.typeDes = "1";
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveContentChapter" + positionContentChapter;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription("idDivContainerDesChap", idDivContent);
+        };
+
+        document.getElementById(idDivContent).appendChild(text);
+        document.getElementById(idDivContent).appendChild(input);
+        document.getElementById(idDivContent).appendChild(buttonRemove);
+        document.getElementById("idDivContainerDesChap").appendChild(divContent);
+        positionContentChapter++;
+    }
+
+    function addExampleChapter() {
+        let divExample = document.createElement("div");
+        let idDivExample = "idDivExampleChapter" + positionExampleChapter;
+        divExample.setAttribute("id", idDivExample);
+        divExample.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById("idDivContainerDesChap").appendChild(divExample);
+
+        //Create text with id by position
+        let text = document.createTextNode("Ví dụ: ");
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputExampleChapter" + positionExampleChapter;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.sort = sortOrder++;
+        input.typeDes = "2";
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveExampleChapter" + positionExampleChapter;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription("idDivContainerDesChap", idDivExample);
+        };
+
+        document.getElementById(idDivExample).appendChild(text);
+        document.getElementById(idDivExample).appendChild(input);
+        document.getElementById(idDivExample).appendChild(buttonRemove);
+        document.getElementById("idDivContainerDesChap").appendChild(divExample);
+        positionExampleChapter++;
+    }
+
+    function addQuestionChapter() {
+        let divQuestion = document.createElement("div");
+        let idDivQuestion = "idDivQuestionChapter" + positionQuestionChapter;
+        divQuestion.setAttribute("id", idDivQuestion);
+        divQuestion.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById("idDivContainerDesChap").appendChild(divQuestion);
+
+        //Create text with id by position
+        let text = document.createTextNode("Câu hỏi: ");
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputQuestionChapter" + positionQuestionChapter;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.sort = sortOrder++;
+        input.typeDes = "3";
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveQuestionChapter" + positionQuestionChapter;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription("idDivContainerDesChap", idDivQuestion);
+        };
+
+        document.getElementById(idDivQuestion).appendChild(text);
+        document.getElementById(idDivQuestion).appendChild(input);
+        document.getElementById(idDivQuestion).appendChild(buttonRemove);
+        document.getElementById("idDivContainerDesChap").appendChild(divQuestion);
+        positionQuestionChapter++;
+    }
+
+    function addHeading() {
+        let containerHeading = document.createElement("div");
+        let idContainer = "idContainerHeading." + positionHeading;
+        containerHeading.setAttribute("id", idContainer);
+        containerHeading.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById("idDivContainerHead").appendChild(containerHeading);
+
+        //Create 2 div: 1 to add DES_HEADING and 1 to add TITLE
+        let containerDesHead = document.createElement("div");
+        let idContainerDesHead = "idContainerDesHead." + positionHeading;
+        containerDesHead.setAttribute("id", idContainerDesHead);
+        containerDesHead.style.cssText = 'margin: 8px; background: #F0F0F0';
+
+        let containerTitle = document.createElement("div");
+        let idContainerTitle = "idContainerTitleOfHeading." + positionHeading;
+        containerTitle.setAttribute("id", idContainerTitle);
+        containerTitle.style.cssText = 'margin: 8px; background: #F0F0F0';
+
+        //Create text with id by position
+        let text = document.createTextNode("Tiêu đề: ");
+
+        //Create input with id by positionHeading
+        let input = document.createElement("INPUT");
+        let idInput = "idInputHeading" + positionHeading;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+
+        //Create button content with id by positionHeading
+        let buttonAddContent = document.createElement("BUTTON");
+        let idContent = "idAddContentHeading" + positionHeading;
+        let textContent = document.createTextNode("Nội dung");
+        buttonAddContent.setAttribute("id", idContent);
+        buttonAddContent.appendChild(textContent);
+        buttonAddContent.onclick = function () {
+            addContentHeading(idContainerDesHead);
+        };
+
+        //Create button example with id by positionHeading
+        let buttonAddExample = document.createElement("BUTTON");
+        let idExample = "idAddExampleHeading" + positionHeading;
+        let textExample = document.createTextNode("Ví dụ");
+        buttonAddExample.setAttribute("id", idExample);
+        buttonAddExample.appendChild(textExample);
+        buttonAddExample.onclick = function () {
+            addExampleHeading(idContainerDesHead);
+        };
+
+        //Create button question with id by positionHeading
+        let buttonAddQuestion = document.createElement("BUTTON");
+        let idQuestion = "idAddQuestionHeading" + positionHeading;
+        let textQuestion = document.createTextNode("Câu hỏi");
+        buttonAddQuestion.setAttribute("id", idQuestion);
+        buttonAddQuestion.appendChild(textQuestion);
+        buttonAddQuestion.onclick = function () {
+            addQuestionHeading(idContainerDesHead);
+        };
+
+        //Create button title with id by positionHeading
+        let buttonTitle = document.createElement("BUTTON");
+        let idTitle = "idAddTitleHeading" + positionHeading;
+        let textTitle = document.createTextNode("Mục nhỏ");
+        buttonTitle.setAttribute("id", idTitle);
+        buttonTitle.appendChild(textTitle);
+        buttonTitle.onclick = function () {
+            addTitle(idContainerTitle);
+        };
+
+        //Create button remove with id by positionHeading
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveHeading" + positionHeading;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription("idDivContainerHead", idContainer);
+        };
+
+        document.getElementById(idContainer).appendChild(text);
+        document.getElementById(idContainer).appendChild(input);
+        document.getElementById(idContainer).appendChild(buttonAddContent);
+        document.getElementById(idContainer).appendChild(buttonAddExample);
+        document.getElementById(idContainer).appendChild(buttonAddQuestion);
+        document.getElementById(idContainer).appendChild(buttonTitle);
+        document.getElementById(idContainer).appendChild(buttonRemove);
+        document.getElementById(idContainer).appendChild(containerDesHead);
+        document.getElementById(idContainer).appendChild(containerTitle);
+        document.getElementById("idDivContainerHead").appendChild(containerHeading);
+        positionHeading++;
+    }
+
+    function addContentHeading(idContainer) {
+
+        let currentHeading = idContainer.split(".")[1];
+
+        let divContent = document.createElement("div");
+        let idDivContent = "idDivContentHeading" + currentHeading + "_" + positionContentHeading;
+        divContent.setAttribute("id", idDivContent);
+        divContent.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById(idContainer).appendChild(divContent);
+
+        //Create text with id by position
+        let text = document.createTextNode("Nội dung: ");
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputContentHeading" + currentHeading + "_" + positionContentHeading;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.sort = positionContentHeading;
+        input.typeDes = "1";
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveContentHeading" + currentHeading + "_" + positionContentHeading;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idContainer, idDivContent);
+        };
+
+        document.getElementById(idDivContent).appendChild(text);
+        document.getElementById(idDivContent).appendChild(input);
+        document.getElementById(idDivContent).appendChild(buttonRemove);
+        document.getElementById(idContainer).appendChild(divContent);
+        positionContentHeading++;
+    }
+
+    function addExampleHeading(idContainer) {
+
+        let currentHeading = idContainer.split(".")[1];
+
+        let divExample = document.createElement("div");
+        let idDivExample = "idDivExampleHeading" + currentHeading + "_" + positionExampleHeading;
+        divExample.setAttribute("id", idDivExample);
+        divExample.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById(idContainer).appendChild(divExample);
+
+        //Create text with id by position
+        let text = document.createTextNode("Ví dụ: ");
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputExampleHeading" + currentHeading + "_" + positionExampleHeading;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.sort = positionExampleHeading;
+        input.typeDes = "2";
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveExampleHeading" + currentHeading + "_" + positionExampleHeading;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idContainer, idDivExample);
+        };
+
+        document.getElementById(idDivExample).appendChild(text);
+        document.getElementById(idDivExample).appendChild(input);
+        document.getElementById(idDivExample).appendChild(buttonRemove);
+        document.getElementById(idContainer).appendChild(divExample);
+        positionExampleHeading++;
+    }
+
+    function addQuestionHeading(idContainer) {
+
+        let currentHeading = idContainer.split(".")[1];
+
+        let divQuestion = document.createElement("div");
+        let idDivQuestion = "idDivQuestionHeading" + currentHeading + "_" + positionQuestionHeading;
+        divQuestion.setAttribute("id", idDivQuestion);
+        divQuestion.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById(idContainer).appendChild(divQuestion);
+
+        //Create text with id by position
+        let text = document.createTextNode("Câu hỏi: ");
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputQuestionHeading" + currentHeading + "_" + positionQuestionHeading;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.sort = positionQuestionHeading;
+        input.typeDes = "3";
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveQuestionHeading" + currentHeading + "_" + positionQuestionHeading;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idContainer, idDivQuestion);
+        };
+
+        document.getElementById(idDivQuestion).appendChild(text);
+        document.getElementById(idDivQuestion).appendChild(input);
+        document.getElementById(idDivQuestion).appendChild(buttonRemove);
+        document.getElementById(idContainer).appendChild(divQuestion);
+        positionQuestionHeading++;
+    }
+
+    function addTitle(idContainerHeading) {
+        let currentHeading = idContainerHeading.split(".")[1];
+        let containerTitle = document.createElement("div");
+        let idContainer = "idContainerTitle." + positionTitle;
+        containerTitle.setAttribute("id", idContainer);
+        containerTitle.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById(idContainerHeading).appendChild(containerTitle);
+
+        //Create text with id by position
+        let text = document.createTextNode("Mục nhỏ: ");
+
+        //Create input with id by positionTitle
+        let input = document.createElement("INPUT");
+        let idInput = "idInputTitle" + currentHeading + "_" + positionTitle;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+
+        //Create button content with id by positionTitle
+        let buttonAddContent = document.createElement("BUTTON");
+        let idContent = "idAddContentTitle" + positionTitle;
+        let textContent = document.createTextNode("Nội dung");
+        buttonAddContent.setAttribute("id", idContent);
+        buttonAddContent.appendChild(textContent);
+        buttonAddContent.onclick = function () {
+            addContentTitle(idContainer);
+        };
+
+        //Create button example with id by positionTitle
+        let buttonAddExample = document.createElement("BUTTON");
+        let idExample = "idAddExampleTitle" + positionTitle;
+        let textExample = document.createTextNode("Ví dụ");
+        buttonAddExample.setAttribute("id", idExample);
+        buttonAddExample.appendChild(textExample);
+        buttonAddExample.onclick = function () {
+            addExampleTitle(idContainer);
+        };
+
+        //Create button question with id by positionTitle
+        let buttonAddQuestion = document.createElement("BUTTON");
+        let idQuestion = "idAddQuestionTitle" + positionTitle;
+        let textQuestion = document.createTextNode("Câu hỏi");
+        buttonAddQuestion.setAttribute("id", idQuestion);
+        buttonAddQuestion.appendChild(textQuestion);
+        buttonAddQuestion.onclick = function () {
+            addQuestionTitle(idContainer);
+        };
+
+        //Create button remove with id by positionTitle
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveTitle" + positionTitle;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idContainerHeading, idContainer);
+        };
+
+        document.getElementById(idContainer).appendChild(text);
+        document.getElementById(idContainer).appendChild(input);
+        document.getElementById(idContainer).appendChild(buttonAddContent);
+        document.getElementById(idContainer).appendChild(buttonAddExample);
+        document.getElementById(idContainer).appendChild(buttonAddQuestion);
+        document.getElementById(idContainer).appendChild(buttonRemove);
+        document.getElementById(idContainerHeading).appendChild(containerTitle);
+        positionTitle++;
+    }
+
+    function addContentTitle(idContainer) {
+
+        let currentTitle = idContainer.split(".")[1];
+
+        let divContent = document.createElement("div");
+        let idDivContent = "idDivContentTitle" + currentTitle + "_" + positionContentTitle;
+        divContent.setAttribute("id", idDivContent);
+        divContent.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById(idContainer).appendChild(divContent);
+
+        //Create text with id by position
+        let text = document.createTextNode("Nội dung: ");
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputContentTitle" + currentTitle + "_" + positionContentTitle;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.sort = positionContentTitle;
+        input.typeDes = "1";
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveContentTitle" + currentTitle + "_" + positionContentTitle;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idContainer, idDivContent);
+        };
+
+        document.getElementById(idDivContent).appendChild(text);
+        document.getElementById(idDivContent).appendChild(input);
+        document.getElementById(idDivContent).appendChild(buttonRemove);
+        document.getElementById(idContainer).appendChild(divContent);
+        positionContentTitle++;
+    }
+
+    function addExampleTitle(idContainer) {
+
+        let currentTitle = idContainer.split(".")[1];
+
+        let divExample = document.createElement("div");
+        let idDivExample = "idDivExampleTitle" + currentTitle + "_" + positionExampleTitle;
+        divExample.setAttribute("id", idDivExample);
+        divExample.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById(idContainer).appendChild(divExample);
+
+        //Create text with id by position
+        let text = document.createTextNode("Ví dụ: ");
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputExampleTitle" + currentTitle + "_" + positionExampleTitle;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.sort = positionExampleTitle;
+        input.typeDes = "2";
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveExampleTitle" + currentTitle + "_" + positionExampleTitle;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idContainer, idDivExample);
+        };
+
+        document.getElementById(idDivExample).appendChild(text);
+        document.getElementById(idDivExample).appendChild(input);
+        document.getElementById(idDivExample).appendChild(buttonRemove);
+        document.getElementById(idContainer).appendChild(divExample);
+        positionExampleTitle++;
+    }
+
+    function addQuestionTitle(idContainer) {
+
+        let currentTitle = idContainer.split(".")[1];
+
+        let divQuestion = document.createElement("div");
+        let idDivQuestion = "idDivQuestionTitle" + currentTitle + "_" + positionQuestionTitle;
+        divQuestion.setAttribute("id", idDivQuestion);
+        divQuestion.style.cssText = 'margin: 8px; background: #F0F0F0';
+        document.getElementById(idContainer).appendChild(divQuestion);
+
+        //Create text with id by position
+        let text = document.createTextNode("Câu hỏi: ");
+
+        //Create input with id by position
+        let input = document.createElement("INPUT");
+        let idInput = "idInputQuestionTitle" + currentTitle + "_" + positionQuestionTitle;
+        input.setAttribute("id", idInput);
+        input.setAttribute("type", "text");
+        input.sort = positionQuestionTitle;
+        input.typeDes = "3";
+
+        //Create button remove with id by position
+        let buttonRemove = document.createElement("BUTTON");
+        let idRemove = "idRemoveQuestionTitle" + currentTitle + "_" + positionQuestionTitle;
+        let textRemove = document.createTextNode("Remove");
+        buttonRemove.setAttribute("id", idRemove);
+        buttonRemove.appendChild(textRemove);
+        buttonRemove.onclick = function () {
+            removeDescription(idContainer, idDivQuestion);
+        };
+
+        document.getElementById(idDivQuestion).appendChild(text);
+        document.getElementById(idDivQuestion).appendChild(input);
+        document.getElementById(idDivQuestion).appendChild(buttonRemove);
+        document.getElementById(idContainer).appendChild(divQuestion);
+        positionQuestionTitle++;
+    }
+
 </script>
 </body>
 </html>

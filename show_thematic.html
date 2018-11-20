@@ -139,7 +139,7 @@
                 let description = childSnapshot.val();
                 descriptionList.push(description);
             });
-            loadHeading()
+            loadHeading();
         });
     }
 
@@ -195,6 +195,17 @@
     }
 
     function filter() {
+
+        // Sort list description by SortOrder
+        function compare(a,b) {
+            if (a.sort < b.sort)
+                return -1;
+            if (a.sort > b.sort)
+                return 1;
+            return 0;
+        }
+        descriptionList.sort(compare);
+
         $('#idDivListChapter').empty();
         $('#idDivListInfo').empty();
         $('#idDivDescription').empty();
@@ -244,7 +255,7 @@
 
         $('#idDivDescription').empty();
         $('#idDivDescription').append('<h3 class="showName">' + name + '</h3>');
-        $('#idDivDescription').append('<hr style="width: 80%">');
+        $('#idDivDescription').append('<hr style="width: 95%">');
         for (let i = 0; i < desOfChapterList.length; i++) {
             if (id === desOfChapterList[i].idChapter) {
                 for (let j = 0; j < descriptionList.length; j++) {
