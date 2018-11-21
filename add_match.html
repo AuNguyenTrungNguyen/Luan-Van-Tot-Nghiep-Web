@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Thêm câu hỏi điền khuyết và nối cột</title>
+    <title>Thêm câu hỏi nối cột</title>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <style>
+        input[type=text], select {
+            padding: 6px 6px;
+            display: inline-block;
+            border: 3px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=number], select {
+            padding: 6px 6px;
+            display: inline-block;
+            border: 3px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        th, td {
+            padding: 8px;
+        }
+        textarea{
+            overflow:hidden;
+            padding: 6px 6px;
+            font-size:14px;
+            display:block;
+            border-radius:4px;
+            border: 3px solid #ccc;
+            resize: none;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+        }
+    </style>
 </head>
-
-<script>
-    var config = {
-        apiKey: "AIzaSyCA_Uxwd740_t_T9OQxjGe9vkeTE_Zpy5o",
-        authDomain: "luanvantotnghiep-a1764.firebaseapp.com",
-        databaseURL: "https://luanvantotnghiep-a1764.firebaseio.com",
-        projectId: "luanvantotnghiep-a1764",
-        storageBucket: "luanvantotnghiep-a1764.appspot.com",
-        messagingSenderId: "773402400130"
-    };
-    firebase.initializeApp(config);
-</script>
 
 <body>
 <center>
@@ -35,16 +62,8 @@
         </tr>
 
         <tr>
-            <td>Chọn loại trò chơi</td>
-            <td><select id="mIdType">
-                <option value="2">Điền vào chỗ trống</option>
-                <option value="3">Nối cột</option>
-            </select></td>
-        </tr>
-
-        <tr>
             <td>Nội dung câu hỏi:</td>
-            <td><input type="text" id="mContentQuestion" size="100"></td>
+            <td><textarea id="mContentQuestion" cols="100" rows="5"></textarea></td>
         </tr>
 
         <tr>
@@ -68,7 +87,7 @@
     <table>
         <tr>
             <td>Nội dung đáp án</td>
-            <td><input type="text" id="mContentAnswer" size="100"></td>
+            <td><textarea id="mContentAnswer" cols="100" rows="1"></textarea></td>
         </tr>
 
     </table>
@@ -79,9 +98,18 @@
 
 <script>
 
+    let config = {
+        apiKey: "AIzaSyCA_Uxwd740_t_T9OQxjGe9vkeTE_Zpy5o",
+        authDomain: "luanvantotnghiep-a1764.firebaseapp.com",
+        databaseURL: "https://luanvantotnghiep-a1764.firebaseio.com",
+        projectId: "luanvantotnghiep-a1764",
+        storageBucket: "luanvantotnghiep-a1764.appspot.com",
+        messagingSenderId: "773402400130"
+    };
+    firebase.initializeApp(config);
+
     function checkDataInput() {
         let mIdBlock = document.getElementById("mIdBlock").value;
-        let mIdTypeQuestion = document.getElementById("mIdType").value;
         let mContentQuestion = document.getElementById("mContentQuestion").value;
         let mIdLevel = document.getElementById("mIdLevel").value;
         let mExtent = document.getElementById("mExtent").value;
@@ -97,20 +125,18 @@
             if (mContentAnswer.trim() === "") {
                 alert("Phải nhập đáp án!");
             } else {
-                let viewType = document.getElementById('mIdType');
-                let typeOfGme = viewType.options[viewType.selectedIndex].innerHTML;
                 let message = "Bạn muốn thêm : " + mContentQuestion.trim() + "\n";
                 message += "Với đáp án: " + mContentAnswer.trim() + "\n";
-                message += "Vào game: " + typeOfGme + "\n";
+                message += "Vào game: Nối cột" +"\n";
 
                 if (confirm(message)) {
-                    pushDataGame(mIdBlock, mIdTypeQuestion, mContentQuestion, mIdLevel, mExtent, mContentAnswer);
+                    pushDataGame(mIdBlock, mContentQuestion, mIdLevel, mExtent, mContentAnswer);
                 }
             }
         }
     }
 
-    function pushDataGame(mIdBlock, mIdTypeQuestion, mContentQuestion, mIdLevel, mExtent, mContentAnswer) {
+    function pushDataGame(mIdBlock, mContentQuestion, mIdLevel, mExtent, mContentAnswer) {
 
         let myRefQuestion = firebase.database().ref('QUESTION');
         let myRefAnswer = firebase.database().ref('ANSWER');
@@ -126,7 +152,7 @@
             contentQuestion: mContentQuestion.trim(),
             idLevel: parseInt(mIdLevel),
             idBlock: parseInt(mIdBlock),
-            idType: parseInt(mIdTypeQuestion),
+            idType: 3,
             extent: parseInt(mExtent),
             confirm: 1
         }, function (error) {
@@ -148,6 +174,17 @@
                 alert("Thêm câu hỏi thành công!");
             }
         });
+    }
+
+    //Auto resize
+    let inputs = document.getElementsByTagName('textarea');
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].type.toLowerCase() === 'textarea') {
+            inputs[i].oninput = function () {
+                inputs[i].style.height = "";
+                inputs[i].style.height = inputs[i].scrollHeight + "px";
+            };
+        }
     }
 
 </script>

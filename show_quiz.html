@@ -21,7 +21,7 @@
         }
 
         .record td {
-            border: 1px solid #dddddd;
+            border: 1px solid #a2a2a2;
             text-align: left;
             padding: 8px;
         }
@@ -110,9 +110,9 @@
     };
     firebase.initializeApp(config);
 
-    let myRefQuestion = firebase.database().ref("QUESTION");
-    let myRefAnswerByQuestion = firebase.database().ref("ANSWER_BY_QUESTION");
-    let myRefAnswer = firebase.database().ref("ANSWER");
+    let myRefQuestion = firebase.database().ref('QUESTION');
+    let myRefAnswerByQuestion = firebase.database().ref('ANSWER_BY_QUESTION');
+    let myRefAnswer = firebase.database().ref('ANSWER');
 
     let questionList = [];
     let answerByQuestionList = [];

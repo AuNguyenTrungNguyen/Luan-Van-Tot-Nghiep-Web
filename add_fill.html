@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Thêm câu hỏi điền khuyết</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <style>
+        input[type=text], select {
+            padding: 6px 6px;
+            display: inline-block;
+            border: 3px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=number], select {
+            padding: 6px 6px;
+            display: inline-block;
+            border: 3px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+
+        textarea {
+            overflow: hidden;
+            padding: 6px 6px;
+            font-size: 14px;
+            display: block;
+            border-radius: 4px;
+            border: 3px solid #ccc;
+            resize: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+        }
+    </style>
+</head>
+
+<body>
+<center>
+    <h3>Thêm câu hỏi</h3>
+    <table>
+        <tr>
+            <td>Chọn khối:</td>
+            <td><select id="mIdBlock">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <p>Những khoảng trống trong câu hỏi sẽ được hiểu bằng cặp dấu {}</p>
+                <b>Ví dụ: H + ... &rarr; H2O sẽ là H + {} &rarr; H2O</b>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Nội dung câu hỏi:</td>
+            <td>
+                <textarea id="mContentQuestion" cols="100" rows="5"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Chọn cấp độ:</td>
+            <td><input type="number" id="mIdLevel" value="1" size="100"></td>
+        </tr>
+
+        <tr>
+            <td>Chọn mức độ:</td>
+            <td><select id="mExtent">
+                <option value="1">Dễ</option>
+                <option value="2">Trung bình</option>
+                <option value="3">Khó</option>
+            </select></td>
+        </tr>
+
+    </table>
+    <br>
+
+    <h3>Đáp án cho câu hỏi</h3>
+    <table>
+
+        <tr>
+            <td></td>
+            <td>
+                <p>Những đáp án cách nhau bởi dấu "<b>,</b>"</p>
+                <b>Ví dụ: Đáp án 1,Đáp án 2,Đáp án 3</b><br><br>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Nội dung đáp án:</td>
+            <td>
+                <textarea id="mContentAnswer" cols="100" rows="1"></textarea>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <button onclick="checkDataInput()">Thêm</button>
+</center>
+
+<script>
+
+    let config = {
+        apiKey: "AIzaSyCA_Uxwd740_t_T9OQxjGe9vkeTE_Zpy5o",
+        authDomain: "luanvantotnghiep-a1764.firebaseapp.com",
+        databaseURL: "https://luanvantotnghiep-a1764.firebaseio.com",
+        projectId: "luanvantotnghiep-a1764",
+        storageBucket: "luanvantotnghiep-a1764.appspot.com",
+        messagingSenderId: "773402400130"
+    };
+    firebase.initializeApp(config);
+
+    function checkDataInput() {
+        let mIdBlock = document.getElementById("mIdBlock").value;
+        let mContentQuestion = document.getElementById("mContentQuestion").value;
+        let mIdLevel = document.getElementById("mIdLevel").value;
+        let mExtent = document.getElementById("mExtent").value;
+
+        if (mContentQuestion.trim() === "") {
+            alert("Chưa nhập nội dung câu hỏi!");
+        } else if (!/^[1-9]\d*$/.test((mIdLevel))) {
+            alert("Nhập cấp độ chưa đúng!");
+        } else {
+
+            let mContentAnswer = document.getElementById("mContentAnswer").value;
+
+            if (mContentAnswer.trim() === "") {
+                alert("Phải nhập đáp án!");
+            } else {
+                let message = "Bạn muốn thêm : " + mContentQuestion.trim() + "\n";
+                message += "Với đáp án: " + mContentAnswer.trim() + "\n";
+                message += "Vào game: Điền khuyết" + "\n";
+
+                if (confirm(message)) {
+                    pushDataGame(mIdBlock, mContentQuestion, mIdLevel, mExtent, mContentAnswer);
+                }
+            }
+        }
+    }
+
+    function pushDataGame(mIdBlock, mContentQuestion, mIdLevel, mExtent, mContentAnswer) {
+
+        let myRefQuestion = firebase.database().ref('QUESTION');
+        let myRefAnswer = firebase.database().ref('ANSWER');
+        let myRefAnswerByQuestion = firebase.database().ref('ANSWER_BY_QUESTION');
+
+        let mIdQuestion = myRefQuestion.push().key;
+        let mIdAnswer = myRefAnswer.push().key;
+        let mIdAnswerByQuestion = myRefAnswerByQuestion.push().key;
+
+        //Check number spaces with number answers
+        let numberSpace = (mContentQuestion.trim().match(/{}/g) || []).length;
+        if (numberSpace === 0) {
+            alert("Câu hỏi chưa có chỗ trống");
+        } else {
+            let numberAnswer = (mContentAnswer.trim().match(/,/g) || []).length;
+            if (numberSpace !== (numberAnswer + 1)) {
+                alert("Câu hỏi và đáp án chưa đồng nhất");
+            } else {
+                //Handle contentQuestion and contentAnswer
+                let contentQuestionPush = mContentQuestion.trim().replace(new RegExp('{', 'g'), '⁅');
+                contentQuestionPush = contentQuestionPush.replace(new RegExp('}', 'g'), '⁆');
+
+                let contentAnswerPush = "";
+                let answers = mContentAnswer.split(',');
+                for (let i = 0; i < answers.length; i++) {
+                    contentAnswerPush += answers[i].trim();
+                    if (i < answers.length - 1){
+                        contentAnswerPush += ",";
+                    }
+                }
+
+                /*Add data Question*/
+                myRefQuestion.child(mIdQuestion).set({
+                    idQuestion: mIdQuestion,
+                    contentQuestion: contentQuestionPush,
+                    idLevel: parseInt(mIdLevel),
+                    idBlock: parseInt(mIdBlock),
+                    idType: 2,
+                    extent: parseInt(mExtent),
+                    confirm: 1
+                }, function (error) {
+                    if (error) {
+                        alert(error);
+                    } else {
+
+                        /*Add data Answer*/
+                        myRefAnswer.child(mIdAnswer).set({
+                            idAnswer: mIdAnswer,
+                            contentAnswer: contentAnswerPush,
+                        });
+
+                        /*Add data Answer By Question*/
+                        myRefAnswerByQuestion.child(mIdAnswerByQuestion).set({
+                            idQuestion: mIdQuestion,
+                            idAnswer: mIdAnswer,
+                        });
+                        alert("Thêm câu hỏi thành công!");
+                    }
+                });
+            }
+        }
+    }
+
+    //Auto resize
+    let inputs = document.getElementsByTagName('textarea');
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].type.toLowerCase() === 'textarea') {
+            inputs[i].oninput = function () {
+                inputs[i].style.height = "";
+                inputs[i].style.height = inputs[i].scrollHeight + "px";
+            };
+        }
+    }
+</script>
+</body>
+</html>
