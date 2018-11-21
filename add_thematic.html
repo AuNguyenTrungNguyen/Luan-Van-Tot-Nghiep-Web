@@ -48,15 +48,15 @@
 
 <script>
 
-    let myRefCHAPTER = firebase.database().ref('TEST_CHAPTER');
-    let myRefDESCRIPTION = firebase.database().ref('TEST_DESCRIPTION');
-    let myRefDES_CHAPTER = firebase.database().ref('TEST_DES_CHAPTER');
+    let myRefCHAPTER = firebase.database().ref('CHAPTER');
+    let myRefDESCRIPTION = firebase.database().ref('DESCRIPTION');
+    let myRefDES_CHAPTER = firebase.database().ref('DES_CHAPTER');
 
-    let myRefHEADING = firebase.database().ref('TEST_HEADING');
-    let myRefDES_HEADING = firebase.database().ref('TEST_DES_HEADING');
+    let myRefHEADING = firebase.database().ref('HEADING');
+    let myRefDES_HEADING = firebase.database().ref('DES_HEADING');
 
-    let myRefTITLE = firebase.database().ref('TEST_TITLE');
-    let myRefDES_TITLE = firebase.database().ref('TEST_DES_TITLE');
+    let myRefTITLE = firebase.database().ref('TITLE');
+    let myRefDES_TITLE = firebase.database().ref('DES_TITLE');
 
     let sortOrder = 0;
 
@@ -359,7 +359,7 @@
         //Create button remove with id by position
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveContentChapter" + positionContentChapter;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -394,7 +394,7 @@
         //Create button remove with id by position
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveExampleChapter" + positionExampleChapter;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -429,7 +429,7 @@
         //Create button remove with id by position
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveQuestionChapter" + positionQuestionChapter;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -513,7 +513,7 @@
         //Create button remove with id by positionHeading
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveHeading" + positionHeading;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -557,7 +557,7 @@
         //Create button remove with id by position
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveContentHeading" + currentHeading + "_" + positionContentHeading;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -595,7 +595,7 @@
         //Create button remove with id by position
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveExampleHeading" + currentHeading + "_" + positionExampleHeading;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -633,7 +633,7 @@
         //Create button remove with id by position
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveQuestionHeading" + currentHeading + "_" + positionQuestionHeading;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -697,7 +697,7 @@
         //Create button remove with id by positionTitle
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveTitle" + positionTitle;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -738,7 +738,7 @@
         //Create button remove with id by position
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveContentTitle" + currentTitle + "_" + positionContentTitle;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -776,7 +776,7 @@
         //Create button remove with id by position
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveExampleTitle" + currentTitle + "_" + positionExampleTitle;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {
@@ -814,7 +814,7 @@
         //Create button remove with id by position
         let buttonRemove = document.createElement("BUTTON");
         let idRemove = "idRemoveQuestionTitle" + currentTitle + "_" + positionQuestionTitle;
-        let textRemove = document.createTextNode("Remove");
+        let textRemove = document.createTextNode("Xóa");
         buttonRemove.setAttribute("id", idRemove);
         buttonRemove.appendChild(textRemove);
         buttonRemove.onclick = function () {

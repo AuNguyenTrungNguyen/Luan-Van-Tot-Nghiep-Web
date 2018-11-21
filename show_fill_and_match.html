@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Firebase</title>
+    <title>Câu hỏi điền khuyết và nối cột</title>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
@@ -96,9 +96,9 @@
     };
     firebase.initializeApp(config);
 
-    let myRefQuestion = firebase.database().ref('TEST_QUESTION');
-    let myRefAnswer = firebase.database().ref('TEST_ANSWER');
-    let myRefAnswerByQuestion = firebase.database().ref('TEST_ANSWER_BY_QUESTION');
+    let myRefQuestion = firebase.database().ref('QUESTION');
+    let myRefAnswer = firebase.database().ref('ANSWER');
+    let myRefAnswerByQuestion = firebase.database().ref('ANSWER_BY_QUESTION');
 
     let questionList = [];
     let answerList = [];

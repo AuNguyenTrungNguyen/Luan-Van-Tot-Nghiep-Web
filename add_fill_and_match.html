@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Firebase</title>
+    <title>Thêm câu hỏi điền khuyết và nối cột</title>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
@@ -67,7 +67,7 @@
     <h3>Đáp án cho câu hỏi</h3>
     <table>
         <tr>
-            <td>mContentAnswer</td>
+            <td>Nội dung đáp án</td>
             <td><input type="text" id="mContentAnswer" size="100"></td>
         </tr>
 
@@ -112,9 +112,9 @@
 
     function pushDataGame(mIdBlock, mIdTypeQuestion, mContentQuestion, mIdLevel, mExtent, mContentAnswer) {
 
-        let myRefQuestion = firebase.database().ref('TEST_QUESTION');
-        let myRefAnswer = firebase.database().ref('TEST_ANSWER');
-        let myRefAnswerByQuestion = firebase.database().ref('TEST_ANSWER_BY_QUESTION');
+        let myRefQuestion = firebase.database().ref('QUESTION');
+        let myRefAnswer = firebase.database().ref('ANSWER');
+        let myRefAnswerByQuestion = firebase.database().ref('ANSWER_BY_QUESTION');
 
         let mIdQuestion = myRefQuestion.push().key;
         let mIdAnswer = myRefAnswer.push().key;
