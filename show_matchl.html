@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Câu hỏi trắc nghiệm</title>
+    <title>Câu hỏi nối cột</title>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
     <style>
-         table {
+        table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
         }
@@ -14,10 +14,6 @@
         .head td {
             text-align: left;
             padding: 8px;
-        }
-
-        .record table {
-            width: 100%;
         }
 
         .record td {
@@ -34,7 +30,7 @@
             padding: 8px;
         }
 
-        .back tr:nth-child(odd) {
+        .record tr:nth-child(odd) {
             background-color: #dddddd;
         }
 
@@ -79,7 +75,7 @@
 
             <tr>
                 <td>Chọn cấp độ</td>
-                <td><input type="number" id="mIdLevel" value="1" size="100"></td>
+                <td><input type="number" id="mIdLevel" value="1"></td>
             </tr>
 
             <tr>
@@ -110,36 +106,25 @@
     };
     firebase.initializeApp(config);
 
-    let myRefQuestion = firebase.database().ref("QUESTION");
-    let myRefAnswerByQuestion = firebase.database().ref("ANSWER_BY_QUESTION");
-    let myRefAnswer = firebase.database().ref("ANSWER");
+    let myRefQuestion = firebase.database().ref('QUESTION');
+    let myRefAnswer = firebase.database().ref('ANSWER');
+    let myRefAnswerByQuestion = firebase.database().ref('ANSWER_BY_QUESTION');
 
     let questionList = [];
-    let answerByQuestionList = [];
     let answerList = [];
+    let answerByQuestionList = [];
 
     reloadDataChange();
 
     /*Load data Question*/
     function loadQuestion() {
         questionList = [];
-        answerByQuestionList = [];
         answerList = [];
+        answerByQuestionList = [];
         myRefQuestion.once('value', function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
                 let question = childSnapshot.val();
                 questionList.push(question);
-            });
-            loadAnswer();
-        });
-    }
-
-    /*Load data Answer*/
-    function loadAnswer() {
-        myRefAnswer.once('value', function (snapshot) {
-            snapshot.forEach(function (childSnapshot) {
-                let answerByQuestion = childSnapshot.val();
-                answerList.push(answerByQuestion);
             });
             loadAnswerByQuestion();
         });
@@ -152,17 +137,33 @@
                 let answerByQuestion = childSnapshot.val();
                 answerByQuestionList.push(answerByQuestion);
             });
+            loadAnswer()
+        });
+    }
+
+    /*Load data Answer*/
+    function loadAnswer() {
+        myRefAnswer.once('value', function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                let answerByQuestion = childSnapshot.val();
+                answerList.push(answerByQuestion);
+            });
             document.getElementById("status").style.display = "none";
             document.getElementById("container").style.display = "block";
         });
     }
 
-    /*onClick filter buttom*/
+    function reloadDataChange() {
+        myRefQuestion.on('value', function () {
+            loadQuestion();
+        });
+    }
+
     function filter() {
 
         let mIdBlock = document.getElementById("mIdBlock").value;
-        let mExtent = document.getElementById("mExtent").value;
         let mIdLevel = document.getElementById("mIdLevel").value;
+        let mExtent = document.getElementById("mExtent").value;
 
         if (!/^[1-9]\d*$/.test((mIdLevel))) {
             confirm("Nhập cấp độ chưa đúng");
@@ -171,7 +172,7 @@
             for (let i = 0; i < questionList.length; i++) {
                 let question = questionList[i];
                 if (question.idBlock === parseInt(mIdBlock)
-                    && question.idType === 1
+                    && question.idType === 3
                     && question.idLevel === parseInt(mIdLevel)
                     && question.extent === parseInt(mExtent)) {
                     listTemp.push(question);
@@ -186,48 +187,33 @@
                 table += '<tr>';
                 table += '<th>' + 'STT' + '</th>';
                 table += '<th style="width: 50%;">' + 'Nội dung câu hỏi' + '</th>';
-                table += '<th style="width: 50%;">' + 'Đáp án' + '</th>';
+                table += '<th style="width: 50%;">' + 'Nội dung đáp án' + '</th>';
                 $('#ex-table').append(table);
 
                 for (let posi = 0; posi < listTemp.length; posi++) {
                     let number = posi + 1;
                     let idQues = listTemp[posi].idQuestion;
-                    let content = '';
-                    content += '<tr>';
-                    content += '<td style="text-align: center">' + number + '</td>';
-                    content += '<td>' + listTemp[posi].contentQuestion + '</td>';
-                    content += '<td><table class="back">';
-                    content += '<tr>';
-                    content += '<th style="width: 80%;">' + 'Nội dung đáp án' + '</th>';
-                    content += '<th style="width: 20%;">' + 'Đúng/sai' + '</th>';
                     for (let i = 0; i < answerByQuestionList.length; i++) {
                         if (idQues === answerByQuestionList[i].idQuestion) {
                             let idAnswer = answerByQuestionList[i].idAnswer;
                             for (let j = 0; j < answerList.length; j++) {
                                 if (idAnswer === answerList[j].idAnswer) {
-                                    content += '<tr><td>' + answerList[j].contentAnswer + '</td>';
-                                    if (answerByQuestionList[j].correct === 1) {
-                                        content += '<td> Đúng </td></tr>';
-                                    } else {
-                                        content += '<td> Sai </td></tr>';
-                                    }
+                                    let content = '';
+                                    content += '<tr>';
+                                    content += '<td style="text-align: center">' + number + '</td>';
+                                    content += '<td>' + listTemp[posi].contentQuestion + '</td>';
+                                    content += '<td>' + answerList[j].contentAnswer + '</td>';
+                                    content += '</tr>';
+                                    $('#ex-table').append(content);
                                     break;
                                 }
                             }
+                            break;
                         }
                     }
-                    content += '</table></td>';
-                    content += '</tr>';
-                    $('#ex-table').append(content);
                 }
             }
         }
-    }
-
-    function reloadDataChange() {
-        myRefQuestion.on('value', function() {
-            loadQuestion();
-        });
     }
 
 </script>

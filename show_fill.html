@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Câu hỏi điền khuyết và nối cột</title>
+    <title>Câu hỏi điền khuyết</title>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
@@ -9,19 +9,37 @@
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
-            width: 100%;
         }
 
-        td {
+        .head td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        .record td {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
         }
 
-        th {
-            border: 1px solid #dddddd;
+        .record th {
+            background-color: black;
+            color: white;
+            border: 1px solid white;
             text-align: center;
             padding: 8px;
+        }
+
+        .record tr:nth-child(odd) {
+            background-color: #dddddd;
+        }
+
+        input[type=number], select {
+            padding: 6px 6px;
+            display: inline-block;
+            border: 3px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         button {
@@ -41,47 +59,39 @@
 
 <p id="status">Đang tải dữ liệu...</p>
 <div id="container" hidden>
-    <table>
-        <tr>
-            <td>Chọn khối:</td>
-            <td><select id="mIdBlock">
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select></td>
-        </tr>
 
-        <tr>
-            <td>Chọn loại trò chơi</td>
-            <td><select id="mIdType">
-                <option value="2">Điền vào chỗ trống</option>
-                <option value="3">Nối cột</option>
-            </select></td>
-        </tr>
+    <center>
+        <table class="head">
+            <tr>
+                <td>Chọn khối:</td>
+                <td><select id="mIdBlock">
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select></td>
+            </tr>
 
-        <tr>
-            <td>Chọn cấp độ</td>
-            <td><input type="number" id="mIdLevel" value="1" size="100"></td>
-        </tr>
+            <tr>
+                <td>Chọn cấp độ</td>
+                <td><input type="number" id="mIdLevel" value="1"></td>
+            </tr>
 
-        <tr>
-            <td>Chọn mức độ</td>
-            <td><select id="mExtent">
-                <option value="1">Dễ</option>
-                <option value="2">Trung bình</option>
-                <option value="3">Khó</option>
-            </select></td>
-        </tr>
+            <tr>
+                <td>Chọn mức độ</td>
+                <td><select id="mExtent">
+                    <option value="1">Dễ</option>
+                    <option value="2">Trung bình</option>
+                    <option value="3">Khó</option>
+                </select></td>
+            </tr>
+        </table>
 
-    </table>
+        <button onclick="filter()" style="width: 30%" id="btnFilter">XEM</button><br><br>
+    </center>
 
-    <center><br>
-        <button onclick="filter()" style="width: 30%" id="btnFilter">FILTER</button>
-        <br><br></center>
-
-    <table id="ex-table">
+    <table id="ex-table" class="record">
     </table>
 </div>
 
@@ -144,7 +154,7 @@
     }
 
     function reloadDataChange() {
-        myRefQuestion.on('value', function() {
+        myRefQuestion.on('value', function () {
             loadQuestion();
         });
     }
@@ -152,18 +162,17 @@
     function filter() {
 
         let mIdBlock = document.getElementById("mIdBlock").value;
-        let mIdType = document.getElementById("mIdType").value;
         let mIdLevel = document.getElementById("mIdLevel").value;
         let mExtent = document.getElementById("mExtent").value;
 
         if (!/^[1-9]\d*$/.test((mIdLevel))) {
             confirm("Nhập cấp độ chưa đúng");
-        }else{
+        } else {
             let listTemp = [];
             for (let i = 0; i < questionList.length; i++) {
                 let question = questionList[i];
                 if (question.idBlock === parseInt(mIdBlock)
-                    && question.idType === parseInt(mIdType)
+                    && question.idType === 2
                     && question.idLevel === parseInt(mIdLevel)
                     && question.extent === parseInt(mExtent)) {
                     listTemp.push(question);
@@ -171,9 +180,9 @@
             }
 
             $('#ex-table').empty();
-            if (listTemp.length === 0){
+            if (listTemp.length === 0) {
                 alert("Chưa có dữ liệu cho lựa chọn này");
-            }else{
+            } else {
                 let table = '';
                 table += '<tr>';
                 table += '<th>' + 'STT' + '</th>';
@@ -190,9 +199,11 @@
                             for (let j = 0; j < answerList.length; j++) {
                                 if (idAnswer === answerList[j].idAnswer) {
                                     let content = '';
+                                    let contentQuestion = listTemp[posi].contentQuestion.replace(new RegExp('⁅', 'g'), '..');
+                                    contentQuestion = contentQuestion.replace(new RegExp('⁆', 'g'), '..');
                                     content += '<tr>';
                                     content += '<td style="text-align: center">' + number + '</td>';
-                                    content += '<td>' + listTemp[posi].contentQuestion + '</td>';
+                                    content += '<td>' + contentQuestion + '</td>';
                                     content += '<td>' + answerList[j].contentAnswer + '</td>';
                                     content += '</tr>';
                                     $('#ex-table').append(content);
