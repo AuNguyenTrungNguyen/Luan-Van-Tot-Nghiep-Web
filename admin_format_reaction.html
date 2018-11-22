@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm dấu 2 chấm</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 60%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+    </style>
+</head>
+<body>
+
+<center>
+
+    <table id="table_reaction">
+    </table>
+</center>
+
+<script>
+
+    let arrayReaction = [];
+    let oneWay = '&rArr;';
+    let twoWay = "&hArr;";
+    $.getJSON('data.json', function (json) {
+        arrayReaction = json["ChemicalReaction"];
+
+        let table = '';
+        table += '<tr>';
+        table += '<th>' + 'ID' + '</th>';
+        table += '<th>' + 'mReactants' + '</th>';
+        table += '<th>' + 'mProducts' + '</th>';
+        $('#table_reaction').append(table);
+
+        for (let i = 0; i < arrayReaction.length; i++) {
+            let reaction = arrayReaction[i];
+            let reactant = reaction.mReactants;
+            let product = reaction.mProducts;
+
+            let content = '';
+            content += '<tr>';
+            content += '<td>' + reaction.mIdChemicalReaction + '</td>';
+            content += '<td>' + format(reactant) + '</td>';
+            content += '<td>' + format(product) + '</td>';
+            $('#table_reaction').append(content);
+        }
+    });
+
+    function format(input) {
+        let result = "";
+        let temp = input.split('+');
+        for (let i = 0; i < temp.length; i++) {
+            let element = temp[i].trim();
+
+            if(element.charAt(0) < '0' || element.charAt(0) > '9'){ //Case: H2 -> 1:H2
+                result += "1:" + element;
+
+            }else{ //Case: 2H -> 2:H
+                for (let j = 1; j < element.length; j++) {
+                    if(element.charAt(j) < '0' || element.charAt(0) > '9'){
+                        //nothing
+                    }else{
+                        result += element.substring(0, j) + ":" + element.substring(j);
+                        break;
+                    }
+                }
+            }
+            if (i < temp.length - 1){
+                result += " + ";
+            }
+        }
+        return result;
+    }
+</script>
+</body>
+</html>

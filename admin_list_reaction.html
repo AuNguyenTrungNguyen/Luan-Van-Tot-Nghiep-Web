@@ -1,0 +1,116 @@
+<html lang="en">
+
+<head>
+    <title>REACTION</title>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 60%;
+        }
+        td, th {
+            border: 1px solid #a2a2a2;
+            text-align: center;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+    </style>
+</head>
+<body>
+
+<center>
+
+    <select id="type">
+        <option value="1">Xem tất cả</option>
+        <option value="2">Xem trùng lặp</option>
+    </select><br><br>
+
+    <table id="table_reaction">
+    </table>
+
+    <table id="table_duplicate" hidden>
+    </table>
+
+</center>
+
+<script>
+
+    let arrayReaction = [];
+    let oneWay = '&rArr;';
+    let twoWay = "&hArr;";
+
+    let arrayReactionHandle = [];
+
+    $.getJSON('chemistry.json', function (json) {
+
+        //List all reactions
+        arrayReaction = json["ChemicalReaction"];
+        let table = '';
+        table += '<tr>';
+        table += '<th>' + 'ID' + '</th>';
+        table += '<th>' + 'Reactant' + '</th>';
+        table += '</tr>';
+        $('#table_reaction').append(table);
+
+        for (let i = 0; i < arrayReaction.length; i++) {
+            let id = arrayReaction[i].mIdChemicalReaction;
+            let reaction = arrayReaction[i].mReactants;
+            if (arrayReaction[i].mTwoWay === 1){
+                reaction += ' ' + twoWay + ' ';
+            }else{
+                reaction += ' ' + oneWay + ' ';
+            }
+            reaction += arrayReaction[i].mProducts;
+
+            let content = '';
+            content += '<tr>';
+            content += '<td>' + id + '</td>';
+            content += '<td>' + reaction + '</td>';
+            content += '</tr>';
+            $('#table_reaction').append(content);
+
+            let react = {id: id, reaction:reaction};
+            arrayReactionHandle.push(react);
+        }
+
+        //List duplicate
+        let tableDuplicate = '';
+        tableDuplicate += '<tr>';
+        tableDuplicate += '<th>' + 'ID' + '</th>';
+        tableDuplicate += '<th>' + 'Reactant' + '</th>';
+        tableDuplicate += '<th>' + 'Duplicate' + '</th>';
+        tableDuplicate += '<tr>';
+        $('#table_duplicate').append(tableDuplicate);
+
+        for (let i = 0; i < arrayReactionHandle.length; i++) {
+            let react = arrayReactionHandle[i];
+            let isDuplicate = false;
+            let idDuplicates = "";
+            for (let j = i + 1; j < arrayReactionHandle.length; j++) {
+                let reactCompare = arrayReactionHandle[j];
+                if (react.reaction === reactCompare.reaction){
+                    idDuplicates += reactCompare.id + "<br><br>";
+                    isDuplicate = true;
+                }
+            }
+
+            if (isDuplicate === true){
+                let content = '';
+                content += '<tr>';
+                content += '<td>' + react.id + '</td>';
+                content += '<td>' + react.reaction + '</td>';
+                content += '<td>' + idDuplicates + '</td>';
+                content += '</tr>';
+                $('#table_duplicate').append(content);
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
