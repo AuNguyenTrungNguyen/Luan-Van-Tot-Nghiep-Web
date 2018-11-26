@@ -3,22 +3,119 @@
 <head>
     <meta charset="utf-8">
     <title>CHEMISTRY HANDBOOK</title>
+    <style>
+
+        .item {
+            width: 100%;
+            border-radius: 12px;
+            transition-duration: 0.3s;
+            cursor: pointer;
+            margin: 16px;
+            padding: 16px;
+            background-color: white;
+            outline: none;
+        }
+
+        .thematic {
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .thematic:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .quiz {
+            color: black;
+            border: 2px solid #008CBA;
+        }
+
+        .quiz:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        .fill {
+            color: black;
+            border: 2px solid #f44336;
+        }
+
+        .fill:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .match {
+            color: black;
+            border: 2px solid #f49905;
+        }
+
+        .match:hover {
+            background-color: #f49905;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-<center>
+<center style="height: 100%">
+
     <table>
 
-        <tr><td><a href="add_thematic.html" target="_blank">Thêm chuyên đề mới</a></td></tr>
-        <tr><td><a href="show_thematic.html" target="_blank">Xem các chuyên đề đã có</a></td></tr>
+        <tr>
+            <td style="text-align: center; font-size: 20px; color: #4CAF50">Chuyên đề</td>
+        </tr>
 
-        <tr><td><a href="add_quiz.html" target="_blank">Thêm câu hỏi trắc nghiệm mới</a></td></tr>
-        <tr><td><a href="show_quiz.html" target="_blank">Xem câu hỏi trắc nghiệm đã có</a></td></tr>
+        <tr>
+            <td>
+                <button class="item thematic" onclick="window.open('add_thematic.html')">Thêm chuyên đề mới</button>
+            </td>
 
-        <tr><td><a href="add_fill.html" target="_blank">Thêm câu hỏi điền khuyết mới</a></td></tr>
-        <tr><td><a href="show_fill.html" target="_blank">Xem câu hỏi điền khuyết đã có</a></td></tr>
+            <td>
+                <button class="item thematic" onclick="window.open('show_thematic.html')">Xem các chuyên đề đã có
+                </button>
+            </td>
+        </tr>
 
-        <tr><td><a href="add_match.html" target="_blank">Thêm câu hỏi nối cột mới </a></td></tr>
-        <tr><td><a href="show_match.html" target="_blank">Xem câu hỏi nối cột đã có</a></td></tr>
+        <tr>
+            <td style="text-align: center; font-size: 20px; color: #008CBA">Câu hỏi trắc nghiệm</td>
+        </tr>
+
+        <tr>
+            <td>
+                <button class="item quiz" onclick="window.open('add_quiz.html')">Thêm câu hỏi trắc nghiệm mới</button>
+            </td>
+
+            <td>
+                <button class="item quiz" onclick="window.open('show_quiz.html')">Xem câu hỏi trắc nghiệm đã có</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; font-size: 20px; color: #f44336">Câu hỏi điền khuyết</td>
+        </tr>
+
+        <tr>
+            <td>
+                <button class="item fill" onclick="window.open('add_fill.html')">Thêm câu hỏi điền khuyết mới</button>
+            </td>
+            <td>
+                <button class="item fill" onclick="window.open('show_fill.html')">Xem câu hỏi điền khuyết đã có</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; font-size: 20px; color: #f49905">Câu hỏi nối cột</td>
+        </tr>
+
+        <tr>
+            <td>
+                <button class="item match" onclick="window.open('add_match.html')">Thêm câu hỏi nối cột mới</button>
+            </td>
+            <td>
+                <button class="item match" onclick="window.open('show_match.html')">Xem câu hỏi nối cột đã có</button>
+            </td>
+        </tr>
 
     </table>
 </center>
