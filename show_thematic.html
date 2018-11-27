@@ -148,13 +148,31 @@
     let desOfHeadingList = [];
     let desOfTitleList = [];
 
-    myRefCHAPTER.once('value', function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-            let chapter = childSnapshot.val();
-            chapterList.push(chapter);
+    loadChapter();
+
+    function loadChapter(){
+        myRefCHAPTER.on('value', function (snapshot) {
+
+            //Reload value
+            chapterList = [];
+            descriptionList = [];
+            headingList = [];
+            titleList = [];
+            desOfChapterList = [];
+            desOfHeadingList = [];
+            desOfTitleList = [];
+
+            $('#idDivListChapter').empty();
+            $('#idDivListInfo').empty();
+            $('#idDivDescription').empty();
+
+            snapshot.forEach(function (childSnapshot) {
+                let chapter = childSnapshot.val();
+                chapterList.push(chapter);
+            });
+            loadDescription();
         });
-        loadDescription();
-    });
+    }
 
     function loadDescription() {
         myRefDESCRIPTION.once('value', function (snapshot) {
@@ -245,13 +263,17 @@
             }
         }
 
-        for (let i = 0; i < listTemp.length; i++) {
-            let nameChapter = listTemp[i].nameChapter;
-            let idChapter = listTemp[i].idChapter;
+        if (listTemp.length === 0){
+            alert("Hiện chưa có bất cứ chuyên đề nào cho lớp này");
+        }else{
+            for (let i = 0; i < listTemp.length; i++) {
+                let nameChapter = listTemp[i].nameChapter;
+                let idChapter = listTemp[i].idChapter;
 
-            //Show button chapter
-            let showChapter = '<button class="buttonChapter" onclick="showInfoChapter(\'' + idChapter + '\',\'' + nameChapter + '\')">' + nameChapter + '</button></br></br>';
-            $('#idDivListChapter').append(showChapter);
+                //Show button chapter
+                let showChapter = '<button class="buttonChapter" onclick="showInfoChapter(\'' + idChapter + '\',\'' + nameChapter + '\')">' + nameChapter + '</button></br></br>';
+                $('#idDivListChapter').append(showChapter);
+            }
         }
     }
 

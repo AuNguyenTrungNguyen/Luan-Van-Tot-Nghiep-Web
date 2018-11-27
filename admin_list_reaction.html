@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <style>
+        center {
+            width: 100%;
+        }
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -25,7 +28,7 @@
 
 <center>
 
-    <select id="type">
+    <select id="type" onchange="changeType()">
         <option value="1">Xem tất cả</option>
         <option value="2">Xem trùng lặp</option>
     </select><br><br>
@@ -33,7 +36,7 @@
     <table id="table_reaction">
     </table>
 
-    <table id="table_duplicate" hidden>
+    <table id="table_duplicate" style="visibility: collapse">
     </table>
 
 </center>
@@ -110,6 +113,22 @@
             }
         }
     });
+
+    //Select
+    function changeType(){
+        let type = document.getElementById('type').value;
+        let tableReaction = document.getElementById('table_reaction');
+        let tableDuplicate = document.getElementById('table_duplicate');
+
+        if (type === "1"){
+            tableReaction.style.visibility = "visible";
+            tableDuplicate.style.visibility  = "collapse";
+        }else if (type === "2"){
+            tableReaction.style.visibility = "collapse";
+            tableDuplicate.style.visibility = "visible";
+        }
+    }
+
 
 </script>
 </body>

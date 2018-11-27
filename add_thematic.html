@@ -40,7 +40,7 @@
             resize: none;
         }
 
-        input[type=button], button{
+        input[type=button], button {
             background-color: #4CAF50;
             border: none;
             color: white;
@@ -351,39 +351,55 @@
         if (nameChapter === "") {
             alert("Chưa nhập tên chương!");
         } else {
-            let idChapter = myRefCHAPTER.push().key;
-            myRefCHAPTER.child(idChapter).set({
-                idChapter: idChapter,
-                idBlock: parseInt(idBlock),
-                nameChapter: nameChapter.trim(),
-                confirm: 1
-            }, function (error) {
-                if (error) {
-                    alert(error);
-                } else {
-                    for (let i = 0; i < descriptionChapter.length; i++) {
-                        let idDescription = myRefDESCRIPTION.push().key;
-                        let description = descriptionChapter[i];
-                        myRefDESCRIPTION.child(idDescription).set({
-                            idDescription: idDescription,
-                            idTypeOfDescription: description.typeDes,
-                            nameDescription: description.name.trim(),
-                            sortOrder: description.sort.toString()
-                        }, function (error) {
-                            if (error) {
-                                alert(error);
-                            } else {
-                                let idDesChap = myRefDES_CHAPTER.push().key;
-                                myRefDES_CHAPTER.child(idDesChap).set({
-                                    idChapter: idChapter,
-                                    idDescription: idDescription,
-                                });
-                            }
-                        });
-                    }
-                    getAllDescriptionOfHeading(idChapter);
+            /*CHECK ALL TEXT AREA NOT EMPTY*/
+            let isEmpty = false;
+            let listArea = document.getElementsByTagName("TEXTAREA");
+            for (let i = 1; i < listArea.length; i++) {
+                let areaValue = listArea[i].value;
+                if (areaValue === "") {
+                    isEmpty = true;
+                    break;
                 }
-            });
+            }
+
+            if (isEmpty === true) {
+                alert("Có trường dữ liệu bị rỗng!");
+            } else {
+                let idChapter = myRefCHAPTER.push().key;
+                myRefCHAPTER.child(idChapter).set({
+                    idChapter: idChapter,
+                    idBlock: parseInt(idBlock),
+                    nameChapter: nameChapter.trim(),
+                    confirm: 1
+                }, function (error) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        for (let i = 0; i < descriptionChapter.length; i++) {
+                            let idDescription = myRefDESCRIPTION.push().key;
+                            let description = descriptionChapter[i];
+                            myRefDESCRIPTION.child(idDescription).set({
+                                idDescription: idDescription,
+                                idTypeOfDescription: description.typeDes,
+                                nameDescription: description.name.trim(),
+                                sortOrder: description.sort.toString()
+                            }, function (error) {
+                                if (error) {
+                                    alert(error);
+                                } else {
+                                    let idDesChap = myRefDES_CHAPTER.push().key;
+                                    myRefDES_CHAPTER.child(idDesChap).set({
+                                        idChapter: idChapter,
+                                        idDescription: idDescription,
+                                    });
+                                }
+                            });
+                        }
+                        getAllDescriptionOfHeading(idChapter);
+                        alert("Thêm chuyên đề thành công")
+                    }
+                });
+            }
         }
     }
 
@@ -395,7 +411,7 @@
         let divContent = document.createElement("div");
         let idDivContent = "idDivContentChapter" + positionContentChapter;
         divContent.setAttribute("id", idDivContent);
-        divContent.style.cssText = 'margin: 8px; background: #F0F0F0; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divContent.style.cssText = 'margin: 8px; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById("idDivContainerDesChap").appendChild(divContent);
         //Create text with id by position
         let text = document.createTextNode("Nội dung: ");
@@ -429,7 +445,7 @@
         let divExample = document.createElement("div");
         let idDivExample = "idDivExampleChapter" + positionExampleChapter;
         divExample.setAttribute("id", idDivExample);
-        divExample.style.cssText = 'margin: 8px; background: #F0F0F0; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divExample.style.cssText = 'margin: 8px; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById("idDivContainerDesChap").appendChild(divExample);
 
         //Create text with id by position
@@ -464,7 +480,7 @@
         let divQuestion = document.createElement("div");
         let idDivQuestion = "idDivQuestionChapter" + positionQuestionChapter;
         divQuestion.setAttribute("id", idDivQuestion);
-        divQuestion.style.cssText = 'margin: 8px; background: #F0F0F0; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divQuestion.style.cssText = 'margin: 8px; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById("idDivContainerDesChap").appendChild(divQuestion);
 
         //Create text with id by position
