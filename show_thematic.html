@@ -103,7 +103,7 @@
 
         <table>
             <tr>
-                <td>Chọn khối:</td>
+                <td><b>Khối kiến thức:</b></td>
                 <td><select id="mIdBlock">
                     <option value="8">8</option>
                     <option value="9">9</option>
@@ -115,7 +115,7 @@
         </table>
 
         <br>
-        <button onclick="filter()" class="button">XEM</button>
+        <button onclick="filter()" class="button">Xem</button>
         <br><br>
 
         <div style="width: 100%;">
@@ -264,7 +264,7 @@
         }
 
         if (listTemp.length === 0){
-            alert("Hiện chưa có bất cứ chuyên đề nào cho lớp này");
+            alert("Hiện chưa có bất cứ chuyên đề nào của khối kiến thức này");
         }else{
             for (let i = 0; i < listTemp.length; i++) {
                 let nameChapter = listTemp[i].nameChapter;

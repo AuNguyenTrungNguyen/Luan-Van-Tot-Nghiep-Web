@@ -60,7 +60,7 @@
     <h3>Thêm câu hỏi điền khuyết</h3>
     <table>
         <tr>
-            <td>Chọn khối:</td>
+            <td><b>Khối kiến thức:</b></td>
             <td><select id="mIdBlock">
                 <option value="8">8</option>
                 <option value="9">9</option>
@@ -79,19 +79,19 @@
         </tr>
 
         <tr>
-            <td>Nội dung câu hỏi:</td>
+            <td><b>Nội dung câu hỏi:</b></td>
             <td>
                 <textarea id="mContentQuestion" cols="100" rows="5"></textarea>
             </td>
         </tr>
 
         <tr>
-            <td>Chọn cấp độ:</td>
+            <td><b>Cấp độ:</b></td>
             <td><input type="number" id="mIdLevel" value="1" size="100"></td>
         </tr>
 
         <tr>
-            <td>Chọn mức độ:</td>
+            <td><b>Mức độ:</b></td>
             <td><select id="mExtent">
                 <option value="1">Dễ</option>
                 <option value="2">Trung bình</option>
@@ -114,7 +114,7 @@
         </tr>
 
         <tr>
-            <td>Nội dung đáp án:</td>
+            <td><b>Nội dung đáp án:</b></td>
             <td>
                 <textarea id="mContentAnswer" cols="100" rows="1"></textarea>
             </td>
@@ -144,22 +144,33 @@
         let mExtent = document.getElementById("mExtent").value;
 
         if (mContentQuestion.trim() === "") {
-            alert("Chưa nhập nội dung câu hỏi!");
+            alert("Bạn phải nhập nội dung câu hỏi");
         } else if (!/^[1-9]\d*$/.test((mIdLevel))) {
-            alert("Nhập cấp độ chưa đúng!");
+            alert("Cấp độ bạn chọn chưa hợp lệ");
         } else {
 
             let mContentAnswer = document.getElementById("mContentAnswer").value;
 
             if (mContentAnswer.trim() === "") {
-                alert("Phải nhập đáp án!");
+                alert("Bạn phải nhập nội dung đáp án");
             } else {
-                let message = "Bạn muốn thêm : " + mContentQuestion.trim() + "\n";
-                message += "Với đáp án: " + mContentAnswer.trim() + "\n";
-                message += "Vào game: Điền khuyết" + "\n";
+                //Check number spaces with number answers
+                let numberSpace = (mContentQuestion.trim().match(/{}/g) || []).length;
+                if (numberSpace === 0) {
+                    alert("Câu hỏi chưa có chỗ trống");
+                } else {
+                    let numberAnswer = (mContentAnswer.trim().match(/,/g) || []).length;
+                    if (numberSpace !== (numberAnswer + 1)) {
+                        alert("Câu hỏi và đáp án chưa đồng nhất");
+                    } else {
+                        let message = "Bạn muốn thêm : " + mContentQuestion.trim() + "\n";
+                        message += "Với đáp án: " + mContentAnswer.trim() + "\n";
+                        message += "Vào game: Điền khuyết" + "\n";
 
-                if (confirm(message)) {
-                    pushDataGame(mIdBlock, mContentQuestion, mIdLevel, mExtent, mContentAnswer);
+                        if (confirm(message)) {
+                            pushDataGame(mIdBlock, mContentQuestion, mIdLevel, mExtent, mContentAnswer);
+                        }
+                    }
                 }
             }
         }
@@ -175,58 +186,47 @@
         let mIdAnswer = myRefAnswer.push().key;
         let mIdAnswerByQuestion = myRefAnswerByQuestion.push().key;
 
-        //Check number spaces with number answers
-        let numberSpace = (mContentQuestion.trim().match(/{}/g) || []).length;
-        if (numberSpace === 0) {
-            alert("Câu hỏi chưa có chỗ trống");
-        } else {
-            let numberAnswer = (mContentAnswer.trim().match(/,/g) || []).length;
-            if (numberSpace !== (numberAnswer + 1)) {
-                alert("Câu hỏi và đáp án chưa đồng nhất");
-            } else {
-                //Handle contentQuestion and contentAnswer
-                let contentQuestionPush = mContentQuestion.trim().replace(new RegExp('{', 'g'), '⁅');
-                contentQuestionPush = contentQuestionPush.replace(new RegExp('}', 'g'), '⁆');
+        //Handle contentQuestion and contentAnswer
+        let contentQuestionPush = mContentQuestion.trim().replace(new RegExp('{', 'g'), '⁅');
+        contentQuestionPush = contentQuestionPush.replace(new RegExp('}', 'g'), '⁆');
 
-                let contentAnswerPush = "";
-                let answers = mContentAnswer.split(',');
-                for (let i = 0; i < answers.length; i++) {
-                    contentAnswerPush += answers[i].trim();
-                    if (i < answers.length - 1){
-                        contentAnswerPush += ",";
-                    }
-                }
-
-                /*Add data Question*/
-                myRefQuestion.child(mIdQuestion).set({
-                    idQuestion: mIdQuestion,
-                    contentQuestion: contentQuestionPush,
-                    idLevel: parseInt(mIdLevel),
-                    idBlock: parseInt(mIdBlock),
-                    idType: 2,
-                    extent: parseInt(mExtent),
-                    confirm: 1
-                }, function (error) {
-                    if (error) {
-                        alert(error);
-                    } else {
-
-                        /*Add data Answer*/
-                        myRefAnswer.child(mIdAnswer).set({
-                            idAnswer: mIdAnswer,
-                            contentAnswer: contentAnswerPush,
-                        });
-
-                        /*Add data Answer By Question*/
-                        myRefAnswerByQuestion.child(mIdAnswerByQuestion).set({
-                            idQuestion: mIdQuestion,
-                            idAnswer: mIdAnswer,
-                        });
-                        alert("Thêm câu hỏi thành công!");
-                    }
-                });
+        let contentAnswerPush = "";
+        let answers = mContentAnswer.split(',');
+        for (let i = 0; i < answers.length; i++) {
+            contentAnswerPush += answers[i].trim();
+            if (i < answers.length - 1) {
+                contentAnswerPush += ",";
             }
         }
+
+        /*Add data Question*/
+        myRefQuestion.child(mIdQuestion).set({
+            idQuestion: mIdQuestion,
+            contentQuestion: contentQuestionPush,
+            idLevel: parseInt(mIdLevel),
+            idBlock: parseInt(mIdBlock),
+            idType: 2,
+            extent: parseInt(mExtent),
+            confirm: 1
+        }, function (error) {
+            if (error) {
+                alert(error);
+            } else {
+
+                /*Add data Answer*/
+                myRefAnswer.child(mIdAnswer).set({
+                    idAnswer: mIdAnswer,
+                    contentAnswer: contentAnswerPush,
+                });
+
+                /*Add data Answer By Question*/
+                myRefAnswerByQuestion.child(mIdAnswerByQuestion).set({
+                    idQuestion: mIdQuestion,
+                    idAnswer: mIdAnswer,
+                });
+                alert("Thêm câu hỏi thành công!");
+            }
+        });
     }
 
     //Auto resize

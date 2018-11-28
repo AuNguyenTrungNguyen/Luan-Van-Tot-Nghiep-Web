@@ -62,7 +62,7 @@
 <center>
     <table>
         <tr>
-            <td>Chọn khối:</td>
+            <td><b>Khối kiến thức:</b></td>
             <td><select id="idBlock">
                 <option value="8">8</option>
                 <option value="9">9</option>
@@ -91,10 +91,8 @@
     let myRefCHAPTER = firebase.database().ref('CHAPTER');
     let myRefDESCRIPTION = firebase.database().ref('DESCRIPTION');
     let myRefDES_CHAPTER = firebase.database().ref('DES_CHAPTER');
-
     let myRefHEADING = firebase.database().ref('HEADING');
     let myRefDES_HEADING = firebase.database().ref('DES_HEADING');
-
     let myRefTITLE = firebase.database().ref('TITLE');
     let myRefDES_TITLE = firebase.database().ref('DES_TITLE');
 
@@ -349,7 +347,7 @@
         let idBlock = document.getElementById("idBlock").value;
         let nameChapter = document.getElementById("nameChapter").value;
         if (nameChapter === "") {
-            alert("Chưa nhập tên chương!");
+            alert("Chưa nhập tên chuyên đề");
         } else {
             /*CHECK ALL TEXT AREA NOT EMPTY*/
             let isEmpty = false;
@@ -363,7 +361,7 @@
             }
 
             if (isEmpty === true) {
-                alert("Có trường dữ liệu bị rỗng!");
+                alert("Có trường dữ liệu bị rỗng");
             } else {
                 let idChapter = myRefCHAPTER.push().key;
                 myRefCHAPTER.child(idChapter).set({
@@ -396,7 +394,7 @@
                             });
                         }
                         getAllDescriptionOfHeading(idChapter);
-                        alert("Thêm chuyên đề thành công")
+                        alert("Thêm chuyên đề thành công");
                     }
                 });
             }

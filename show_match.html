@@ -7,13 +7,16 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
     <style>
         table {
-            font-family: arial, sans-serif;
             border-collapse: collapse;
         }
 
         .head td {
             text-align: left;
             padding: 8px;
+        }
+
+        .record{
+            font-family: arial, sans-serif;
         }
 
         .record td {
@@ -67,7 +70,7 @@
     <center>
         <table class="head">
             <tr>
-                <td>Chọn khối:</td>
+                <td><b>Khối kiến thức:</b></td>
                 <td><select id="mIdBlock">
                     <option value="8">8</option>
                     <option value="9">9</option>
@@ -78,12 +81,12 @@
             </tr>
 
             <tr>
-                <td>Chọn cấp độ</td>
+                <td><b>Cấp độ:</b></td>
                 <td><input type="number" id="mIdLevel" value="1"></td>
             </tr>
 
             <tr>
-                <td>Chọn mức độ</td>
+                <td><b>Mức độ:</b></td>
                 <td><select id="mExtent">
                     <option value="1">Dễ</option>
                     <option value="2">Trung bình</option>
@@ -92,7 +95,7 @@
             </tr>
         </table>
 
-        <br><button onclick="filter()" id="btnFilter">XEM</button><br><br>
+        <br><button onclick="filter()" id="btnFilter">Xem</button><br><br>
     </center>
 
     <table id="ex-table" class="record">
@@ -170,7 +173,7 @@
         let mExtent = document.getElementById("mExtent").value;
 
         if (!/^[1-9]\d*$/.test((mIdLevel))) {
-            confirm("Nhập cấp độ chưa đúng");
+            alert("Cấp độ bạn chọn chưa hợp lệ");
         } else {
             let listTemp = [];
             for (let i = 0; i < questionList.length; i++) {

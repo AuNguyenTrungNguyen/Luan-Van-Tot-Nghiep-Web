@@ -56,7 +56,7 @@
     <h3>Thêm câu hỏi nối cột</h3>
     <table>
         <tr>
-            <td>Chọn khối:</td>
+            <td><b>Khối kiến thức:</b></td>
             <td><select id="mIdBlock">
                 <option value="8">8</option>
                 <option value="9">9</option>
@@ -67,17 +67,17 @@
         </tr>
 
         <tr>
-            <td>Nội dung câu hỏi:</td>
+            <td><b>Nội dung câu hỏi:</b></td>
             <td><textarea id="mContentQuestion" cols="100" rows="5"></textarea></td>
         </tr>
 
         <tr>
-            <td>Chọn cấp độ:</td>
+            <td><b>Cấp độ:</b></td>
             <td><input type="number" id="mIdLevel" value="1" size="100"></td>
         </tr>
 
         <tr>
-            <td>Chọn mức độ:</td>
+            <td><b>Mức độ:</b></td>
             <td><select id="mExtent">
                 <option value="1">Dễ</option>
                 <option value="2">Trung bình</option>
@@ -91,7 +91,7 @@
     <h3>Đáp án cho câu hỏi</h3>
     <table>
         <tr>
-            <td>Nội dung đáp án</td>
+            <td><b>Nội dung đáp án:</b></td>
             <td><textarea id="mContentAnswer" cols="100" rows="1"></textarea></td>
         </tr>
 
@@ -120,15 +120,15 @@
         let mExtent = document.getElementById("mExtent").value;
 
         if (mContentQuestion.trim() === "") {
-            alert("Chưa nhập nội dung câu hỏi!");
+            alert("Bạn phải nhập nội dung câu hỏi");
         } else if (!/^[1-9]\d*$/.test((mIdLevel))) {
-            alert("Nhập cấp độ chưa đúng!");
+            alert("Cấp độ bạn chọn chưa hợp lệ");
         } else {
 
             let mContentAnswer = document.getElementById("mContentAnswer").value;
 
             if (mContentAnswer.trim() === "") {
-                alert("Phải nhập đáp án!");
+                alert("Bạn phải nhập nội dung đáp án");
             } else {
                 let message = "Bạn muốn thêm : " + mContentQuestion.trim() + "\n";
                 message += "Với đáp án: " + mContentAnswer.trim() + "\n";
