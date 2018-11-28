@@ -69,11 +69,6 @@
         </tr>
 
         <tr>
-            <td><b>Nội dung câu hỏi:</b></td>
-            <td><textarea id="mContentQuestion" cols="100" rows="5"></textarea></td>
-        </tr>
-
-        <tr>
             <td><b>Cấp độ:</b></td>
             <td><input type="number" id="mIdLevel" value="1" size="100"></td>
         </tr>
@@ -86,6 +81,12 @@
                 <option value="3">Khó</option>
             </select></td>
         </tr>
+
+        <tr>
+            <td><b>Nội dung câu hỏi:</b></td>
+            <td><textarea id="mContentQuestion" cols="100" rows="5"></textarea></td>
+        </tr>
+
     </table>
     <br>
 
@@ -145,10 +146,10 @@
         let mExtent = document.getElementById("mExtent").value;
         let mIdTypeQuestion = 1;
 
-        if (mContentQuestion.trim() === "") {
-            alert("Bạn phải nhập nội dung câu hỏi");
-        } else if (!/^[1-9]\d*$/.test((mIdLevel))) {
+        if (!/^[1-9]\d*$/.test((mIdLevel))) {
             alert("Cấp độ bạn chọn chưa hợp lệ");
+        } else if (mContentQuestion.trim() === "") {
+            alert("Bạn phải nhập nội dung câu hỏi");
         } else {
             let mContentAnswerA = document.getElementById("mContentAnswerA").value;
             let mContentAnswerB = document.getElementById("mContentAnswerB").value;

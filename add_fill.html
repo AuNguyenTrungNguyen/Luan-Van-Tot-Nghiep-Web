@@ -71,6 +71,20 @@
         </tr>
 
         <tr>
+            <td><b>Cấp độ:</b></td>
+            <td><input type="number" id="mIdLevel" value="1" size="100"></td>
+        </tr>
+
+        <tr>
+            <td><b>Mức độ:</b></td>
+            <td><select id="mExtent">
+                <option value="1">Dễ</option>
+                <option value="2">Trung bình</option>
+                <option value="3">Khó</option>
+            </select></td>
+        </tr>
+
+        <tr>
             <td></td>
             <td>
                 <p>Những khoảng trống trong câu hỏi sẽ được hiểu bằng cặp dấu {}</p>
@@ -83,20 +97,6 @@
             <td>
                 <textarea id="mContentQuestion" cols="100" rows="5"></textarea>
             </td>
-        </tr>
-
-        <tr>
-            <td><b>Cấp độ:</b></td>
-            <td><input type="number" id="mIdLevel" value="1" size="100"></td>
-        </tr>
-
-        <tr>
-            <td><b>Mức độ:</b></td>
-            <td><select id="mExtent">
-                <option value="1">Dễ</option>
-                <option value="2">Trung bình</option>
-                <option value="3">Khó</option>
-            </select></td>
         </tr>
 
     </table>
@@ -143,10 +143,10 @@
         let mIdLevel = document.getElementById("mIdLevel").value;
         let mExtent = document.getElementById("mExtent").value;
 
-        if (mContentQuestion.trim() === "") {
-            alert("Bạn phải nhập nội dung câu hỏi");
-        } else if (!/^[1-9]\d*$/.test((mIdLevel))) {
+        if (!/^[1-9]\d*$/.test((mIdLevel))) {
             alert("Cấp độ bạn chọn chưa hợp lệ");
+        } else if (mContentQuestion.trim() === "") {
+            alert("Bạn phải nhập nội dung câu hỏi");
         } else {
 
             let mContentAnswer = document.getElementById("mContentAnswer").value;
