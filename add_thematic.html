@@ -72,13 +72,13 @@
             </select></td>
         </tr>
     </table>
-    <textarea id="nameChapter" cols="100" rows="3" placeholder="Nhập tên chuyên đề"></textarea>
+    <textarea id="nameChapter" cols="150" rows="3" placeholder="Nhập tên chuyên đề"></textarea>
     <input type="button" value="Nội dụng" onclick="addContentChapter()">
     <input type="button" value="Ví dụ" onclick="addExampleChapter()">
     <input type="button" value="Câu hỏi" onclick="addQuestionChapter()">
     <input type="button" value="Tiêu đề" onclick="addHeading()">
     <div id="idDivContainer">
-        <div id="idDivContainerDesChap"></div>
+        <div id="idDivContainerDesChap" style="padding: 10px"></div>
         <div id="idDivContainerHead"></div>
     </div>
 
@@ -409,15 +409,20 @@
         let divContent = document.createElement("div");
         let idDivContent = "idDivContentChapter" + positionContentChapter;
         divContent.setAttribute("id", idDivContent);
-        divContent.style.cssText = 'margin: 8px; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divContent.style.cssText = 'margin: 4px; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById("idDivContainerDesChap").appendChild(divContent);
+
         //Create text with id by position
+        let para = document.createElement("P");
+        para.style.width = "100px";
         let text = document.createTextNode("Nội dung: ");
+        para.appendChild(text);
 
         //Create input with id by position
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputContentChapter" + positionContentChapter;
         input.setAttribute("id", idInput);
+        input.setAttribute("cols", 130);
         setNewAttribute(input);
         input.sort = sortOrder++;
         input.typeDes = "1";
@@ -432,7 +437,7 @@
             removeDescription("idDivContainerDesChap", idDivContent);
         };
 
-        document.getElementById(idDivContent).appendChild(text);
+        document.getElementById(idDivContent).appendChild(para);
         document.getElementById(idDivContent).appendChild(input);
         document.getElementById(idDivContent).appendChild(buttonRemove);
         document.getElementById("idDivContainerDesChap").appendChild(divContent);
@@ -443,16 +448,20 @@
         let divExample = document.createElement("div");
         let idDivExample = "idDivExampleChapter" + positionExampleChapter;
         divExample.setAttribute("id", idDivExample);
-        divExample.style.cssText = 'margin: 8px; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divExample.style.cssText = 'margin: 4px; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById("idDivContainerDesChap").appendChild(divExample);
 
         //Create text with id by position
+        let para = document.createElement("P");
+        para.style.width = "100px";
         let text = document.createTextNode("Ví dụ: ");
+        para.appendChild(text);
 
         //Create input with id by position
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputExampleChapter" + positionExampleChapter;
         input.setAttribute("id", idInput);
+        input.setAttribute("cols", 130);
         setNewAttribute(input);
         input.sort = sortOrder++;
         input.typeDes = "2";
@@ -467,7 +476,7 @@
             removeDescription("idDivContainerDesChap", idDivExample);
         };
 
-        document.getElementById(idDivExample).appendChild(text);
+        document.getElementById(idDivExample).appendChild(para);
         document.getElementById(idDivExample).appendChild(input);
         document.getElementById(idDivExample).appendChild(buttonRemove);
         document.getElementById("idDivContainerDesChap").appendChild(divExample);
@@ -478,16 +487,20 @@
         let divQuestion = document.createElement("div");
         let idDivQuestion = "idDivQuestionChapter" + positionQuestionChapter;
         divQuestion.setAttribute("id", idDivQuestion);
-        divQuestion.style.cssText = 'margin: 8px; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divQuestion.style.cssText = 'margin: 4px; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById("idDivContainerDesChap").appendChild(divQuestion);
 
         //Create text with id by position
+        let para = document.createElement("P");
+        para.style.width = "100px";
         let text = document.createTextNode("Câu hỏi: ");
+        para.appendChild(text);
 
         //Create input with id by position
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputQuestionChapter" + positionQuestionChapter;
         input.setAttribute("id", idInput);
+        input.setAttribute("cols", 130);
         setNewAttribute(input);
         input.sort = sortOrder++;
         input.typeDes = "3";
@@ -502,7 +515,7 @@
             removeDescription("idDivContainerDesChap", idDivQuestion);
         };
 
-        document.getElementById(idDivQuestion).appendChild(text);
+        document.getElementById(idDivQuestion).appendChild(para);
         document.getElementById(idDivQuestion).appendChild(input);
         document.getElementById(idDivQuestion).appendChild(buttonRemove);
         document.getElementById("idDivContainerDesChap").appendChild(divQuestion);
@@ -513,28 +526,32 @@
         let containerHeading = document.createElement("div");
         let idContainer = "idContainerHeading." + positionHeading;
         containerHeading.setAttribute("id", idContainer);
-        containerHeading.style.cssText = 'margin: 8px; background: #F0F0F0';
+        containerHeading.style.cssText = 'margin-top: 20px; padding-bottom: 10px; background: #c3cfe2';
         document.getElementById("idDivContainerHead").appendChild(containerHeading);
 
         //Create 2 div: 1 to add DES_HEADING and 1 to add TITLE
         let containerDesHead = document.createElement("div");
         let idContainerDesHead = "idContainerDesHead." + positionHeading;
         containerDesHead.setAttribute("id", idContainerDesHead);
-        containerDesHead.style.cssText = 'margin: 8px; background: #F0F0F0';
+        containerDesHead.style.cssText = 'background: #c3cfe2';
 
         let containerTitle = document.createElement("div");
         let idContainerTitle = "idContainerTitleOfHeading." + positionHeading;
         containerTitle.setAttribute("id", idContainerTitle);
-        containerTitle.style.cssText = 'margin: 8px; background: #F0F0F0';
+        containerTitle.style.cssText = 'background: #c3cfe2';
 
         //Create text with id by position
+        let spanText = document.createElement("span");
+        spanText.style.fontSize = "20px";
         let text = document.createTextNode("Tiêu đề: ");
+        spanText.appendChild(text);
 
         //Create input with id by positionHeading
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputHeading" + positionHeading;
         input.setAttribute("id", idInput);
         setNewAttribute(input);
+        input.setAttribute("cols", 120);
 
         //Create button content with id by positionHeading
         let buttonAddContent = document.createElement("BUTTON");
@@ -586,7 +603,7 @@
             removeDescription("idDivContainerHead", idContainer);
         };
 
-        document.getElementById(idContainer).appendChild(text);
+        document.getElementById(idContainer).appendChild(spanText);
         document.getElementById(idContainer).appendChild(input);
         document.getElementById(idContainer).appendChild(buttonAddContent);
         document.getElementById(idContainer).appendChild(buttonAddExample);
@@ -606,17 +623,21 @@
         let divContent = document.createElement("div");
         let idDivContent = "idDivContentHeading" + currentHeading + "_" + positionContentHeading;
         divContent.setAttribute("id", idDivContent);
-        divContent.style.cssText = 'margin: 8px; background: #F0F0F0; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divContent.style.cssText = 'background: #c3cfe2; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById(idContainer).appendChild(divContent);
 
         //Create text with id by position
+        let para = document.createElement("P");
+        para.style.width = "90px";
         let text = document.createTextNode("Nội dung: ");
+        para.appendChild(text);
 
         //Create input with id by position
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputContentHeading" + currentHeading + "_" + positionContentHeading;
         input.setAttribute("id", idInput);
         setNewAttribute(input);
+        input.setAttribute("cols", 110);
         input.sort = positionContentHeading;
         input.typeDes = "1";
 
@@ -630,7 +651,7 @@
             removeDescription(idContainer, idDivContent);
         };
 
-        document.getElementById(idDivContent).appendChild(text);
+        document.getElementById(idDivContent).appendChild(para);
         document.getElementById(idDivContent).appendChild(input);
         document.getElementById(idDivContent).appendChild(buttonRemove);
         document.getElementById(idContainer).appendChild(divContent);
@@ -644,17 +665,21 @@
         let divExample = document.createElement("div");
         let idDivExample = "idDivExampleHeading" + currentHeading + "_" + positionExampleHeading;
         divExample.setAttribute("id", idDivExample);
-        divExample.style.cssText = 'margin: 8px; background: #F0F0F0; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divExample.style.cssText = 'background: #c3cfe2; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById(idContainer).appendChild(divExample);
 
         //Create text with id by position
+        let para = document.createElement("P");
+        para.style.width = "90px";
         let text = document.createTextNode("Ví dụ: ");
+        para.appendChild(text);
 
         //Create input with id by position
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputExampleHeading" + currentHeading + "_" + positionExampleHeading;
         input.setAttribute("id", idInput);
         setNewAttribute(input);
+        input.setAttribute("cols", 110);
         input.sort = positionExampleHeading;
         input.typeDes = "2";
 
@@ -668,7 +693,7 @@
             removeDescription(idContainer, idDivExample);
         };
 
-        document.getElementById(idDivExample).appendChild(text);
+        document.getElementById(idDivExample).appendChild(para);
         document.getElementById(idDivExample).appendChild(input);
         document.getElementById(idDivExample).appendChild(buttonRemove);
         document.getElementById(idContainer).appendChild(divExample);
@@ -682,17 +707,21 @@
         let divQuestion = document.createElement("div");
         let idDivQuestion = "idDivQuestionHeading" + currentHeading + "_" + positionQuestionHeading;
         divQuestion.setAttribute("id", idDivQuestion);
-        divQuestion.style.cssText = 'margin: 8px; background: #F0F0F0; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divQuestion.style.cssText = 'background: #c3cfe2; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById(idContainer).appendChild(divQuestion);
 
         //Create text with id by position
+        let para = document.createElement("P");
+        para.style.width = "90px";
         let text = document.createTextNode("Câu hỏi: ");
+        para.appendChild(text);
 
         //Create input with id by position
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputQuestionHeading" + currentHeading + "_" + positionQuestionHeading;
         input.setAttribute("id", idInput);
         setNewAttribute(input);
+        input.setAttribute("cols", 110);
         input.sort = positionQuestionHeading;
         input.typeDes = "3";
 
@@ -706,7 +735,7 @@
             removeDescription(idContainer, idDivQuestion);
         };
 
-        document.getElementById(idDivQuestion).appendChild(text);
+        document.getElementById(idDivQuestion).appendChild(para);
         document.getElementById(idDivQuestion).appendChild(input);
         document.getElementById(idDivQuestion).appendChild(buttonRemove);
         document.getElementById(idContainer).appendChild(divQuestion);
@@ -718,16 +747,20 @@
         let containerTitle = document.createElement("div");
         let idContainer = "idContainerTitle." + positionTitle;
         containerTitle.setAttribute("id", idContainer);
-        containerTitle.style.cssText = 'margin: 8px; background: #F0F0F0';
+        containerTitle.style.cssText = 'margin: 8px; padding-bottom: 5px; background: #c2e9fb ';
         document.getElementById(idContainerHeading).appendChild(containerTitle);
 
         //Create text with id by position
+        let spanText = document.createElement("span");
+        spanText.style.fontSize = "18px";
         let text = document.createTextNode("Mục nhỏ: ");
+        spanText.appendChild(text);
 
         //Create input with id by positionTitle
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputTitle" + currentHeading + "_" + positionTitle;
         input.setAttribute("id", idInput);
+        input.setAttribute("cols", 100);
         setNewAttribute(input);
 
         //Create button content with id by positionTitle
@@ -770,7 +803,7 @@
             removeDescription(idContainerHeading, idContainer);
         };
 
-        document.getElementById(idContainer).appendChild(text);
+        document.getElementById(idContainer).appendChild(spanText);
         document.getElementById(idContainer).appendChild(input);
         document.getElementById(idContainer).appendChild(buttonAddContent);
         document.getElementById(idContainer).appendChild(buttonAddExample);
@@ -787,16 +820,20 @@
         let divContent = document.createElement("div");
         let idDivContent = "idDivContentTitle" + currentTitle + "_" + positionContentTitle;
         divContent.setAttribute("id", idDivContent);
-        divContent.style.cssText = 'margin: 8px; background: #F0F0F0; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divContent.style.cssText = 'background: #c2e9fb; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById(idContainer).appendChild(divContent);
 
         //Create text with id by position
+        let para = document.createElement("P");
+        para.style.width = "80px";
         let text = document.createTextNode("Nội dung: ");
+        para.appendChild(text);
 
         //Create input with id by position
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputContentTitle" + currentTitle + "_" + positionContentTitle;
         input.setAttribute("id", idInput);
+        input.setAttribute("cols", 90);
         setNewAttribute(input);
         input.sort = positionContentTitle;
         input.typeDes = "1";
@@ -811,7 +848,7 @@
             removeDescription(idContainer, idDivContent);
         };
 
-        document.getElementById(idDivContent).appendChild(text);
+        document.getElementById(idDivContent).appendChild(para);
         document.getElementById(idDivContent).appendChild(input);
         document.getElementById(idDivContent).appendChild(buttonRemove);
         document.getElementById(idContainer).appendChild(divContent);
@@ -825,16 +862,20 @@
         let divExample = document.createElement("div");
         let idDivExample = "idDivExampleTitle" + currentTitle + "_" + positionExampleTitle;
         divExample.setAttribute("id", idDivExample);
-        divExample.style.cssText = 'margin: 8px; background: #F0F0F0; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divExample.style.cssText = 'background: #c2e9fb; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById(idContainer).appendChild(divExample);
 
         //Create text with id by position
+        let para = document.createElement("P");
+        para.style.width = "80px";
         let text = document.createTextNode("Ví dụ: ");
+        para.appendChild(text);
 
         //Create input with id by position
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputExampleTitle" + currentTitle + "_" + positionExampleTitle;
         input.setAttribute("id", idInput);
+        input.setAttribute("cols", 90);
         setNewAttribute(input);
         input.sort = positionExampleTitle;
         input.typeDes = "2";
@@ -849,7 +890,7 @@
             removeDescription(idContainer, idDivExample);
         };
 
-        document.getElementById(idDivExample).appendChild(text);
+        document.getElementById(idDivExample).appendChild(para);
         document.getElementById(idDivExample).appendChild(input);
         document.getElementById(idDivExample).appendChild(buttonRemove);
         document.getElementById(idContainer).appendChild(divExample);
@@ -863,16 +904,20 @@
         let divQuestion = document.createElement("div");
         let idDivQuestion = "idDivQuestionTitle" + currentTitle + "_" + positionQuestionTitle;
         divQuestion.setAttribute("id", idDivQuestion);
-        divQuestion.style.cssText = 'margin: 8px; background: #F0F0F0; display: flex; flex-direction: row; align-items: center; justify-content: center;';
+        divQuestion.style.cssText = 'background: #c2e9fb; display: flex; flex-direction: row; align-items: center; justify-content: center;';
         document.getElementById(idContainer).appendChild(divQuestion);
 
         //Create text with id by position
+        let para = document.createElement("P");
+        para.style.width = "80px";
         let text = document.createTextNode("Câu hỏi: ");
+        para.appendChild(text);
 
         //Create input with id by position
         let input = document.createElement("TEXTAREA");
         let idInput = "idInputQuestionTitle" + currentTitle + "_" + positionQuestionTitle;
         input.setAttribute("id", idInput);
+        input.setAttribute("cols", 90);
         setNewAttribute(input);
         input.sort = positionQuestionTitle;
         input.typeDes = "3";
@@ -887,7 +932,7 @@
             removeDescription(idContainer, idDivQuestion);
         };
 
-        document.getElementById(idDivQuestion).appendChild(text);
+        document.getElementById(idDivQuestion).appendChild(para);
         document.getElementById(idDivQuestion).appendChild(input);
         document.getElementById(idDivQuestion).appendChild(buttonRemove);
         document.getElementById(idContainer).appendChild(divQuestion);
@@ -902,7 +947,6 @@
     };
 
     function setNewAttribute(input) {
-        input.setAttribute("cols", 100);
         input.setAttribute("rows", 2);
         input.oninput = function () {
             input.style.height = "";
